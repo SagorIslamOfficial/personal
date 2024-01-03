@@ -1,6 +1,6 @@
 /* Global CSS */
 body {
-	font-family: "Nunito", sans-serif;
+	font-family: "Nunito", "Nunito Sans", sans-serif;
 	font-size: 100%;
 	background-color: #1e1e28 !important;
 	scroll-behavior: smooth;
@@ -252,6 +252,7 @@ section#heroSection {
 	font-weight: 500;
 	font-size: 20px;
 	color: #ffc107;
+	word-spacing: 2px;
 }
 
 .shortBioSkills ul {
@@ -397,6 +398,7 @@ a.buttonsOfShortBioAboutUs:hover {
 	font-size: 26px;
 	font-weight: 600;
 	line-height: 32px;
+	letter-spacing: 2px;
 }
 
 .aboutMeDesignation {
@@ -490,6 +492,7 @@ a.buttonsOfShortBioAboutUs:hover {
 	overflow: hidden;
 	white-space: nowrap;
 	float: left;
+	letter-spacing: 1.5px;
 }
 
 .skillDataInner span:last-child {
@@ -530,6 +533,7 @@ a.buttonsOfShortBioAboutUs:hover {
 	line-height: 1.5;
 	text-transform: capitalize;
 	font-weight: 500;
+	letter-spacing: 1.5px;
 }
 
 .forBorder p {
@@ -563,6 +567,7 @@ ul.used-tech-09 li {
 	background-color: #23232b;
 	margin: 2px 3px;
 	border-radius: 3px;
+	letter-spacing: 1px;
 }
 
 .codeWithDemo a {
@@ -611,6 +616,7 @@ h6.blogTitle {
 	font-weight: 700;
 	color: #ffc107;
 	text-transform: uppercase;
+	letter-spacing: 2px;
 }
 
 .readMore a i {
