@@ -10,7 +10,7 @@
 - [-] 1.1 Install and Configure Dependencies
   - Install React 18+, React DOM, and TypeScript
   - Add Vite plugins for React and asset optimization
-  - Install third-party libraries (particles.js, typeit, bootstrap)
+  - Install third-party libraries (particles.js, typeit)
   - Configure ESLint and Prettier for code quality
   - _Requirements: 2.1, 2.2_
 
