@@ -43,7 +43,7 @@
   - _Requirements: 1.1, 3.2_
 
 - [ ] 2.2 Header and Navigation Component
-  - Create Header component with Bootstrap navbar structure
+  - Create Header component navbar structure
   - Implement responsive mobile menu toggle functionality
   - Add smooth scrolling navigation to page sections
   - Style navigation to match current design exactly
@@ -87,7 +87,7 @@
 - [ ] 4.1 Skills Tabs Component
   - Create tabbed interface for different skill categories
   - Implement active tab state management
-  - Style tabs to match current Bootstrap nav-pills design
+  - Style tabs to match current nav-pills design
   - Add skill tags with proper spacing and styling
   - _Requirements: 3.3_
 
@@ -100,13 +100,13 @@
 
 - [ ] 5. Projects Section Implementation
   - Create ProjectsSection component with carousel functionality
-  - Implement Bootstrap carousel integration in React
+  - Implement carousel integration in React
   - Add project cards with images, descriptions, and tech tags
   - Create project data structure and management
   - _Requirements: 1.1, 3.3_
 
 - [ ] 5.1 Project Carousel Component
-  - Integrate Bootstrap carousel with React state management
+  - Integrate carousel with React state management
   - Implement custom carousel indicators and controls
   - Add smooth transitions between project slides
   - Handle responsive behavior for different screen sizes
@@ -189,18 +189,18 @@
   - Test particle behavior across different browsers
   - _Requirements: 3.2, 6.4_
 
-- [ ] 10. Bootstrap Integration and Styling
-  - Integrate Bootstrap 5 CSS and JavaScript components
-  - Configure Bootstrap tooltips in React environment
-  - Implement Bootstrap responsive utilities
-  - Ensure Bootstrap components work with React state
+- [ ] 10. Tailwind CSS v4 Integration and Styling
+  - Integrate Tailwind CSS v4 5 CSS and JavaScript components
+  - Configure Tailwind CSS v4 tooltips in React environment
+  - Implement Tailwind CSS v4 responsive utilities
+  - Ensure Tailwind CSS v4 components work with React state
   - _Requirements: 3.3, 1.3_
 
-- [ ] 10.1 Bootstrap Components Integration
-  - Set up Bootstrap tooltip initialization in React
-  - Configure Bootstrap modal components for React
-  - Implement Bootstrap carousel with React state management
-  - Test all Bootstrap interactive components
+- [ ] 10.1 Tailwind CSS v4 Components Integration
+  - Set up Tailwind CSS v4 tooltip initialization in React
+  - Configure Tailwind CSS v4 modal components for React
+  - Implement Tailwind CSS v4 carousel with React state management
+  - Test all Tailwind CSS v4 interactive components
   - _Requirements: 3.3_
 
 - [ ] 10.2 CSS Migration and Organization
