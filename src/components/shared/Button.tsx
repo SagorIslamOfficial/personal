@@ -1,72 +1,81 @@
 import { type ReactNode, type ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'contact' | 'about';
-  size?: 'sm' | 'md' | 'lg';
-  children: ReactNode;
-  href?: string;
-  external?: boolean;
-  icon?: ReactNode;
-  iconPosition?: 'left' | 'right';
+    variant?: 'primary' | 'secondary' | 'outline' | 'contact' | 'about';
+    size?: 'sm' | 'md' | 'lg';
+    children: ReactNode;
+    href?: string;
+    external?: boolean;
+    icon?: ReactNode;
+    iconPosition?: 'left' | 'right';
 }
 
 const Button = ({
-  variant = 'primary',
-  size = 'md',
-  children,
-  href,
-  external = false,
-  icon,
-  iconPosition = 'right',
-  className = '',
-  ...props
+    variant = 'primary',
+    size = 'md',
+    children,
+    href,
+    external = false,
+    icon,
+    iconPosition = 'right',
+    className = '',
+    ...props
 }: ButtonProps) => {
-  
-  const baseClasses = 'inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-DEFAULT disabled:opacity-50 disabled:cursor-not-allowed';
-  
-  const variantClasses = {
-    primary: 'bg-primary text-dark hover:bg-primary/90 focus:ring-primary shadow-lg hover:shadow-xl',
-    secondary: 'bg-gray-700 text-white hover:bg-gray-600 focus:ring-gray-500',
-    outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-dark focus:ring-primary',
-    contact: 'bg-primary text-dark hover:bg-primary/90 focus:ring-primary shadow-lg hover:shadow-xl',
-    about: 'border-2 border-primary/50 text-primary hover:bg-primary hover:text-dark hover:border-primary focus:ring-primary'
-  };
-  
-  const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
-  };
+    const baseClasses =
+        'inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-DEFAULT disabled:opacity-50 disabled:cursor-not-allowed';
 
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
+    const variantClasses = {
+        primary:
+            'bg-primary text-dark hover:bg-primary/90 focus:ring-primary shadow-lg hover:shadow-xl',
+        secondary:
+            'bg-gray-700 text-white hover:bg-gray-600 focus:ring-gray-500',
+        outline:
+            'border-2 border-primary text-primary hover:bg-primary hover:text-dark focus:ring-primary',
+        contact:
+            'bg-primary text-dark hover:bg-primary/90 focus:ring-primary shadow-lg hover:shadow-xl',
+        about: 'border-2 border-primary/50 text-primary hover:bg-primary hover:text-dark hover:border-primary focus:ring-primary',
+    };
 
-  const content = (
-    <>
-      {icon && iconPosition === 'left' && <span className="mr-2 flex-shrink-0">{icon}</span>}
-      <span>{children}</span>
-      {icon && iconPosition === 'right' && <span className="ml-2 flex-shrink-0">{icon}</span>}
-    </>
-  );
+    const sizeClasses = {
+        sm: 'px-4 py-2 text-sm',
+        md: 'px-6 py-3 text-base',
+        lg: 'px-8 py-4 text-lg',
+    };
 
-  if (href) {
-    return (
-      <a
-        href={href}
-        className={classes}
-        target={external ? '_blank' : undefined}
-        rel={external ? 'noopener noreferrer' : undefined}
-        role="button"
-      >
-        {content}
-      </a>
+    const classes =
+        `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
+
+    const content = (
+        <>
+            {icon && iconPosition === 'left' && (
+                <span className="mr-2 flex-shrink-0">{icon}</span>
+            )}
+            <span>{children}</span>
+            {icon && iconPosition === 'right' && (
+                <span className="ml-2 flex-shrink-0">{icon}</span>
+            )}
+        </>
     );
-  }
 
-  return (
-    <button className={classes} {...props}>
-      {content}
-    </button>
-  );
+    if (href) {
+        return (
+            <a
+                href={href}
+                className={classes}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
+                role="button"
+            >
+                {content}
+            </a>
+        );
+    }
+
+    return (
+        <button className={classes} {...props}>
+            {content}
+        </button>
+    );
 };
 
 export default Button;

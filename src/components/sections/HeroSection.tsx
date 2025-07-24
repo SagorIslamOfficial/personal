@@ -15,12 +15,7 @@ const HeroSection = () => {
                         {heroContent.greeting}{' '}
                         <span className="inline-block">👋</span>
                     </h6>
-                    <h1
-                        className="text-white font-extrabold text-4xl md:text-5xl lg:text-6xl mb-3"
-                        style={{
-                            fontFamily: 'Nunito, Nunito Sans, sans-serif',
-                        }}
-                    >
+                    <h1 className="text-white font-extrabold text-4xl md:text-5xl lg:text-6xl mb-3">
                         {heroContent.name}
                     </h1>
                     <h5 className="text-yellow-400 text-lg md:text-xl font-semibold mb-4">
