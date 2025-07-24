@@ -1,0 +1,80 @@
+/* History Section Styles */
+
+.historySection {
+  background: #1e1e28;
+  padding: 5rem 0;
+  position: relative;
+}
+
+.timelineTabs {
+  margin-bottom: 3rem;
+}
+
+.timelineTabs .nav {
+  gap: 1rem;
+  justify-content: center;
+}
+
+.timelineTabs .nav-link {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.timelineTabs .nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.timelineTabs .nav-link.active {
+  background: #ffc107;
+  border-color: #ffc107;
+  color: #1e1e28;
+  font-weight: 600;
+}
+
+.timelineTabs .nav-link.active:hover {
+  background: #e0a800;
+  border-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+.timelineContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .historySection {
+    padding: 3rem 0;
+  }
+  
+  .timelineTabs .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .timelineTabs .nav-link {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timelineTabs .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+}

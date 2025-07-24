@@ -1,0 +1,262 @@
+/* Skill Tabs Component Styles */
+
+.skillTabs {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.tabNavigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0;
+  list-style: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabItem {
+  margin: 0;
+}
+
+.tabButton {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  color: #ffc107;
+  background: rgba(255, 193, 7, 0.1);
+}
+
+.tabButton.active {
+  color: #ffc107;
+  background: rgba(255, 193, 7, 0.15);
+}
+
+.tabButton.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ffc107, #e0a800);
+  border-radius: 2px;
+}
+
+.tabButton:focus {
+  outline: 2px solid #ffc107;
+  outline-offset: 2px;
+}
+
+.tabContent {
+  position: relative;
+  min-height: 120px;
+}
+
+.tabPane {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  padding: 1.5rem 0;
+}
+
+.tabPane.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.skillTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.skillTag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.skillTag:hover {
+  background: rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+}
+
+.skillTag:hover::before {
+  left: 100%;
+}
+
+.skillIcon {
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.emptyState {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  padding: 2rem;
+}
+
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tabCounter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  font-size: 0.75rem;
+  font-weight: 600;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+  padding: 0 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tabNavigation {
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  
+  .tabButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .skillsGrid {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .skillTag {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabNavigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .tabButton {
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 0.25rem;
+  }
+  
+  .tabButton.active::after {
+    display: none;
+  }
+  
+  .tabButton.active {
+    background: rgba(255, 193, 7, 0.2);
+  }
+}
+
+/* Animation for tab switching */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tabPane.active {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Skill tag entrance animation */
+.skillTag {
+  animation: skillTagEntrance 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+@keyframes skillTagEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Stagger animation for skill tags */
+.skillTag:nth-child(1) { animation-delay: 0.1s; }
+.skillTag:nth-child(2) { animation-delay: 0.15s; }
+.skillTag:nth-child(3) { animation-delay: 0.2s; }
+.skillTag:nth-child(4) { animation-delay: 0.25s; }
+.skillTag:nth-child(5) { animation-delay: 0.3s; }
+.skillTag:nth-child(6) { animation-delay: 0.35s; }
+.skillTag:nth-child(7) { animation-delay: 0.4s; }
+.skillTag:nth-child(8) { animation-delay: 0.45s; }
+.skillTag:nth-child(9) { animation-delay: 0.5s; }
+.skillTag:nth-child(10) { animation-delay: 0.55s; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .tabButton,
+  .tabPane,
+  .skillTag {
+    transition: none;
+    animation: none;
+  }
+  
+  .skillTag:hover {
+    transform: none;
+  }
+}
