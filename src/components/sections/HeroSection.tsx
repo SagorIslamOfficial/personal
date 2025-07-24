@@ -15,31 +15,31 @@ const HeroSection = () => {
                         {heroContent.greeting}{' '}
                         <span className="inline-block">👋</span>
                     </h6>
-                    <h1 className="text-white font-extrabold text-4xl md:text-5xl lg:text-6xl mb-3">
+                    <h1 className="font-black text-2xl md:text-4xl lg:text-5xl mb-8">
                         {heroContent.name}
                     </h1>
-                    <h5 className="text-yellow-400 text-lg md:text-xl font-semibold mb-4">
+                    <h5 className="text-yellow-400 text-lg md:text-xl font-semibold mb-2">
                         {heroContent.typingStrings[0]}
                     </h5>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-8">
+                    <div className="flex flex-wrap items-center gap-y-2 mb-5">
                         {heroContent.skills.map((skill, idx) => (
                             <span
                                 key={skill.name}
-                                className="text-white text-base font-normal flex items-center"
+                                className="text-base font-semibold flex items-center"
                             >
                                 {skill.name}
                                 {idx < heroContent.skills.length - 1 && (
-                                    <span className="mx-2 text-yellow-400 text-lg">
+                                    <span className="mx-3 text-yellow-400 text-xl">
                                         •
                                     </span>
                                 )}
                             </span>
                         ))}
                     </div>
-                    <div className="flex gap-4 mt-2">
+                    <div className="flex gap-8">
                         <Button
                             variant="primary"
-                            className="bg-yellow-400 text-[#23232b] border-yellow-400 px-6 py-2 rounded font-bold text-base shadow-none hover:bg-yellow-300 hover:text-black focus:ring-yellow-400"
+                            className="bg-yellow-400 text-black border-yellow-400 px-6 py-2 rounded font-bold text-base shadow-none hover:bg-[#1E1E28] hover:border-red-400 hover:text-yellow-400 focus:ring-yellow-400"
                             href={heroContent.buttons.contact.href}
                         >
                             {heroContent.buttons.contact.text}
@@ -54,7 +54,7 @@ const HeroSection = () => {
                     </div>
                 </div>
                 {/* Right Image */}
-                <div className="flex-1 flex justify-center items-center">
+                <div className="flex-1 flex justify-end items-center">
                     <img
                         src={heroImage}
                         alt="Muhammad Alamin Islam Sagor"
