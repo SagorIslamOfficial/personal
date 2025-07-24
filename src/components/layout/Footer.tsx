@@ -8,7 +8,7 @@ const Footer = () => {
             id="footer"
             className="bg-gray-900 border-t border-gray-800 py-8"
         >
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     {/* Social Icons */}
                     <div className="flex items-center gap-4">

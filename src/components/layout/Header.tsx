@@ -73,7 +73,7 @@ const Header = ({
 
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-[#20212A] h-18 flex items-center w-full shadow-md">
-                <div className="w-full max-w-7xl mx-auto flex items-center justify-between px-8">
+                <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
                     {/* Logo */}
                     <a
                         href="#"
