@@ -73,7 +73,7 @@ export const heroContent: HeroContent = {
             href: '#getInTouch',
         },
         about: {
-            text: 'ABOUT US',
+            text: 'ABOUT ME',
             href: '#about',
         },
     },
