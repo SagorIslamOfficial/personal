@@ -36,7 +36,7 @@ const Button = ({
         secondary:
             'bg-gray-700 text-white hover:bg-gray-600 focus:ring-gray-500',
         outline:
-            'border-2 border-primary text-primary hover:bg-primary hover:text-dark focus:ring-primary',
+            'border-1 border-primary text-primary hover:bg-primary hover:text-dark focus:ring-primary',
         contact:
             'bg-primary text-dark hover:bg-primary/90 focus:ring-primary shadow-lg hover:shadow-xl',
         about: 'border-2 border-primary/50 text-primary hover:bg-primary hover:text-dark hover:border-primary focus:ring-primary',
