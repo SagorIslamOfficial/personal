@@ -1,7 +1,13 @@
 import { type ReactNode, type ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: 'primary' | 'secondary' | 'outline' | 'contact' | 'about';
+    variant?:
+        | 'primary'
+        | 'secondary'
+        | 'outline'
+        | 'contact'
+        | 'about'
+        | 'custom';
     size?: 'sm' | 'md' | 'lg';
     children: ReactNode;
     href?: string;
@@ -34,6 +40,7 @@ const Button = ({
         contact:
             'bg-primary text-dark hover:bg-primary/90 focus:ring-primary shadow-lg hover:shadow-xl',
         about: 'border-2 border-primary/50 text-primary hover:bg-primary hover:text-dark hover:border-primary focus:ring-primary',
+        custom: '', // No color/border/hover classes
     };
 
     const sizeClasses = {
@@ -42,8 +49,11 @@ const Button = ({
         lg: 'px-8 py-4 text-lg',
     };
 
+    // If variant is 'custom', do not add any color/border/hover classes
     const classes =
-        `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
+        variant === 'custom'
+            ? `${baseClasses} ${sizeClasses[size]} ${className}`.trim()
+            : `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
     const content = (
         <>
