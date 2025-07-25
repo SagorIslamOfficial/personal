@@ -38,8 +38,8 @@ const HeroSection = () => {
                     </div>
                     <div className="flex gap-8">
                         <Button
-                            variant="primary"
-                            className="bg-yellow-400 text-black border-yellow-400 px-6 py-2 rounded font-bold text-base shadow-none hover:bg-[#1E1E28] hover:border-red-400 hover:text-yellow-400 focus:ring-yellow-400"
+                            variant="outline"
+                            className="bg-yellow-400 text-[#23232b] border-yellow-400 hover:border-yellow-400 px-6 py-2 rounded font-bold text-base shadow-none hover:bg-transparent hover:text-white focus:ring-yellow-400"
                             href={heroContent.buttons.contact.href}
                         >
                             {heroContent.buttons.contact.text}
@@ -54,7 +54,7 @@ const HeroSection = () => {
                     </div>
                 </div>
                 {/* Right Image */}
-                <div className="flex-1 flex justify-end items-center">
+                <div className="flex-1 flex justify-center items-center">
                     <img
                         src={heroImage}
                         alt="Muhammad Alamin Islam Sagor"
