@@ -4,12 +4,7 @@
 body {
     font-family: 'Nunito', 'Nunito Sans', sans-serif;
     background-color: #1e1e28;
-    color: #ffffff;
     scroll-behavior: smooth;
-}
-
-#root {
-    min-height: 100vh;
 }
 
 /* Custom scrollbar */
