@@ -97,7 +97,7 @@ const Header = ({
                                         onClick={(e) =>
                                             handleNavClick(e, item.id)
                                         }
-                                        className="text-white font-semibold text-lg hover:text-primary transition-colors duration-200 px-1"
+                                        className="text-white font-semibold text-lg hover:text-yellow-500 transition-colors duration-200 px-1"
                                         style={{ letterSpacing: '0.02em' }}
                                     >
                                         {item.label}
@@ -111,7 +111,7 @@ const Header = ({
                                     href={externalLinks.resume}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-6 py-2 border border-yellow-400 text-white font-semibold rounded transition-all duration-200 hover:border-white hover:text-yellow-900 focus:outline-none"
+                                    className="px-6 py-2 border border-yellow-400 text-white font-semibold rounded transition-all duration-200 hover:border-white hover:text-yellow-400 focus:outline-none"
                                     style={{ letterSpacing: '0.05em' }}
                                 >
                                     Resume
