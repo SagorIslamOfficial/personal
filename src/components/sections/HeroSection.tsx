@@ -39,14 +39,14 @@ const HeroSection = () => {
                     <div className="flex gap-8">
                         <Button
                             variant="outline"
-                            className="bg-yellow-400 text-[#23232b] border-yellow-400 hover:border-yellow-400 px-6 py-2 rounded font-bold text-base shadow-none hover:bg-transparent hover:text-white focus:ring-yellow-400"
+                            className="bg-yellow-400 text-[#23232b] border-yellow-400 hover:border-yellow-400 px-6 py-1.5 rounded font-bold text-base shadow-none hover:bg-transparent hover:text-white focus:ring-yellow-400"
                             href={heroContent.buttons.contact.href}
                         >
                             {heroContent.buttons.contact.text}
                         </Button>
                         <Button
                             variant="outline"
-                            className="border-yellow-400 text-yellow-400 px-6 py-2 rounded font-bold text-base shadow-none hover:bg-yellow-400 hover:text-[#23232b] focus:ring-yellow-400"
+                            className="border-yellow-400 text-yellow-400 px-6 py-1.5 rounded font-bold text-base shadow-none hover:bg-yellow-400 hover:text-[#23232b] focus:ring-yellow-400"
                             href={heroContent.buttons.about.href}
                         >
                             {heroContent.buttons.about.text}
