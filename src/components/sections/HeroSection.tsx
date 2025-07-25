@@ -54,7 +54,7 @@ const HeroSection = () => {
                     </div>
                 </div>
                 {/* Right Image */}
-                <div className="flex-1 flex justify-center items-center">
+                <div className="flex-1 flex justify-end items-center">
                     <img
                         src={heroImage}
                         alt="Muhammad Alamin Islam Sagor"
