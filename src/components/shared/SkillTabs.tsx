@@ -72,18 +72,18 @@ const SkillTabs = ({
     return (
         <div className={`w-full ${className}`}>
             {/* Tab Navigation */}
-            <div className="flex flex-wrap gap-6 mb-8" role="tablist">
+            <div className="flex flex-wrap gap-6 mb-7" role="tablist">
                 {categories.map((category) => (
                     <button
                         key={category.id}
                         className={`
-              font-medium transition-all duration-300 pb-2 border-b-2
-              ${
-                  activeTab === category.id
-                      ? 'text-primary border-primary'
-                      : 'text-gray-light hover:text-white border-transparent hover:border-gray-600'
-              }
-            `}
+                            font-semibold text-sm transition-all tracking-[.5px] duration-300 pb-2 border-b-2
+                            ${
+                                activeTab === category.id
+                                    ? 'text-yellow-400 border-gray-400 font-semibold'
+                                    : 'text-gray-light hover:text-white border-transparent hover:border-gray-400 font-semibold'
+                            }
+                            `}
                         onClick={() => handleTabClick(category.id)}
                         onKeyDown={(e) => handleKeyDown(e, category.id)}
                         role="tab"
@@ -102,30 +102,30 @@ const SkillTabs = ({
                     <div
                         key={category.id}
                         className={`
-              transition-all duration-300 ease-in-out
-              ${
-                  activeTab === category.id
-                      ? 'opacity-100 block'
-                      : 'opacity-0 hidden'
-              }
-            `}
+                                    transition-all duration-300 ease-in-out
+                                    ${
+                                        activeTab === category.id
+                                            ? 'opacity-100 block'
+                                            : 'opacity-0 hidden'
+                                    }
+                                `}
                         id={`panel-${category.id}`}
                         role="tabpanel"
                         aria-labelledby={`tab-${category.id}`}
                         tabIndex={0}
                     >
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-1">
                             {category.skills.length > 0 ? (
                                 category.skills.map((skill, index) => (
                                     <span
                                         key={index}
-                                        className="px-4 py-2 bg-gray-800/50 text-gray-light rounded-md text-sm hover:bg-gray-700/50 hover:text-white transition-all duration-300"
+                                        className="px-3 py-[3px] mb-1 bg-[#2c2c38] tracking-[1.5px] rounded-full text-[13px] font-[100] hover:bg-[#3c3c48] transition-all duration-300 text-white"
                                     >
                                         {skill}
                                     </span>
                                 ))
                             ) : (
-                                <div className="w-full text-center py-8 text-gray-light">
+                                <div className="w-full text-center py-8">
                                     No skills in this category
                                 </div>
                             )}
