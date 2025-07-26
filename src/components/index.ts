@@ -21,6 +21,7 @@ export { default as SkillTag } from './shared/SkillTag';
 export { default as LoadingSpinner } from './shared/LoadingSpinner';
 export { default as Card } from './shared/Card';
 export { default as ProjectCard } from './shared/ProjectCard';
+export { default as BlogCard } from './shared/BlogCard';
 export { default as Timeline } from './shared/Timeline';
 
 // UI Components
