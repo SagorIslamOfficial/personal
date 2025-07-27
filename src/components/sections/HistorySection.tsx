@@ -1,77 +1,74 @@
-import { useState } from 'react';
-import Timeline from '../shared/Timeline';
-import SectionHeading from '../shared/SectionHeading';
-import {
-    educationData,
-    experienceData,
-    allTimelineData,
-} from '../../data/education';
+import CareerExperienceCard from '../shared/CareerExperienceCard';
+import { educationData } from '../../data/education';
+import { experienceData } from '../../data/experience';
 
 const HistorySection = () => {
-    const [activeTab, setActiveTab] = useState<
-        'all' | 'education' | 'experience'
-    >('all');
+    // Sort data with newest first
+    const sortedEducationData = [...educationData].sort((a, b) => {
+        const dateA = new Date(a.startDate).getTime();
+        const dateB = new Date(b.startDate).getTime();
+        return dateB - dateA;
+    });
 
-    const getTimelineData = () => {
-        switch (activeTab) {
-            case 'education':
-                return educationData;
-            case 'experience':
-                return experienceData;
-            default:
-                return allTimelineData;
-        }
-    };
+    const sortedExperienceData = [...experienceData].sort((a, b) => {
+        const dateA = new Date(a.startDate).getTime();
+        const dateB = new Date(b.startDate).getTime();
+        return dateB - dateA;
+    });
 
     return (
-        <section id="education&Experience" className="py-20 bg-gray-900/50">
-            <div className="max-w-6xl mx-auto">
-                <div className="w-full">
-                    <SectionHeading
-                        title="Education & Experience"
-                        subtitle="My academic background and professional journey"
-                    />
+        <section id="education&Experience" className="py-20">
+            <div className="max-w-7xl mx-auto">
+                {/* Two Column Layout */}
+                <div className="grid md:grid-cols-2 gap-12">
+                    {/* Education History Column */}
+                    <div className="relative">
+                        {/* Column Header */}
+                        <div className="mb-8">
+                            <h2 className="text-2xl font-bold text-white">
+                                Education <span className="text-yellow-400">History</span>
+                            </h2>
+                        </div>
 
-                    {/* Timeline Filter Tabs */}
-                    <div className="mb-12">
-                        <div
-                            className="flex flex-wrap justify-center gap-4 mb-8"
-                            role="tablist"
-                        >
-                            <button
-                                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${activeTab === 'all' ? 'bg-primary text-dark' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
-                                onClick={() => setActiveTab('all')}
-                                type="button"
-                            >
-                                <i className="fa-solid fa-clock"></i>
-                                <span>All Timeline</span>
-                            </button>
-                            <button
-                                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${activeTab === 'experience' ? 'bg-primary text-dark' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
-                                onClick={() => setActiveTab('experience')}
-                                type="button"
-                            >
-                                <i className="fa-solid fa-briefcase"></i>
-                                <span>Experience</span>
-                            </button>
-                            <button
-                                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${activeTab === 'education' ? 'bg-primary text-dark' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
-                                onClick={() => setActiveTab('education')}
-                                type="button"
-                            >
-                                <i className="fa-solid fa-graduation-cap"></i>
-                                <span>Education</span>
-                            </button>
+                        {/* Timeline Line */}
+                        <div className="absolute right-0 top-16 bottom-0 w-0.5 bg-gray-600/50"></div>
+
+                        {/* Education Items */}
+                        <div className="pr-8">
+                            {sortedEducationData.map((item) => (
+                                <CareerExperienceCard
+                                    key={item.id}
+                                    item={item}
+                                    type="education"
+                                    showDot={true}
+                                />
+                            ))}
                         </div>
                     </div>
 
-                    {/* Timeline Component */}
-                    <div className="w-full">
-                        <Timeline
-                            items={getTimelineData()}
-                            showCertificates={true}
-                            className="education-experience-timeline"
-                        />
+                    {/* Work History Column */}
+                    <div className="relative">
+                        {/* Column Header */}
+                        <div className="mb-8">
+                            <h2 className="text-2xl font-bold text-white">
+                                Work <span className="text-yellow-400">History</span>
+                            </h2>
+                        </div>
+
+                        {/* Timeline Line */}
+                        <div className="absolute right-0 top-16 bottom-0 w-0.5 bg-gray-600/50"></div>
+
+                        {/* Work Items */}
+                        <div className="pr-8">
+                            {sortedExperienceData.map((item) => (
+                                <CareerExperienceCard
+                                    key={item.id}
+                                    item={item}
+                                    type="experience"
+                                    showDot={true}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
