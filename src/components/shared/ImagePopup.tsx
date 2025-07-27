@@ -20,6 +20,18 @@ const ImagePopup = ({
 }: ImagePopupProps) => {
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
+    const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl);
+    const [isUsingFallback, setIsUsingFallback] = useState(false);
+
+    // Reset states when imageUrl changes
+    useEffect(() => {
+        setCurrentImageUrl(imageUrl);
+        setIsUsingFallback(false);
+        setHasError(false);
+        if (isOpen) {
+            setIsLoading(true);
+        }
+    }, [imageUrl, isOpen]);
 
     // Handle escape key press
     const handleKeyDown = useCallback(
@@ -47,11 +59,19 @@ const ImagePopup = ({
         setHasError(false);
     }, []);
 
-    // Handle image error
+    // Handle image error - try fallback image first
     const handleImageError = useCallback(() => {
-        setIsLoading(false);
-        setHasError(true);
-    }, []);
+        if (!isUsingFallback) {
+            // Try fallback image
+            setIsUsingFallback(true);
+            setCurrentImageUrl('/logo.png');
+            setIsLoading(true); // Show loading while fallback loads
+        } else {
+            // Fallback also failed
+            setIsLoading(false);
+            setHasError(true);
+        }
+    }, [isUsingFallback]);
 
     // Body scroll lock when modal is open
     useEffect(() => {
@@ -59,6 +79,7 @@ const ImagePopup = ({
             document.body.style.overflow = 'hidden';
             document.body.style.paddingRight = '15px'; // Prevent layout shift
             document.addEventListener('keydown', handleKeyDown);
+            // Reset image states when modal opens
             setIsLoading(true);
             setHasError(false);
         } else {
@@ -123,7 +144,10 @@ const ImagePopup = ({
                 {hasError && !isLoading && (
                     <div className="flex flex-col items-center justify-center p-12 text-red-400">
                         <i className="fa-solid fa-exclamation-triangle text-4xl mb-4"></i>
-                        <p>Failed to load certificate image</p>
+                        <p className="text-center mb-2">Certificate image not available</p>
+                        <p className="text-sm text-gray-400 text-center">
+                            The certificate image could not be loaded at this time.
+                        </p>
                     </div>
                 )}
 
@@ -131,12 +155,20 @@ const ImagePopup = ({
                 <div className="relative">
                     <img
                         id="modal-image"
-                        src={imageUrl}
-                        alt={imageAlt}
+                        src={currentImageUrl}
+                        alt={isUsingFallback ? 'Logo (Certificate not available)' : imageAlt}
                         className={`max-w-full max-h-[70vh] object-contain ${isLoading || hasError ? 'hidden' : 'block'}`}
                         onLoad={handleImageLoad}
                         onError={handleImageError}
                     />
+                    
+                    {/* Fallback indicator */}
+                    {isUsingFallback && !isLoading && !hasError && (
+                        <div className="absolute bottom-4 left-4 bg-yellow-400/90 text-black px-3 py-1 rounded text-sm">
+                            <i className="fa-solid fa-info-circle mr-2"></i>
+                            Certificate image not available - showing logo
+                        </div>
+                    )}
                 </div>
 
                 {/* Additional content */}
