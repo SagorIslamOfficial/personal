@@ -1,4 +1,5 @@
 import { type BlogPost } from '../../data/blog';
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 interface BlogCardProps {
     post: BlogPost;
@@ -20,38 +21,38 @@ const BlogCard = ({ post }: BlogCardProps) => {
             {/* Card Content */}
             <div className="flex flex-col flex-1 bg-[#292935]">
                 {/* Inner contents */}
-                <div className="flex flex-col flex-1 gap-4 p-6 group-hover:bg-[#363641] transition-colors duration-300">
+                <div className="flex flex-col flex-1 gap-3 p-6 group-hover:bg-[#363641] transition-colors duration-300">
                     {/* Date and Category */}
-                    <div className="flex items-center gap-2">
-                        <span className="text-yellow-400 text-sm font-medium">
+                    <div className="flex items-center gap-2 bg-[#1e1e28] px-4 py-1.5 rounded-[10px] text-[12px] font-sm text-[#8c8c8e]">
+                        <span>
                             {post.date}
                         </span>
-                        <span className="text-gray-400 text-sm">
+                        <span>
                             /
                         </span>
-                        <span className="text-yellow-400 text-sm font-medium">
+                        <span>
                             {post.category}
                         </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-white text-lg font-semibold leading-tight hover:text-yellow-400 transition-colors duration-200 cursor-pointer">
+                    <h3 className="text-white text-md font-medium leading-tight transition-colors duration-200">
                         {post.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-400 text-sm leading-relaxed flex-1">
+                    <p className="text-[#8c8c8e] text-sm leading-relaxed flex-1">
                         {post.excerpt}
                     </p>
                 </div>
 
                 {/* Read More Button */}
-                <div className="p-6 pt-0">
+                <div className="py-2">
                     <div className="text-center">
-                        <button className="inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm uppercase tracking-wider hover:text-white transition-colors duration-200 group/btn">
+                        <a href="#" className="inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm uppercase tracking-wider hover:text-white transition-colors duration-200 group/btn">
                             READ MORE
-                            <i className="fa-solid fa-chevron-right text-xs transition-transform duration-200 group-hover/btn:translate-x-1"></i>
-                        </button>
+                            <MdKeyboardArrowRight className="text-2xl transition-transform duration-200 group-hover/btn:translate-x-1" />
+                        </a>
                     </div>
                 </div>
             </div>
