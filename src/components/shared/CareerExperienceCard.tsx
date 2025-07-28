@@ -29,43 +29,43 @@ const CareerExperienceCard = ({ item, showDot = true, type }: CareerExperienceCa
         <div className="relative mb-8">
             {/* Timeline Dot */}
             {showDot && (
-                <div className="absolute -right-6 top-4 w-4 h-4 bg-yellow-400 rounded-full border-2 border-yellow-400 z-10"></div>
+                <div className="absolute -right-[3.4rem] top-6 w-4 h-4 bg-black rounded-full border-3 border-yellow-400 z-10"></div>
             )}
             
             {/* Card Content */}
-            <div className="bg-[#2c2c38] border border-[#363641] rounded-lg p-6 hover:border-yellow-400/30 transition-all duration-300 relative">
+            <div className="bg-[#2d2d3a] rounded-sm p-6 transition-all duration-300 relative">
+                {/* Arrow from card to timeline dot */}
+                {showDot && (
+                    <div className="absolute -right-2 top-5 w-0 h-0 border-t-[12px] border-b-[12px] border-l-[8px] border-transparent border-l-[#2d2d3a] z-5"></div>
+                )}
+                
                 {/* Header with Title and Date */}
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-center mb-4">
                     <div className="flex-1">
-                        <h3 className="text-white text-lg font-semibold mb-2 leading-tight">
+                        <h3 className="text-white text-md font-bold mb-0 leading-[27px]">
                             {item.title}
                         </h3>
-                        <p className="text-gray-400 text-sm mb-1">
-                            {institutionName}
+                        <p className="text-[#8c8c8e] text-sm mb-1 italic">
+                            {institutionName} <span className="text-gray-500">({item.location})</span>
                         </p>
-                        {item.location && (
-                            <p className="text-gray-400 text-sm">
-                                ({item.location})
-                            </p>
-                        )}
                     </div>
                     <div className="text-right ml-4">
-                        <span className="bg-gray-700/50 text-gray-300 text-sm px-3 py-1 rounded border border-gray-600/50">
+                        <span className="bg-[#20202a] text-[#8c8c8e] text-xs leading-[16px] px-4.5 py-1.5 rounded-xl">
                             {formatDateRange(item.startDate, item.endDate, item.current)}
                         </span>
                     </div>
                 </div>
 
                 {/* Description */}
-                <div className="mb-6">
-                    <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="mb-4">
+                    <p className="text-[#8c8c8e] text-sm leading-relaxed">
                         {item.description}
                     </p>
                 </div>
 
                 {/* Certificate Button */}
                 {item.certificate && (
-                    <div className="pt-4">
+                    <div className="pt-0">
                         <CertificateButton
                             certificateImage={item.certificate.image}
                             certificateAlt={item.certificate.alt}
