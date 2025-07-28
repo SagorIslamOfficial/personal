@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ImagePopup from './ImagePopup';
-import Button from './Button';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 
 interface CertificateButtonProps {
     certificateImage: string;
@@ -27,14 +27,15 @@ const CertificateButton = ({
 
     return (
         <div className={`certificate-button-container ${className}`}>
-            <Button
-                variant="outline"
+            <button
+                className="inline-flex items-center gap-1 text-yellow-400 font-bold text-xs uppercase tracking-wider hover:text-white transition-colors duration-200 group/btn cursor-pointer"
                 onClick={handleOpenModal}
-                icon={<i className="fa-solid fa-chevron-right"></i>}
-                iconPosition="right"
+                type="button"
+                aria-label="View Certificate"
             >
                 {buttonText}
-            </Button>
+                <MdKeyboardArrowRight className="text-2xl transition-transform duration-200 group-hover/btn:translate-x-1" />
+            </button>
 
             <ImagePopup
                 isOpen={isModalOpen}
