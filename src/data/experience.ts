@@ -84,6 +84,22 @@ export const experienceData: ExperienceItem[] = [
             'Learned agile development practices',
         ],
     },
+    {
+        id: 'part-time-web-developer',
+        title: 'Part-time Web Developer',
+        company: 'Local Startup',
+        location: 'Dhaka, Bangladesh',
+        startDate: 'Jan 2021',
+        endDate: 'May 2021',
+        description:
+            'Worked part-time while studying, contributing to the development of the company\'s website and internal tools.',
+        skills: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+        achievements: [
+            'Improved website loading speed by 30%',
+            'Implemented responsive design',
+            'Gained practical experience in web development',
+        ],
+    },
 ];
 
 export default experienceData;

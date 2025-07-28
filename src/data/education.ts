@@ -85,6 +85,20 @@ export const educationData: EducationItem[] = [
         },
         skills: ['Business Studies', 'Foundation Learning'],
     },
+    {
+        id: 'primary-education',
+        title: 'Primary Education',
+        institution: 'Baharpur High School',
+        location: 'Baharpur, Baliakandi, Rajbari',
+        startDate: 'Batch of 2006',
+        description:
+            'Completed my primary education at Baharpur High School, which laid the foundation for my future studies and career.',
+        certificate: {
+            image: '/assets/images/5.jpg',
+            alt: 'Primary Education Certificate',
+        },
+        skills: ['Basic Education', 'Foundational Skills'],
+    },
 ];
 
 export default educationData;
