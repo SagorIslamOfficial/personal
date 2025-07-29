@@ -33,7 +33,7 @@ const CareerExperienceCard = ({ item, showDot = true, type }: CareerExperienceCa
             )}
             
             {/* Card Content */}
-            <div className="bg-[#2d2d3a] rounded-sm p-6 transition-all duration-300 relative">
+            <div className="bg-[#2d2d3a] rounded-md p-6 transition-all duration-300 relative">
                 {/* Arrow from card to timeline dot */}
                 {showDot && (
                     <div className="absolute -right-2 top-5 w-0 h-0 border-t-[12px] border-b-[12px] border-l-[8px] border-transparent border-l-[#2d2d3a] z-5"></div>

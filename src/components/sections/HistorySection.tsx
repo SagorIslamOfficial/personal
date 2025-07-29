@@ -73,8 +73,8 @@ const HistorySection = () => {
                         <div 
                             className="absolute right-0 w-1 bg-[#191923]"
                             style={{
-                                top: '5.5rem', // Start from first item dot position
-                                height: educationHeight > 0 ? `${educationHeight - 28}px` : '100%'
+                                top: '6.5rem', // Start from first item dot position
+                                height: educationHeight > 0 ? `${educationHeight - 35}px` : '100%'
                             }}
                         ></div>
 
@@ -104,8 +104,8 @@ const HistorySection = () => {
                         <div 
                             className="absolute right-0 w-1 bg-[#191923]"
                             style={{
-                                top: '5.5rem', // Start from first item dot position
-                                height: experienceHeight > 0 ? `${experienceHeight - 24}px` : '100%'
+                                top: '6.5rem', // Start from first item dot position
+                                height: experienceHeight > 0 ? `${experienceHeight - 35}px` : '100%'
                             }}
                         ></div>
 
