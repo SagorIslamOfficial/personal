@@ -4,45 +4,31 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer
-            id="footer"
-            className="bg-gray-900 border-t border-gray-800 py-8"
-        >
+        <footer id="footer" className="bg-[#2c2c38] py-2">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                    {/* Social Icons */}
-                    <div className="flex items-center gap-4">
-                        {contactInfo.social.map((social) => (
-                            <a
-                                key={social.platform}
-                                href={social.url}
-                                className="w-10 h-10 bg-gray-800 hover:bg-primary text-gray-light hover:text-dark rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                                aria-label={social.label}
-                                target={
-                                    social.url.startsWith('http')
-                                        ? '_blank'
-                                        : undefined
-                                }
-                                rel={
-                                    social.url.startsWith('http')
-                                        ? 'noopener noreferrer'
-                                        : undefined
-                                }
-                            >
-                                <i
-                                    className={`${social.icon} text-lg`}
-                                    aria-hidden="true"
-                                ></i>
-                            </a>
-                        ))}
-                    </div>
-
                     {/* Copyright */}
                     <div className="text-center md:text-right">
                         <p className="text-gray-light text-sm">
                             © All rights reserved | 2017 - {currentYear} |
-                            Design and Develop by myself
+                            <span className="text-yellow-500 font-semibold"> Design and Develop by myself</span>
                         </p>
+                    </div>
+
+                    {/* Social Icons */}
+                    <div className="flex items-center gap-4">
+                        {contactInfo.social.map((item, index) => (
+                            <a
+                                key={index}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="border-2 border-gray-700 text-white w-11 h-11 rounded-full flex items-center justify-center hover:border-yellow-500 hover:text-yellow-500 transition-colors duration-300"
+                                title={item.label}
+                            >
+                                <item.icon className="text-lg" />
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>
