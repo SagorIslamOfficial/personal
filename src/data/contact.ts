@@ -1,4 +1,5 @@
 // Contact information and form data
+import { FaGithub, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 export interface ContactInfo {
     address: {
@@ -15,7 +16,7 @@ export interface ContactInfo {
 export interface SocialLink {
     platform: string;
     url: string;
-    icon: string;
+    icon: React.ComponentType<{ className?: string }>;
     label: string;
 }
 
@@ -28,30 +29,30 @@ export interface ContactFormData {
 
 export const contactInfo: ContactInfo = {
     address: {
-        street: 'Dhanmondi',
-        city: 'Dhaka-1209',
+        street: 'Mirpur 12',
+        city: 'Dhaka-1216',
         country: 'Bangladesh',
-        full: 'Dhanmondi, Dhaka-1209, Bangladesh',
+        full: 'Mirpur 12, Dhaka-1216, Bangladesh',
     },
     email: 'sagor_islam@icloud.com',
     phone: '+880 1933-126-160',
     social: [
         {
             platform: 'facebook',
-            url: 'https://facebook.com/sagorislam', // TODO: Update with actual URL
-            icon: 'fa-brands fa-facebook-f',
+            url: 'https://facebook.com/sagorislam',
+            icon: FaFacebookF,
             label: 'Facebook',
         },
         {
             platform: 'linkedin',
-            url: 'https://linkedin.com/in/sagorislam', // TODO: Update with actual URL
-            icon: 'fa-brands fa-linkedin-in',
+            url: 'https://linkedin.com/in/sagorislam',
+            icon: FaLinkedinIn,
             label: 'LinkedIn',
         },
         {
             platform: 'github',
-            url: 'https://github.com/sagorislam', // TODO: Update with actual URL
-            icon: 'fa-brands fa-github',
+            url: 'https://github.com/sagorislam',
+            icon: FaGithub,
             label: 'GitHub',
         },
     ],
