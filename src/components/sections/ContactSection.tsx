@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import SectionHeading from '../shared/SectionHeading';
-import Button from '../shared/Button';
+import React, { useState } from 'react';
 import {
     contactInfo,
     contactFormInitialData,
     type ContactFormData,
 } from '../../data/contact';
+import { BiMailSend } from "react-icons/bi";
+import { SlLocationPin } from "react-icons/sl";
+import { VscCallIncoming } from "react-icons/vsc";
+import { TbWorldShare } from "react-icons/tb";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState<ContactFormData>(
@@ -79,65 +81,76 @@ const ContactSection = () => {
     };
 
     return (
-        <section id="getInTouch" className="py-20 bg-dark-DEFAULT">
-            <div className="max-w-6xl mx-auto">
-                <div className="mb-12">
-                    <SectionHeading
-                        title="Get In Touch...!"
-                        subtitle="If I can be of assistance, please do not hesitate to contact me. And I will give you my best."
-                    />
+        <section id="getInTouch" className="py-20">
+            <div className="max-w-7xl mx-auto">
+                {/* Main Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                        Get In Touch!
+                    </h2>
+                    <p className="text-white opacity-60 text-md max-w-md mx-auto">
+                        I'm always open to discussing new projects, creative ideas or opportunities. Feel free to reach out.
+                    </p>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-8">
-                    {/* Contact Form */}
-                    <div className="lg:col-span-7">
-                        <div className="bg-gray-800/50 border border-gray-700/50 rounded-xl p-8">
-                            <h5 className="text-2xl font-bold text-white mb-8">
-                                Message me ...
-                            </h5>
+                <div className="grid grid-cols-5 gap-8">
+                    {/* Send a Message Form */}
+                    <div className="col-span-3">
+                        <div className="bg-[#2d2d39] rounded-lg p-8">
+                            <h3 className="text-2xl font-semibold text-white mb-2 leading-[20px]">
+                                Send a Message
+                            </h3>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div>
-                                    <input
-                                        type="text"
-                                        className={`w-full px-4 py-3 bg-gray-800 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${errors.name ? 'border-red-500 ring-2 ring-red-500' : 'border-gray-600 hover:border-gray-500'}`}
-                                        name="name"
-                                        id="name"
-                                        placeholder="Name*"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                    />
-                                    {errors.name && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {errors.name}
-                                        </div>
-                                    )}
+                            <div className="w-20 h-[2px] bg-yellow-500 mb-8"></div>
+
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                {/* Name and Email Row */}
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-gray-300 text-sm mb-1">Name <span className="text-yellow-500">*</span></label>
+                                        <input
+                                            type="text"
+                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.name ? 'border-red-500' : ''}`}
+                                            name="name"
+                                            id="name"
+                                            placeholder="e.g. Amin Muhammad"
+                                            value={formData.name}
+                                            onChange={handleInputChange}
+                                        />
+                                        {errors.name && (
+                                            <div className="text-red-500 text-sm mt-1">
+                                                {errors.name}
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <label className="block text-gray-300 text-sm mb-1">Email <span className="text-yellow-500">*</span></label>
+                                        <input
+                                            type="email"
+                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.email ? 'border-red-500' : ''}`}
+                                            name="email"
+                                            id="email"
+                                            placeholder="e.g. amin@example.com"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                        />
+                                        {errors.email && (
+                                            <div className="text-red-500 text-sm mt-1">
+                                                {errors.email}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
 
+                                {/* Subject */}
                                 <div>
-                                    <input
-                                        type="email"
-                                        className={`w-full px-4 py-3 bg-gray-800 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${errors.email ? 'border-red-500 ring-2 ring-red-500' : 'border-gray-600 hover:border-gray-500'}`}
-                                        name="email"
-                                        id="email"
-                                        placeholder="Email*"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                    />
-                                    {errors.email && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {errors.email}
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div>
+                                    <label className="block text-gray-300 text-sm mb-1">Subject <span className="text-yellow-500">*</span></label>
                                     <input
                                         type="text"
-                                        className={`w-full px-4 py-3 bg-gray-800 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${errors.subject ? 'border-red-500 ring-2 ring-red-500' : 'border-gray-600 hover:border-gray-500'}`}
+                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.subject ? 'border-red-500' : ''}`}
                                         name="subject"
                                         id="subject"
-                                        placeholder="Subject*"
+                                        placeholder="Regarding your project..."
                                         value={formData.subject}
                                         onChange={handleInputChange}
                                     />
@@ -148,13 +161,15 @@ const ContactSection = () => {
                                     )}
                                 </div>
 
+                                {/* Message */}
                                 <div>
+                                    <label className="block text-gray-300 text-sm mb-1">Message <span className="text-yellow-500">*</span></label>
                                     <textarea
-                                        className={`w-full px-4 py-3 bg-gray-800 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none ${errors.message ? 'border-red-500 ring-2 ring-red-500' : 'border-gray-600 hover:border-gray-500'}`}
+                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 resize-none ${errors.message ? 'border-red-500' : ''}`}
                                         name="message"
                                         id="message"
-                                        rows={4}
-                                        placeholder="Message*"
+                                        rows={5}
+                                        placeholder="Write your message here..."
                                         value={formData.message}
                                         onChange={handleInputChange}
                                     />
@@ -165,61 +180,108 @@ const ContactSection = () => {
                                     )}
                                 </div>
 
-                                <Button
-                                    type="submit"
-                                    variant="primary"
-                                    disabled={isSubmitting}
-                                    className="w-full"
-                                >
-                                    {isSubmitting
-                                        ? 'SENDING...'
-                                        : 'SEND MESSAGE'}
-                                </Button>
+                                {/* Submit Button */}
+                                <div className="mt-6">
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
+                                    >
+                                        {isSubmitting ? 'Sending...' : 'Send Message'}
+
+                                        <BiMailSend className="text-xl" />
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
 
                     {/* Contact Information */}
-                    <div className="lg:col-span-5">
-                        <div className="space-y-8">
-                            <div className="bg-gray-800/30 border border-gray-700/30 rounded-xl p-6 hover:border-primary/30 transition-colors duration-300">
-                                <h5 className="text-xl font-semibold text-white mb-2">
-                                    {contactInfo.address.full}
-                                </h5>
-                                <p className="text-gray-light flex items-center gap-2">
-                                    <i className="fa-solid fa-location-dot text-primary"></i>
-                                    Current Address
-                                </p>
+                    <div className="col-span-2 bg-[#2d2d39] rounded-lg p-8">
+                        <h3 className="text-2xl font-semibold text-white mb-2 leading-[20px]">
+                            Contact Information
+                        </h3>
+
+                        <div className="w-20 h-[2px] bg-yellow-500 mb-8"></div>
+                        
+                        <div className="space-y-4">
+                            {/* Address */}
+                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
+                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <SlLocationPin className="text-xl font-black" />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-semibold text-lg">
+                                        Mirpur, Dhaka, Bangladesh
+                                    </h4>
+                                    <p className="text-gray-400 text-sm">
+                                        Current Address
+                                    </p>
+                                </div>
                             </div>
 
-                            <div className="bg-gray-800/30 border border-gray-700/30 rounded-xl p-6 hover:border-primary/30 transition-colors duration-300">
-                                <h5 className="text-xl font-semibold text-white mb-2">
-                                    <a
-                                        href={`mailto:${contactInfo.email}`}
-                                        className="hover:text-primary transition-colors duration-300"
-                                    >
-                                        {contactInfo.email}
-                                    </a>
-                                </h5>
-                                <p className="text-gray-light flex items-center gap-2">
-                                    <i className="fa-solid fa-envelope text-primary"></i>
-                                    Mail Address
-                                </p>
+                            {/* Email */}
+                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
+                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <BiMailSend className="text-xl" />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-semibold text-lg">
+                                        <a 
+                                            href={`mailto:${contactInfo.email}`}
+                                            className="hover:text-yellow-500 transition-colors duration-300"
+                                        >
+                                            sagor_islam@icloud.com
+                                        </a>
+                                    </h4>
+                                    <p className="text-gray-400 text-sm">
+                                        Mail Address
+                                    </p>
+                                </div>
                             </div>
 
-                            <div className="bg-gray-800/30 border border-gray-700/30 rounded-xl p-6 hover:border-primary/30 transition-colors duration-300">
-                                <h5 className="text-xl font-semibold text-white mb-2">
-                                    <a
-                                        href={`tel:${contactInfo.phone}`}
-                                        className="hover:text-primary transition-colors duration-300"
-                                    >
-                                        {contactInfo.phone}
-                                    </a>
-                                </h5>
-                                <p className="text-gray-light flex items-center gap-2">
-                                    <i className="fa-solid fa-phone text-primary"></i>
-                                    Text/Call or WhatsApp
-                                </p>
+                            {/* Phone */}
+                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
+                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <VscCallIncoming className="text-xl font-black" />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-semibold text-lg">
+                                        <a 
+                                            href={`tel:${contactInfo.phone}`}
+                                            className="hover:text-yellow-500 transition-colors duration-300"
+                                        >
+                                            +880 1933-126-160
+                                        </a>
+                                    </h4>
+                                    <p className="text-gray-400 text-sm">
+                                        Text/Call or WhatsApp
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Website */}
+                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
+                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <TbWorldShare className="text-xl font-black" />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-semibold text-lg">
+                                        <a 
+                                            href="https://www.sagorislam.dev"
+                                            className="hover:text-yellow-500 transition-colors duration-300"
+                                        >
+                                            www.sagorislam.dev
+                                        </a>
+                                    </h4>
+                                    <p className="text-gray-400 text-sm">
+                                        Portfolio Website
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
