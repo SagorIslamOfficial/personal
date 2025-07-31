@@ -26,9 +26,12 @@ export default defineConfig({
         target: 'es2015',
         rollupOptions: {
             output: {
-                assetFileNames: 'assets/[name]-[hash][extname]',
-                chunkFileNames: 'assets/[name]-[hash].js',
-                entryFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: ({ name }) => {
+                    if (name && name.endsWith('.css')) return 'css/[name][extname]';
+                    return 'assets/[name][extname]';
+                },
+                chunkFileNames: 'js/[name].js',
+                entryFileNames: 'js/[name].js',
                 manualChunks: {
                     vendor: ['react', 'react-dom'],
                 },
