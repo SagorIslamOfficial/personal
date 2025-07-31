@@ -1,5 +1,13 @@
 {
     "name": "personal-portfolio",
+    "author": "Muhammad Alamin Islam Sagor",
+    "homepage": "https://sagorislam.dev",
+    "description": "Personal portfolio website for Muhammad Alamin Islam Sagor",
+    "profiles": {
+        "linkedin": "https://www.linkedin.com/in/sagorislamofficial",
+        "github": "https://github.com/SagorIslamOfficial",
+        "facebook": "https://www.facebook.com/SagorIslamOfficial"
+    },
     "private": true,
     "version": "1.0.0",
     "type": "module",
