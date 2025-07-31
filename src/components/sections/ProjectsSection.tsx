@@ -20,7 +20,7 @@ const ProjectsSection = () => {
                         {showAllProjects ? 'All' : 'Featured'}{' '}
                         <span className="text-yellow-400">Projects</span>
                     </h2>
-                    <div className="flex-1 h-px bg-gray-400/30 ml-18" />
+                    <div className="flex-1 h-px bg-gray-400/30 ml-40" />
                     <button
                         onClick={toggleShowAll}
                         className="border-[1px] border-yellow-400/50 hover:border-yellow-400 text-yellow-400 rounded-md px-4 py-[5px] font-semibold text-[13px] tracking-[1.5px] transition-colors duration-200 cursor-pointer focus:outline-none"
