@@ -1,6 +1,7 @@
 import heroImage from '@assets/images/hero-image.png';
 import Button from '../shared/Button';
 import { heroContent } from '../../data/hero';
+import { contactInfo } from '../../data/contact';
 
 const HeroSection = () => {
     return (
@@ -18,10 +19,10 @@ const HeroSection = () => {
                     <h1 className="font-black text-2xl md:text-4xl lg:text-5xl mb-8">
                         {heroContent.name}
                     </h1>
-                    <h5 className="text-yellow-400 text-lg md:text-xl font-semibold mb-2">
+                    <h5 className="text-yellow-400 text-lg md:text-xl font-semibold mb-1">
                         {heroContent.typingStrings[0]}
                     </h5>
-                    <div className="flex flex-wrap items-center gap-y-2 mb-5">
+                    <div className="flex flex-wrap items-center gap-y-2 mb-6">
                         {heroContent.skills.map((skill, idx) => (
                             <span
                                 key={skill.name}
@@ -34,6 +35,20 @@ const HeroSection = () => {
                                     </span>
                                 )}
                             </span>
+                        ))}
+                    </div>
+                    <div className="flex items-center gap-4 mb-8">
+                        {contactInfo.social.map((item, index) => (
+                            <a
+                                key={index}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="border-2 border-gray-800 text-white w-9 h-9 rounded-full flex items-center justify-center hover:border-yellow-600 hover:text-yellow-500 transition-colors duration-300"
+                                title={item.label}
+                            >
+                                <item.icon className="text-lg" />
+                            </a>
                         ))}
                     </div>
                     <div className="flex gap-8">
