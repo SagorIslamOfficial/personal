@@ -1,5 +1,4 @@
 import heroImage from '@assets/images/hero-image.png';
-import Button from '../shared/Button';
 import { heroContent } from '../../data/hero';
 import { contactInfo } from '../../data/contact';
 import TSParticlesBackground from '../ui/TSParticlesBackground';
@@ -56,8 +55,9 @@ const HeroSection = () => {
                         ))}
                     </div>
                     <div className="flex gap-8">
-                        <Button
-                            variant="outline"
+                        <button
+                            aria-label="Contact Me"
+                            title="Contact Me"
                             className="bg-yellow-400 text-[#23232b] hover:bg-yellow-500 px-6 py-1.5 rounded-sm font-bold text-sm !tracking-[2px] cursor-pointer"
                             onClick={e => {
                                 e.preventDefault();
@@ -66,10 +66,11 @@ const HeroSection = () => {
                             }}
                         >
                             {heroContent.buttons.contact.text}
-                        </Button>
-                        <Button
-                            variant="outline"
-                            className="border-yellow-600 hover:border-yellow-400 px-6 py-1.5 text-yellow-400 rounded-sm font-bold text-sm !tracking-[2px] cursor-pointer"
+                        </button>
+                        <button
+                            aria-label="About Me"
+                            title="About Me"
+                            className="text-yellow-400 border border-yellow-600 hover:border-yellow-400 px-6 py-1.5 rounded-sm font-bold text-sm !tracking-[2px] cursor-pointer"
                             onClick={e => {
                                 e.preventDefault();
                                 e.currentTarget.blur();
@@ -77,7 +78,7 @@ const HeroSection = () => {
                             }}
                         >
                             {heroContent.buttons.about.text}
-                        </Button>
+                        </button>
                     </div>
                 </div>
                 {/* Right Image */}
