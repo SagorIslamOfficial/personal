@@ -15,7 +15,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '1',
         title: 'Getting started with react-router',
-        excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus et consectetur debitis possimus eum assumenda quas earum recusandae, impedit hic similique.',
+        excerpt:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus et consectetur debitis possimus eum assumenda quas earum recusandae, impedit hic similique.',
         date: '06 April 2023',
         category: 'PHP',
         image: '@assets/images/1.jpg',
@@ -27,7 +28,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '2',
         title: 'Getting started with react-router',
-        excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus et consectetur debitis possimus eum assumenda quas earum recusandae, impedit hic similique.',
+        excerpt:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus et consectetur debitis possimus eum assumenda quas earum recusandae, impedit hic similique.',
         date: '06 April 2023',
         category: 'PHP',
         image: '@assets/images/2.jpg',
@@ -39,7 +41,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '3',
         title: 'Getting started with react-router',
-        excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus et consectetur debitis possimus eum assumenda quas earum recusandae, impedit hic similique.',
+        excerpt:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus et consectetur debitis possimus eum assumenda quas earum recusandae, impedit hic similique.',
         date: '06 April 2023',
         category: 'PHP',
         image: '@assets/images/3.jpg',
@@ -51,7 +54,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '4',
         title: 'Advanced Laravel Techniques',
-        excerpt: 'Discover advanced Laravel techniques that will take your PHP development skills to the next level. Learn about Eloquent relationships, queues, and more.',
+        excerpt:
+            'Discover advanced Laravel techniques that will take your PHP development skills to the next level. Learn about Eloquent relationships, queues, and more.',
         date: '15 March 2023',
         category: 'Laravel',
         image: '@assets/images/4.jpg',
@@ -62,7 +66,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '5',
         title: 'Vue.js Best Practices',
-        excerpt: 'Learn the best practices for Vue.js development including component composition, state management, and performance optimization techniques.',
+        excerpt:
+            'Learn the best practices for Vue.js development including component composition, state management, and performance optimization techniques.',
         date: '28 February 2023',
         category: 'Vue.js',
         image: '@assets/images/1.jpg',
@@ -73,7 +78,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '6',
         title: 'Building RESTful APIs with PHP',
-        excerpt: 'A comprehensive guide to building robust and scalable RESTful APIs using PHP. Cover authentication, validation, and proper HTTP methods.',
+        excerpt:
+            'A comprehensive guide to building robust and scalable RESTful APIs using PHP. Cover authentication, validation, and proper HTTP methods.',
         date: '10 February 2023',
         category: 'PHP',
         image: '@assets/images/2.jpg',
@@ -84,7 +90,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '7',
         title: 'Understanding JavaScript Promises',
-        excerpt: 'An in-depth look at JavaScript promises, how they work, and how to use them effectively in your applications.',
+        excerpt:
+            'An in-depth look at JavaScript promises, how they work, and how to use them effectively in your applications.',
         date: '20 January 2023',
         category: 'JavaScript',
         image: '@assets/images/3.jpg',
@@ -95,7 +102,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '8',
         title: 'CSS Grid Layout Tutorial',
-        excerpt: 'Master CSS Grid Layout with this comprehensive tutorial. Learn how to create responsive layouts with ease.',
+        excerpt:
+            'Master CSS Grid Layout with this comprehensive tutorial. Learn how to create responsive layouts with ease.',
         date: '05 January 2023',
         category: 'CSS',
         image: '@assets/images/4.jpg',
@@ -106,7 +114,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '9',
         title: 'Introduction to TypeScript',
-        excerpt: 'Get started with TypeScript, the superset of JavaScript that adds static typing. Learn about its features, benefits, and how to integrate it into your projects.',
+        excerpt:
+            'Get started with TypeScript, the superset of JavaScript that adds static typing. Learn about its features, benefits, and how to integrate it into your projects.',
         date: '15 December 2022',
         category: 'TypeScript',
         image: '@assets/images/1.jpg',
@@ -116,12 +125,14 @@ export const blogPosts: BlogPost[] = [
     },
 ];
 
-export const featuredPosts = blogPosts.filter(post => post.featured);
+export const featuredPosts = blogPosts.filter((post) => post.featured);
 
-export const getPostsByCategory = (category: string) => 
-    blogPosts.filter(post => post.category.toLowerCase() === category.toLowerCase());
+export const getPostsByCategory = (category: string) =>
+    blogPosts.filter(
+        (post) => post.category.toLowerCase() === category.toLowerCase()
+    );
 
-export const getPostBySlug = (slug: string) => 
-    blogPosts.find(post => post.slug === slug);
+export const getPostBySlug = (slug: string) =>
+    blogPosts.find((post) => post.slug === slug);
 
 export default blogPosts;

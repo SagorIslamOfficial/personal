@@ -9,6 +9,7 @@ The navigation system has been enhanced with advanced functionality including sm
 ### Header Component (`src/components/layout/Header.tsx`)
 
 **Features:**
+
 - ✅ Responsive navigation with Bootstrap structure
 - ✅ Smooth scrolling to sections with proper navbar offset
 - ✅ Active section highlighting
@@ -19,6 +20,7 @@ The navigation system has been enhanced with advanced functionality including sm
 - ✅ Configurable navigation items
 
 **Props:**
+
 - `isScrolled: boolean` - Whether page is scrolled (for styling)
 - `isMobileMenuOpen: boolean` - Mobile menu state
 - `activeSection: string` - Currently active section ID
@@ -28,11 +30,13 @@ The navigation system has been enhanced with advanced functionality including sm
 ### Navigation Hook (`src/hooks/useNavigation.ts`)
 
 **Features:**
+
 - ✅ Smooth scrolling with navbar offset calculation
 - ✅ Section visibility detection
 - ✅ Reusable navigation utilities
 
 **Methods:**
+
 - `scrollToSection(sectionId: string)` - Smooth scroll to section
 - `isSectionInView(sectionId: string, threshold?: number)` - Check if section is visible
 - `getNavbarHeight()` - Calculate current navbar height
@@ -40,6 +44,7 @@ The navigation system has been enhanced with advanced functionality including sm
 ### Navigation Configuration (`src/config/navigation.ts`)
 
 **Features:**
+
 - ✅ Centralized navigation items configuration
 - ✅ TypeScript interfaces for type safety
 - ✅ External links configuration
@@ -59,6 +64,7 @@ The main App component (`src/App.tsx`) has been enhanced with:
 ### CSS Module (`src/components/layout/Header.module.css`)
 
 **Features:**
+
 - ✅ Smooth transitions for all interactive elements
 - ✅ Backdrop blur effect when scrolled
 - ✅ Active link indicators
@@ -71,27 +77,31 @@ The main App component (`src/App.tsx`) has been enhanced with:
 import Header from './components/layout/Header';
 
 function App() {
-  const [appState, setAppState] = useState({
-    activeSection: 'hero',
-    isMobileMenuOpen: false,
-    isScrolled: false,
-  });
+    const [appState, setAppState] = useState({
+        activeSection: 'hero',
+        isMobileMenuOpen: false,
+        isScrolled: false,
+    });
 
-  return (
-    <Header 
-      isScrolled={appState.isScrolled}
-      isMobileMenuOpen={appState.isMobileMenuOpen}
-      activeSection={appState.activeSection}
-      onToggleMobileMenu={() => setAppState(prev => ({ 
-        ...prev, 
-        isMobileMenuOpen: !prev.isMobileMenuOpen 
-      }))}
-      onSetActiveSection={(section) => setAppState(prev => ({ 
-        ...prev, 
-        activeSection: section 
-      }))}
-    />
-  );
+    return (
+        <Header
+            isScrolled={appState.isScrolled}
+            isMobileMenuOpen={appState.isMobileMenuOpen}
+            activeSection={appState.activeSection}
+            onToggleMobileMenu={() =>
+                setAppState((prev) => ({
+                    ...prev,
+                    isMobileMenuOpen: !prev.isMobileMenuOpen,
+                }))
+            }
+            onSetActiveSection={(section) =>
+                setAppState((prev) => ({
+                    ...prev,
+                    activeSection: section,
+                }))
+            }
+        />
+    );
 }
 ```
 
@@ -101,9 +111,9 @@ To add or modify navigation items, update `src/config/navigation.ts`:
 
 ```typescript
 export const navigationItems: NavigationItem[] = [
-  { id: 'about', label: 'About', href: '#about' },
-  { id: 'projects', label: 'Projects', href: '#projects' },
-  // Add more items...
+    { id: 'about', label: 'About', href: '#about' },
+    { id: 'projects', label: 'Projects', href: '#projects' },
+    // Add more items...
 ];
 ```
 

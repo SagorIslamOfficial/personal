@@ -5,38 +5,38 @@ import { projects, featuredProjects } from '../../data/projects';
 const SKELETON_COUNT = 6;
 
 const SkeletonCard = () => (
-  <div className="h-full flex">
-    <div className="bg-[#23232b] rounded-md w-full flex flex-col border border-gray-800 animate-pulse">
-      {/* Image skeleton */}
-      <div className="w-full h-50 bg-gray-800 rounded-t-md mb-6" />
-      {/* Title + yellow bars row */}
-      <div className="flex items-center justify-between px-4 mb-4">
-        <div className="h-5 w-2/4 bg-gray-700 rounded" />
-        <div className="flex gap-1">
-          <div className="h-1 w-6 bg-yellow-400/50 rounded-sm" />
-          <div className="h-1 w-6 bg-yellow-400/20 rounded-sm" />
-          <div className="h-1 w-6 bg-yellow-400/20 rounded-sm" />
-          <div className="h-1 w-6 bg-yellow-400/20 rounded-sm" />
+    <div className="h-full flex">
+        <div className="bg-[#23232b] rounded-md w-full flex flex-col border border-gray-800 animate-pulse">
+            {/* Image skeleton */}
+            <div className="w-full h-50 bg-gray-800 rounded-t-md mb-6" />
+            {/* Title + yellow bars row */}
+            <div className="flex items-center justify-between px-4 mb-4">
+                <div className="h-5 w-2/4 bg-gray-700 rounded" />
+                <div className="flex gap-1">
+                    <div className="h-1 w-6 bg-yellow-400/50 rounded-sm" />
+                    <div className="h-1 w-6 bg-yellow-400/20 rounded-sm" />
+                    <div className="h-1 w-6 bg-yellow-400/20 rounded-sm" />
+                    <div className="h-1 w-6 bg-yellow-400/20 rounded-sm" />
+                </div>
+            </div>
+            {/* Description skeleton */}
+            <div className="px-4">
+                <div className="h-4 w-full bg-gray-700 rounded mb-1" />
+                <div className="h-4 w-5/6 bg-gray-700 rounded mb-3" />
+            </div>
+            {/* Tags skeleton */}
+            <div className="flex flex-wrap gap-2 px-4 my-3">
+                {Array.from({ length: 7 }).map((_, i) => (
+                    <div key={i} className="h-6 w-16 bg-gray-800 rounded-sm" />
+                ))}
+            </div>
+            {/* Buttons skeleton aligned right */}
+            <div className="flex gap-4 justify-end px-4 pb-4 mt-auto">
+                <div className="h-8 w-20 bg-gray-800 rounded-sm" />
+                <div className="h-8 w-20 bg-gray-800 rounded-sm" />
+            </div>
         </div>
-      </div>
-      {/* Description skeleton */}
-      <div className="px-4">
-        <div className="h-4 w-full bg-gray-700 rounded mb-1" />
-        <div className="h-4 w-5/6 bg-gray-700 rounded mb-3" />
-      </div>
-      {/* Tags skeleton */}
-      <div className="flex flex-wrap gap-2 px-4 my-3">
-        {Array.from({ length: 7 }).map((_, i) => (
-          <div key={i} className="h-6 w-16 bg-gray-800 rounded-sm" />
-        ))}
-      </div>
-      {/* Buttons skeleton aligned right */}
-      <div className="flex gap-4 justify-end px-4 pb-4 mt-auto">
-        <div className="h-8 w-20 bg-gray-800 rounded-sm" />
-        <div className="h-8 w-20 bg-gray-800 rounded-sm" />
-      </div>
     </div>
-  </div>
 );
 
 const ProjectsSection = () => {
@@ -52,17 +52,22 @@ const ProjectsSection = () => {
     // Pagination logic
     const projectsPerPage = 6;
     const allProjects = projects;
-    const totalPages = showAllProjects ? Math.ceil(allProjects.length / projectsPerPage) : 1;
+    const totalPages = showAllProjects
+        ? Math.ceil(allProjects.length / projectsPerPage)
+        : 1;
     const paginatedProjects = showAllProjects
-      ? allProjects.slice((currentPage - 1) * projectsPerPage, currentPage * projectsPerPage)
-      : featuredProjects;
+        ? allProjects.slice(
+              (currentPage - 1) * projectsPerPage,
+              currentPage * projectsPerPage
+          )
+        : featuredProjects;
 
     const handlePageChange = (page: number) => {
-      setLoading(true);
-      setTimeout(() => {
-        setCurrentPage(page);
-        setLoading(false);
-      }, 700); // Skeleton duration
+        setLoading(true);
+        setTimeout(() => {
+            setCurrentPage(page);
+            setLoading(false);
+        }, 700); // Skeleton duration
     };
 
     return (
@@ -109,18 +114,20 @@ const ProjectsSection = () => {
                 </div>
                 {/* Pagination */}
                 {showAllProjects && totalPages > 1 && (
-                  <div className="flex justify-center mt-15 gap-4">
-                    {Array.from({ length: totalPages }).map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => !loading && handlePageChange(i + 1)}
-                        className={`px-4 py-1 rounded-sm cursor-pointer border border-yellow-600/20 text-white font-semibold text-sm transition-colors duration-200 ${currentPage === i + 1 ? 'bg-yellow-400 !text-black' : 'bg-transparent'}`}
-                        disabled={loading}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
-                  </div>
+                    <div className="flex justify-center mt-15 gap-4">
+                        {Array.from({ length: totalPages }).map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() =>
+                                    !loading && handlePageChange(i + 1)
+                                }
+                                className={`px-4 py-1 rounded-sm cursor-pointer border border-yellow-600/20 text-white font-semibold text-sm transition-colors duration-200 ${currentPage === i + 1 ? 'bg-yellow-400 !text-black' : 'bg-transparent'}`}
+                                disabled={loading}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+                    </div>
                 )}
             </div>
         </section>

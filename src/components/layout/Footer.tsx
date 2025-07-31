@@ -11,7 +11,10 @@ const Footer = () => {
                     <div className="text-center md:text-right">
                         <p className="text-gray-light text-sm">
                             © All rights reserved | 2017 - {currentYear} |
-                            <span className="text-yellow-500 font-semibold"> Design and Develop by myself</span>
+                            <span className="text-yellow-500 font-semibold">
+                                {' '}
+                                Design and Develop by myself
+                            </span>
                         </p>
                     </div>
 

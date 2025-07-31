@@ -11,6 +11,7 @@ This document outlines the reusable shared components created for the React port
 A reusable component for consistent section titles throughout the application.
 
 **Props:**
+
 - `title: string` - Main heading text
 - `subtitle?: string` - Optional subtitle text
 - `showViewAll?: boolean` - Show "View All" link
@@ -18,12 +19,13 @@ A reusable component for consistent section titles throughout the application.
 - `className?: string` - Additional CSS classes
 
 **Usage:**
+
 ```tsx
-<SectionHeading 
-  title="About Me" 
-  subtitle="Full Stack Developer"
-  showViewAll={true}
-  viewAllLink="/portfolio"
+<SectionHeading
+    title="About Me"
+    subtitle="Full Stack Developer"
+    showViewAll={true}
+    viewAllLink="/portfolio"
 />
 ```
 
@@ -32,6 +34,7 @@ A reusable component for consistent section titles throughout the application.
 A modal component for displaying images (primarily used for certificates).
 
 **Props:**
+
 - `isOpen: boolean` - Modal visibility state
 - `imageUrl: string` - Image source URL
 - `imageAlt?: string` - Alt text for image
@@ -39,6 +42,7 @@ A modal component for displaying images (primarily used for certificates).
 - `children?: ReactNode` - Additional content
 
 **Features:**
+
 - ✅ Keyboard navigation (ESC to close)
 - ✅ Click outside to close
 - ✅ Body scroll lock when open
@@ -46,12 +50,13 @@ A modal component for displaying images (primarily used for certificates).
 - ✅ Responsive design
 
 **Usage:**
+
 ```tsx
 <ImagePopup
-  isOpen={isModalOpen}
-  imageUrl="/path/to/certificate.jpg"
-  imageAlt="Certificate"
-  onClose={() => setIsModalOpen(false)}
+    isOpen={isModalOpen}
+    imageUrl="/path/to/certificate.jpg"
+    imageAlt="Certificate"
+    onClose={() => setIsModalOpen(false)}
 />
 ```
 
@@ -60,35 +65,39 @@ A modal component for displaying images (primarily used for certificates).
 A tabbed interface component for displaying categorized skills.
 
 **Props:**
+
 - `categories: SkillCategory[]` - Array of skill categories
 - `className?: string` - Additional CSS classes
 
 **SkillCategory Interface:**
+
 ```typescript
 interface SkillCategory {
-  id: string;
-  label: string;
-  skills: string[];
+    id: string;
+    label: string;
+    skills: string[];
 }
 ```
 
 **Features:**
+
 - ✅ Accessible tab navigation
 - ✅ Active state management
 - ✅ Keyboard navigation
 - ✅ Responsive design
 
 **Usage:**
+
 ```tsx
 const skillCategories = [
-  {
-    id: 'frontend',
-    label: 'Frontend',
-    skills: ['React', 'Vue.js', 'JavaScript']
-  }
+    {
+        id: 'frontend',
+        label: 'Frontend',
+        skills: ['React', 'Vue.js', 'JavaScript'],
+    },
 ];
 
-<SkillTabs categories={skillCategories} />
+<SkillTabs categories={skillCategories} />;
 ```
 
 ### 4. Button
@@ -96,6 +105,7 @@ const skillCategories = [
 A versatile button component with multiple variants and sizes.
 
 **Props:**
+
 - `variant?: 'primary' | 'secondary' | 'outline' | 'contact' | 'about'`
 - `size?: 'sm' | 'md' | 'lg'`
 - `children: ReactNode` - Button content
@@ -106,6 +116,7 @@ A versatile button component with multiple variants and sizes.
 - `className?: string` - Additional CSS classes
 
 **Features:**
+
 - ✅ Multiple visual variants
 - ✅ Icon support with positioning
 - ✅ Link and button modes
@@ -113,14 +124,15 @@ A versatile button component with multiple variants and sizes.
 - ✅ Accessible focus states
 
 **Usage:**
+
 ```tsx
-<Button 
-  variant="primary" 
-  size="lg"
-  icon={<i className="fa-solid fa-arrow-right" />}
-  iconPosition="right"
+<Button
+    variant="primary"
+    size="lg"
+    icon={<i className="fa-solid fa-arrow-right" />}
+    iconPosition="right"
 >
-  Get Started
+    Get Started
 </Button>
 ```
 
@@ -129,17 +141,19 @@ A versatile button component with multiple variants and sizes.
 A specialized button that opens an image modal when clicked.
 
 **Props:**
+
 - `certificateImage: string` - Certificate image URL
 - `certificateAlt?: string` - Alt text for certificate
 - `buttonText?: string` - Button label text
 - `className?: string` - Additional CSS classes
 
 **Usage:**
+
 ```tsx
 <CertificateButton
-  certificateImage="/certificates/diploma.jpg"
-  certificateAlt="University Diploma"
-  buttonText="View Certificate"
+    certificateImage="/certificates/diploma.jpg"
+    certificateAlt="University Diploma"
+    buttonText="View Certificate"
 />
 ```
 
@@ -148,6 +162,7 @@ A specialized button that opens an image modal when clicked.
 A component for displaying individual skills as styled tags.
 
 **Props:**
+
 - `skill: string` - Skill name
 - `variant?: 'default' | 'primary' | 'secondary'`
 - `size?: 'sm' | 'md' | 'lg'`
@@ -155,17 +170,19 @@ A component for displaying individual skills as styled tags.
 - `onClick?: () => void` - Click handler (makes tag interactive)
 
 **Features:**
+
 - ✅ Multiple visual variants
 - ✅ Optional click interaction
 - ✅ Keyboard accessibility
 - ✅ Hover effects
 
 **Usage:**
+
 ```tsx
-<SkillTag 
-  skill="React.js" 
-  variant="primary"
-  onClick={() => console.log('Skill clicked')}
+<SkillTag
+    skill="React.js"
+    variant="primary"
+    onClick={() => console.log('Skill clicked')}
 />
 ```
 
@@ -174,18 +191,16 @@ A component for displaying individual skills as styled tags.
 A loading indicator component with customizable appearance.
 
 **Props:**
+
 - `size?: 'sm' | 'md' | 'lg'`
 - `color?: 'primary' | 'secondary' | 'white'`
 - `className?: string` - Additional CSS classes
 - `text?: string` - Optional loading text
 
 **Usage:**
+
 ```tsx
-<LoadingSpinner 
-  size="lg" 
-  color="primary"
-  text="Loading..."
-/>
+<LoadingSpinner size="lg" color="primary" text="Loading..." />
 ```
 
 ### 8. Card
@@ -193,6 +208,7 @@ A loading indicator component with customizable appearance.
 A flexible card container component for consistent layouts.
 
 **Props:**
+
 - `children: ReactNode` - Card content
 - `variant?: 'default' | 'elevated' | 'outlined'`
 - `padding?: 'none' | 'sm' | 'md' | 'lg'`
@@ -201,6 +217,7 @@ A flexible card container component for consistent layouts.
 - `hover?: boolean` - Enable hover animations
 
 **Features:**
+
 - ✅ Multiple visual variants
 - ✅ Configurable padding
 - ✅ Optional click interaction
@@ -208,15 +225,16 @@ A flexible card container component for consistent layouts.
 - ✅ Keyboard accessibility
 
 **Usage:**
+
 ```tsx
-<Card 
-  variant="elevated" 
-  padding="lg"
-  hover={true}
-  onClick={() => navigate('/details')}
+<Card
+    variant="elevated"
+    padding="lg"
+    hover={true}
+    onClick={() => navigate('/details')}
 >
-  <h3>Card Title</h3>
-  <p>Card content...</p>
+    <h3>Card Title</h3>
+    <p>Card content...</p>
 </Card>
 ```
 
@@ -235,17 +253,20 @@ All shared components use the `SharedComponents.module.css` file for styling, wh
 ### Design System
 
 **Colors:**
+
 - Primary: `#ffc107` (Yellow/Gold)
 - Background: `#1e1e28` (Dark)
 - Text: `#ffffff` (White)
 - Accent: Various opacity levels of primary color
 
 **Typography:**
+
 - Font Family: Nunito (from Google Fonts)
 - Consistent font weights and sizes
 - Proper line heights for readability
 
 **Spacing:**
+
 - Consistent padding and margin scales
 - Responsive spacing adjustments
 - Grid-based layout system
@@ -276,10 +297,10 @@ import { SkillTabs, SectionHeading } from '../shared';
 import { skillCategories } from '../../data/skills';
 
 const AboutSection = () => (
-  <section>
-    <SectionHeading title="About Me" />
-    <SkillTabs categories={skillCategories} />
-  </section>
+    <section>
+        <SectionHeading title="About Me" />
+        <SkillTabs categories={skillCategories} />
+    </section>
 );
 ```
 
@@ -289,13 +310,13 @@ const AboutSection = () => (
 import { CertificateButton } from '../shared';
 
 const EducationItem = () => (
-  <div className="education-item">
-    <h4>Bachelor's Degree</h4>
-    <CertificateButton
-      certificateImage="/certificates/bachelor.jpg"
-      buttonText="View Diploma"
-    />
-  </div>
+    <div className="education-item">
+        <h4>Bachelor's Degree</h4>
+        <CertificateButton
+            certificateImage="/certificates/bachelor.jpg"
+            buttonText="View Diploma"
+        />
+    </div>
 );
 ```
 

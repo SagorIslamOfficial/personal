@@ -4,10 +4,10 @@ import {
     contactFormInitialData,
     type ContactFormData,
 } from '../../data/contact';
-import { BiMailSend } from "react-icons/bi";
-import { SlLocationPin } from "react-icons/sl";
-import { VscCallIncoming } from "react-icons/vsc";
-import { TbWorldShare } from "react-icons/tb";
+import { BiMailSend } from 'react-icons/bi';
+import { SlLocationPin } from 'react-icons/sl';
+import { VscCallIncoming } from 'react-icons/vsc';
+import { TbWorldShare } from 'react-icons/tb';
 
 const ContactSection = () => {
     const [formData, setFormData] = useState<ContactFormData>(
@@ -89,7 +89,8 @@ const ContactSection = () => {
                         Get In Touch!
                     </h2>
                     <p className="text-white opacity-60 text-md max-w-md mx-auto">
-                        I'm always open to discussing new projects, creative ideas or opportunities. Feel free to reach out.
+                        I'm always open to discussing new projects, creative
+                        ideas or opportunities. Feel free to reach out.
                     </p>
                 </div>
 
@@ -107,7 +108,12 @@ const ContactSection = () => {
                                 {/* Name and Email Row */}
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-gray-300 text-sm mb-1">Name <span className="text-yellow-500">*</span></label>
+                                        <label className="block text-gray-300 text-sm mb-1">
+                                            Name{' '}
+                                            <span className="text-yellow-500">
+                                                *
+                                            </span>
+                                        </label>
                                         <input
                                             type="text"
                                             className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.name ? 'border-red-500' : ''}`}
@@ -124,7 +130,12 @@ const ContactSection = () => {
                                         )}
                                     </div>
                                     <div>
-                                        <label className="block text-gray-300 text-sm mb-1">Email <span className="text-yellow-500">*</span></label>
+                                        <label className="block text-gray-300 text-sm mb-1">
+                                            Email{' '}
+                                            <span className="text-yellow-500">
+                                                *
+                                            </span>
+                                        </label>
                                         <input
                                             type="email"
                                             className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.email ? 'border-red-500' : ''}`}
@@ -144,7 +155,12 @@ const ContactSection = () => {
 
                                 {/* Subject */}
                                 <div>
-                                    <label className="block text-gray-300 text-sm mb-1">Subject <span className="text-yellow-500">*</span></label>
+                                    <label className="block text-gray-300 text-sm mb-1">
+                                        Subject{' '}
+                                        <span className="text-yellow-500">
+                                            *
+                                        </span>
+                                    </label>
                                     <input
                                         type="text"
                                         className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.subject ? 'border-red-500' : ''}`}
@@ -163,7 +179,12 @@ const ContactSection = () => {
 
                                 {/* Message */}
                                 <div>
-                                    <label className="block text-gray-300 text-sm mb-1">Message <span className="text-yellow-500">*</span></label>
+                                    <label className="block text-gray-300 text-sm mb-1">
+                                        Message{' '}
+                                        <span className="text-yellow-500">
+                                            *
+                                        </span>
+                                    </label>
                                     <textarea
                                         className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 resize-none ${errors.message ? 'border-red-500' : ''}`}
                                         name="message"
@@ -187,7 +208,9 @@ const ContactSection = () => {
                                         disabled={isSubmitting}
                                         className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
                                     >
-                                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                                        {isSubmitting
+                                            ? 'Sending...'
+                                            : 'Send Message'}
 
                                         <BiMailSend className="text-xl" />
                                     </button>
@@ -203,7 +226,7 @@ const ContactSection = () => {
                         </h3>
 
                         <div className="w-20 h-[2px] bg-yellow-500 mb-8"></div>
-                        
+
                         <div className="space-y-4">
                             {/* Address */}
                             <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
@@ -229,7 +252,7 @@ const ContactSection = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-semibold text-lg">
-                                        <a 
+                                        <a
                                             href={`mailto:${contactInfo.email}`}
                                             className="hover:text-yellow-500 transition-colors duration-300"
                                         >
@@ -250,7 +273,7 @@ const ContactSection = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-semibold text-lg">
-                                        <a 
+                                        <a
                                             href={`tel:${contactInfo.phone}`}
                                             className="hover:text-yellow-500 transition-colors duration-300"
                                         >
@@ -271,7 +294,7 @@ const ContactSection = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-semibold text-lg">
-                                        <a 
+                                        <a
                                             href="https://www.sagorislam.dev"
                                             className="hover:text-yellow-500 transition-colors duration-300"
                                         >

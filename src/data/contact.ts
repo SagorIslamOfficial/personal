@@ -1,5 +1,5 @@
 // Contact information and form data
-import { FaGithub, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { FaGithub, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
 export interface ContactInfo {
     address: {

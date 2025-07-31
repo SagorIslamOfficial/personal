@@ -92,7 +92,7 @@ export const experienceData: ExperienceItem[] = [
         startDate: 'Jan 2021',
         endDate: 'May 2021',
         description:
-            'Worked part-time while studying, contributing to the development of the company\'s website and internal tools.',
+            "Worked part-time while studying, contributing to the development of the company's website and internal tools.",
         skills: ['HTML', 'CSS', 'JavaScript', 'PHP'],
         achievements: [
             'Improved website loading speed by 30%',

@@ -55,9 +55,9 @@ App
 - **Props**: None
 - **State**: Modal visibility, active section
 - **Responsibilities**:
-  - Render main layout structure
-  - Manage particle background
-  - Handle global event listeners
+    - Render main layout structure
+    - Manage particle background
+    - Handle global event listeners
 
 #### 2. Header Component
 
@@ -65,9 +65,9 @@ App
 - **Props**: None
 - **State**: Mobile menu toggle
 - **Responsibilities**:
-  - Render Bootstrap navbar
-  - Handle responsive menu behavior
-  - Manage active navigation states
+    - Render Bootstrap navbar
+    - Handle responsive menu behavior
+    - Manage active navigation states
 
 #### 3. HeroSection Component
 
@@ -75,9 +75,9 @@ App
 - **Props**: None
 - **State**: TypeIt animation instance
 - **Responsibilities**:
-  - Initialize TypeIt animation
-  - Render hero content and image
-  - Handle CTA button interactions
+    - Initialize TypeIt animation
+    - Render hero content and image
+    - Handle CTA button interactions
 
 #### 4. AboutSection Component
 
@@ -85,9 +85,9 @@ App
 - **Props**: None
 - **State**: Active skill tab
 - **Responsibilities**:
-  - Render about content and image
-  - Manage skill category tabs
-  - Handle image hover effects
+    - Render about content and image
+    - Manage skill category tabs
+    - Handle image hover effects
 
 #### 5. ProjectsSection Component
 
@@ -95,9 +95,9 @@ App
 - **Props**: None
 - **State**: Active carousel slide
 - **Responsibilities**:
-  - Render Bootstrap carousel
-  - Handle project navigation
-  - Manage project data display
+    - Render Bootstrap carousel
+    - Handle project navigation
+    - Manage project data display
 
 #### 6. ContactSection Component
 
@@ -105,9 +105,9 @@ App
 - **Props**: None
 - **State**: Form data, validation states
 - **Responsibilities**:
-  - Handle form submissions
-  - Validate form inputs
-  - Display contact information
+    - Handle form submissions
+    - Validate form inputs
+    - Display contact information
 
 #### 7. ParticleBackground Component
 
@@ -115,9 +115,9 @@ App
 - **Props**: Configuration options
 - **State**: Particle system instance
 - **Responsibilities**:
-  - Initialize Particles.js
-  - Manage particle animation lifecycle
-  - Handle responsive particle behavior
+    - Initialize Particles.js
+    - Manage particle animation lifecycle
+    - Handle responsive particle behavior
 
 #### 8. ImagePopup Component
 
@@ -125,41 +125,41 @@ App
 - **Props**: isOpen, imageUrl, onClose
 - **State**: Animation state
 - **Responsibilities**:
-  - Render modal overlay
-  - Handle open/close animations
-  - Manage body scroll lock
+    - Render modal overlay
+    - Handle open/close animations
+    - Manage body scroll lock
 
 ### Interface Definitions
 
 ```typescript
 // Component Props Interfaces
 interface SectionHeadingProps {
-  title: string;
-  subtitle?: string;
-  showViewAll?: boolean;
-  viewAllLink?: string;
+    title: string;
+    subtitle?: string;
+    showViewAll?: boolean;
+    viewAllLink?: string;
 }
 
 interface SkillTabsProps {
-  categories: SkillCategory[];
-  activeTab: string;
-  onTabChange: (tabId: string) => void;
+    categories: SkillCategory[];
+    activeTab: string;
+    onTabChange: (tabId: string) => void;
 }
 
 interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  demoLink?: string;
-  codeLink?: string;
+    title: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    demoLink?: string;
+    codeLink?: string;
 }
 
 interface ParticleBackgroundProps {
-  selector: string;
-  color: string;
-  maxParticles: number;
-  sizeVariations: number;
+    selector: string;
+    color: string;
+    maxParticles: number;
+    sizeVariations: number;
 }
 ```
 
@@ -169,14 +169,14 @@ interface ParticleBackgroundProps {
 
 ```typescript
 interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  demoLink?: string;
-  codeLink?: string;
-  featured: boolean;
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    demoLink?: string;
+    codeLink?: string;
+    featured: boolean;
 }
 ```
 
@@ -184,14 +184,14 @@ interface Project {
 
 ```typescript
 interface SkillCategory {
-  id: string;
-  name: string;
-  skills: string[];
+    id: string;
+    name: string;
+    skills: string[];
 }
 
 interface Skill {
-  name: string;
-  category: string;
+    name: string;
+    category: string;
 }
 ```
 
@@ -199,16 +199,16 @@ interface Skill {
 
 ```typescript
 interface ContactInfo {
-  email: string;
-  phone: string;
-  location: string;
-  socialLinks: SocialLink[];
+    email: string;
+    phone: string;
+    location: string;
+    socialLinks: SocialLink[];
 }
 
 interface SocialLink {
-  platform: string;
-  url: string;
-  icon: string;
+    platform: string;
+    url: string;
+    icon: string;
 }
 ```
 

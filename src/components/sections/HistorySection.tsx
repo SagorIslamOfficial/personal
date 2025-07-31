@@ -21,7 +21,7 @@ const HistorySection = () => {
 
         // Small delay to ensure DOM is updated
         const timer = setTimeout(updateHeights, 100);
-        
+
         window.addEventListener('resize', updateHeights);
         return () => {
             clearTimeout(timer);
@@ -65,16 +65,20 @@ const HistorySection = () => {
                         {/* Column Header */}
                         <div className="mb-10">
                             <h2 className="text-xl font-bold text-white">
-                                Education <span className="text-yellow-400">History</span>
+                                Education{' '}
+                                <span className="text-yellow-400">History</span>
                             </h2>
                         </div>
 
                         {/* Dynamic Timeline Line */}
-                        <div 
+                        <div
                             className="absolute right-0 w-1 bg-[#191923]"
                             style={{
                                 top: '6.5rem', // Start from first item dot position
-                                height: educationHeight > 0 ? `${educationHeight - 35}px` : '100%'
+                                height:
+                                    educationHeight > 0
+                                        ? `${educationHeight - 35}px`
+                                        : '100%',
                             }}
                         ></div>
 
@@ -96,16 +100,20 @@ const HistorySection = () => {
                         {/* Column Header */}
                         <div className="mb-10">
                             <h2 className="text-xl font-bold text-white">
-                                Work <span className="text-yellow-400">History</span>
+                                Work{' '}
+                                <span className="text-yellow-400">History</span>
                             </h2>
                         </div>
 
                         {/* Dynamic Timeline Line */}
-                        <div 
+                        <div
                             className="absolute right-0 w-1 bg-[#191923]"
                             style={{
                                 top: '6.5rem', // Start from first item dot position
-                                height: experienceHeight > 0 ? `${experienceHeight - 35}px` : '100%'
+                                height:
+                                    experienceHeight > 0
+                                        ? `${experienceHeight - 35}px`
+                                        : '100%',
                             }}
                         ></div>
 

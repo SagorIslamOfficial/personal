@@ -27,7 +27,8 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 assetFileNames: ({ name }) => {
-                    if (name && name.endsWith('.css')) return 'css/[name][extname]';
+                    if (name && name.endsWith('.css'))
+                        return 'css/[name][extname]';
                     return 'assets/[name][extname]';
                 },
                 chunkFileNames: 'js/[name].js',

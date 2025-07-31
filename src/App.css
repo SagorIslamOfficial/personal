@@ -35,7 +35,6 @@ body {
     background: #ab840f;
 }
 
-
 a {
     text-decoration: none;
     transition: color 0.3s ease;
@@ -63,13 +62,19 @@ a {
 }
 
 @keyframes wave {
-    0%, 100% {
+    0%,
+    100% {
         transform: rotate(0deg);
     }
-    10%, 30%, 50%, 70% {
+    10%,
+    30%,
+    50%,
+    70% {
         transform: rotate(-10deg);
     }
-    20%, 40%, 60% {
+    20%,
+    40%,
+    60% {
         transform: rotate(10deg);
     }
     80% {
@@ -81,13 +86,25 @@ a {
 }
 
 @keyframes walk-vertical {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-24px); }
-    100% { transform: translateY(0); }
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-24px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 @keyframes walk-horizontal {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(24px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(24px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

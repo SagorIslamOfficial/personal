@@ -3,42 +3,42 @@ import SkillTabs from '../shared/SkillTabs';
 import { skillCategories } from '../../data/skills';
 import { aboutContent } from '../../data/about';
 import { useState, useEffect } from 'react';
-import { MdCodeOff } from "react-icons/md";
-import { RiCodeSSlashLine } from "react-icons/ri";
+import { MdCodeOff } from 'react-icons/md';
+import { RiCodeSSlashLine } from 'react-icons/ri';
 
 // Typewriter effect for subtitle
 const Typewriter = ({ text, delay }: { text: string; delay: number }) => {
-  const [currentText, setCurrentText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+    const [currentText, setCurrentText] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    if (!isDeleting && currentIndex < text.length) {
-      timeout = setTimeout(() => {
-        setCurrentText(prevText => prevText + text[currentIndex]);
-        setCurrentIndex(prevIndex => prevIndex + 1);
-      }, delay);
-    } else if (isDeleting && currentIndex > 0) {
-      timeout = setTimeout(() => {
-        setCurrentText(prevText => prevText.slice(0, -1));
-        setCurrentIndex(prevIndex => prevIndex - 1);
-      }, delay);
-    } else if (!isDeleting && currentIndex === text.length) {
-      // Finished typing, start deleting after a pause
-      timeout = setTimeout(() => {
-        setIsDeleting(true);
-      }, 1000);
-    } else if (isDeleting && currentIndex === 0) {
-      // Finished deleting, start typing after a pause
-      timeout = setTimeout(() => {
-        setIsDeleting(false);
-      }, 500);
-    }
-    return () => clearTimeout(timeout);
-  }, [currentIndex, isDeleting, delay, text]);
+    useEffect(() => {
+        let timeout: NodeJS.Timeout;
+        if (!isDeleting && currentIndex < text.length) {
+            timeout = setTimeout(() => {
+                setCurrentText((prevText) => prevText + text[currentIndex]);
+                setCurrentIndex((prevIndex) => prevIndex + 1);
+            }, delay);
+        } else if (isDeleting && currentIndex > 0) {
+            timeout = setTimeout(() => {
+                setCurrentText((prevText) => prevText.slice(0, -1));
+                setCurrentIndex((prevIndex) => prevIndex - 1);
+            }, delay);
+        } else if (!isDeleting && currentIndex === text.length) {
+            // Finished typing, start deleting after a pause
+            timeout = setTimeout(() => {
+                setIsDeleting(true);
+            }, 1000);
+        } else if (isDeleting && currentIndex === 0) {
+            // Finished deleting, start typing after a pause
+            timeout = setTimeout(() => {
+                setIsDeleting(false);
+            }, 500);
+        }
+        return () => clearTimeout(timeout);
+    }, [currentIndex, isDeleting, delay, text]);
 
-  return <span className="text-base font-semibold">{currentText}</span>;
+    return <span className="text-base font-semibold">{currentText}</span>;
 };
 
 const AboutSection = () => {
@@ -52,7 +52,10 @@ const AboutSection = () => {
                             src={aboutImage}
                             alt="About Muhammad Alamin Islam Sagor"
                             className="w-full max-w-xs h-auto object-contain animate-walk-vertical"
-                            style={{ animation: 'walk-vertical 3.5s ease-in-out infinite' }}
+                            style={{
+                                animation:
+                                    'walk-vertical 3.5s ease-in-out infinite',
+                            }}
                         />
                         {/* <img
                             src={aboutImage}
@@ -75,7 +78,10 @@ const AboutSection = () => {
                         {/* Subtitle: code icon, bold yellow text, wrench icon */}
                         <div className="flex items-center gap-2 my-4">
                             <RiCodeSSlashLine className="text-yellow-400 text-xl" />
-                            <Typewriter text="I'm a full-stack developer (Laravel), WordPress Customizer," delay={80} />
+                            <Typewriter
+                                text="I'm a full-stack developer (Laravel), WordPress Customizer,"
+                                delay={80}
+                            />
                             <MdCodeOff className="text-yellow-400 text-xl" />
                         </div>
 
@@ -98,7 +104,7 @@ const AboutSection = () => {
             </div>
 
             <style>
-            {`
+                {`
             @keyframes walk-vertical {
               0% { transform: translateY(0); }
               50% { transform: translateY(-24px); }

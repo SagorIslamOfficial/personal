@@ -11,13 +11,12 @@ const HeroSection = () => {
         >
             {/* TSParticles Background */}
             <TSParticlesBackground />
-            
+
             <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 py-16 relative z-10">
                 {/* Left Content */}
                 <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
                     <h6 className="text-yellow-400 text-xl md:text-2xl font-medium mb-2 flex items-center gap-2">
-                        {heroContent.greeting}{' '}
-                        <span className="wave">👋</span>
+                        {heroContent.greeting} <span className="wave">👋</span>
                     </h6>
                     <h1 className="font-black text-2xl md:text-4xl lg:text-5xl mb-8">
                         {heroContent.name}
@@ -59,10 +58,12 @@ const HeroSection = () => {
                             aria-label="Contact Me"
                             title="Contact Me"
                             className="bg-yellow-400 text-[#23232b] hover:bg-yellow-500 px-6 py-1.5 rounded-sm font-bold text-sm !tracking-[2px] cursor-pointer"
-                            onClick={e => {
+                            onClick={(e) => {
                                 e.preventDefault();
                                 e.currentTarget.blur();
-                                document.getElementById('getInTouch')?.scrollIntoView({ behavior: 'smooth' });
+                                document
+                                    .getElementById('getInTouch')
+                                    ?.scrollIntoView({ behavior: 'smooth' });
                             }}
                         >
                             {heroContent.buttons.contact.text}
@@ -71,10 +72,12 @@ const HeroSection = () => {
                             aria-label="About Me"
                             title="About Me"
                             className="text-yellow-400 border border-yellow-600 hover:border-yellow-400 px-6 py-1.5 rounded-sm font-bold text-sm !tracking-[2px] cursor-pointer"
-                            onClick={e => {
+                            onClick={(e) => {
                                 e.preventDefault();
                                 e.currentTarget.blur();
-                                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                                document
+                                    .getElementById('about')
+                                    ?.scrollIntoView({ behavior: 'smooth' });
                             }}
                         >
                             {heroContent.buttons.about.text}

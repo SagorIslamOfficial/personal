@@ -27,48 +27,54 @@ npm run preview
 
 ## Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server on localhost |
-| `npm run dev:host` | Start development server accessible from network |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run ESLint |
-| `npm run lint:fix` | Run ESLint with auto-fix |
-| `npm run format` | Format code with Prettier |
-| `npm run format:check` | Check code formatting |
-| `npm run type-check` | Run TypeScript type checking |
-| `npm run verify` | Run all checks (type, lint, format) |
+| Script                 | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| `npm run dev`          | Start development server on localhost            |
+| `npm run dev:host`     | Start development server accessible from network |
+| `npm run build`        | Build for production                             |
+| `npm run preview`      | Preview production build locally                 |
+| `npm run lint`         | Run ESLint                                       |
+| `npm run lint:fix`     | Run ESLint with auto-fix                         |
+| `npm run format`       | Format code with Prettier                        |
+| `npm run format:check` | Check code formatting                            |
+| `npm run type-check`   | Run TypeScript type checking                     |
+| `npm run verify`       | Run all checks (type, lint, format)              |
 
 ## Environment Variables
 
 ### Development (`.env.development`)
+
 - `VITE_APP_TITLE`: Application title
 - `VITE_APP_DESCRIPTION`: Application description
 - `VITE_DEV_MODE`: Development mode flag
 - `VITE_HMR_ENABLED`: HMR enabled flag
 
 ### Production (`.env.production`)
+
 - Same variables with production values
 
 ## Development Tools
 
 ### Hot Module Replacement (HMR)
+
 - Instant updates without page refresh
 - State preservation during updates
 - Error overlay for development issues
 
 ### React DevTools
+
 - Automatically enabled in development
 - Component inspection and debugging
 - Performance profiling
 
 ### TypeScript
+
 - Strict type checking enabled
 - Path aliases configured (`@`, `@assets`, `@styles`)
 - Source maps enabled for debugging
 
 ### Code Quality
+
 - ESLint with React-specific rules
 - Prettier for consistent formatting
 - Pre-configured with sensible defaults
@@ -76,11 +82,13 @@ npm run preview
 ## Build Optimization
 
 ### Development Build
+
 - Fast compilation with esbuild
 - Source maps for debugging
 - Unminified for readability
 
 ### Production Build
+
 - Minified and optimized
 - Code splitting (vendor, bootstrap chunks)
 - Asset optimization and hashing
