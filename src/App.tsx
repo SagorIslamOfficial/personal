@@ -5,7 +5,6 @@ import { sectionIds } from './config/navigation';
 // Layout Components
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import ParticleBackground from './components/ui/ParticleBackground';
 
 // Section Components
 import HeroSection from './components/sections/HeroSection';
@@ -104,9 +103,6 @@ function App() {
 
     return (
         <main id="code2">
-            {/* Particle Background */}
-            <ParticleBackground />
-
             {/* Header/Navigation */}
             <Header
                 isMobileMenuOpen={appState.isMobileMenuOpen}
