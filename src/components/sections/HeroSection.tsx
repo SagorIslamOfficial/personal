@@ -14,7 +14,7 @@ const HeroSection = () => {
                 <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
                     <h6 className="text-yellow-400 text-xl md:text-2xl font-medium mb-2 flex items-center gap-2">
                         {heroContent.greeting}{' '}
-                        <span className="inline-block">👋</span>
+                        <span className="wave">👋</span>
                     </h6>
                     <h1 className="font-black text-2xl md:text-4xl lg:text-5xl mb-8">
                         {heroContent.name}
