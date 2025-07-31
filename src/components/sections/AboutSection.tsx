@@ -51,8 +51,15 @@ const AboutSection = () => {
                         <img
                             src={aboutImage}
                             alt="About Muhammad Alamin Islam Sagor"
-                            className="w-full max-w-xs h-auto object-contain"
+                            className="w-full max-w-xs h-auto object-contain animate-walk-vertical"
+                            style={{ animation: 'walk-vertical 3.5s ease-in-out infinite' }}
                         />
+                        {/* <img
+                            src={aboutImage}
+                            alt="About Muhammad Alamin Islam Sagor"
+                            className="w-full max-w-xs h-auto object-contain animate-walk-horizontal"
+                            style={{ animation: 'walk-horizontal 3.5s ease-in-out infinite' }}
+                        /> */}
                     </div>
 
                     {/* Divider */}
@@ -89,6 +96,21 @@ const AboutSection = () => {
                     </div>
                 </div>
             </div>
+
+            <style>
+            {`
+            @keyframes walk-vertical {
+              0% { transform: translateY(0); }
+              50% { transform: translateY(-24px); }
+              100% { transform: translateY(0); }
+            }
+            @keyframes walk-horizontal {
+              0% { transform: translateX(0); }
+              50% { transform: translateX(24px); }
+              100% { transform: translateX(0); }
+            }
+            `}
+            </style>
         </section>
     );
 };
