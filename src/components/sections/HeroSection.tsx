@@ -2,14 +2,18 @@ import heroImage from '@assets/images/hero-image.png';
 import Button from '../shared/Button';
 import { heroContent } from '../../data/hero';
 import { contactInfo } from '../../data/contact';
+import TSParticlesBackground from '../ui/TSParticlesBackground';
 
 const HeroSection = () => {
     return (
         <section
             id="heroSection"
-            className="min-h-screen flex items-center justify-center"
+            className="min-h-screen flex items-center justify-center relative overflow-hidden"
         >
-            <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 py-16">
+            {/* TSParticles Background */}
+            <TSParticlesBackground />
+            
+            <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 py-16 relative z-10">
                 {/* Left Content */}
                 <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
                     <h6 className="text-yellow-400 text-xl md:text-2xl font-medium mb-2 flex items-center gap-2">
