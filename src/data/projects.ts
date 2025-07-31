@@ -153,6 +153,74 @@ export const projects: Project[] = [
         date: '2024-03',
         duration: '3 months',
     },
+    {
+        id: 'social-network',
+        title: 'Social Networking Site',
+        description:
+            'Full-featured social networking platform with user profiles, posts, comments, likes, and real-time notifications.',
+        shortDescription: 'Social media platform with real-time features',
+        images: [
+            { src: '/src/assets/images/2.jpg', alt: 'Social Network Feed' },
+            { src: '/src/assets/images/3.jpg', alt: 'User Profiles' },
+            { src: '/src/assets/images/4.jpg', alt: 'Notifications' },
+            { src: '/src/assets/images/1.jpg', alt: 'Messaging' },
+        ],
+        technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
+        category: 'Web Application',
+        status: 'in-progress',
+        featured: false,
+        links: {
+            demo: 'https://demo.example.com',
+            code: 'https://github.com/example/social-network',
+        },
+        date: '2024-02',
+        duration: '4 months',
+    },
+    {
+        id: 'fitness-tracker',
+        title: 'Fitness Tracker App',
+        description:
+            'Mobile application for tracking fitness activities, nutrition, and health metrics. Includes workout logging, meal planning, and progress tracking.',
+        shortDescription: 'Mobile app for fitness tracking',
+        images: [
+            { src: '/src/assets/images/3.jpg', alt: 'Fitness Dashboard' },
+            { src: '/src/assets/images/4.jpg', alt: 'Workout Logging' },
+            { src: '/src/assets/images/1.jpg', alt: 'Meal Planning' },
+            { src: '/src/assets/images/2.jpg', alt: 'Progress Charts' },
+        ],
+        technologies: ['React Native', 'Expo', 'Firebase'],
+        category: 'Mobile Application',
+        status: 'planned',
+        featured: false,
+        links: {
+            code: 'https://github.com/example/fitness-tracker',
+        },
+        date: '2024-01',
+        duration: '3 months',
+    },
+    {
+        id: 'real-estate-portal',
+        title: 'Real Estate Portal',
+        description:
+            'Web portal for real estate listings with features like property search, user registration, agent profiles, and property management.',
+        shortDescription: 'Real estate listing and management platform',
+        images: [
+            { src: '/src/assets/images/4.jpg', alt: 'Property Listings' },
+            { src: '/src/assets/images/1.jpg', alt: 'Search Filters' },
+            { src: '/src/assets/images/2.jpg', alt: 'Agent Profiles' },
+            { src: '/src/assets/images/3.jpg', alt: 'Property Details' },
+        ],
+        technologies: ['Laravel', 'Vue.js', 'MySQL'],
+        category: 'Web Application',
+        status: 'completed',
+        featured: false,
+        links: {
+            demo: 'https://demo.example.com',
+            code: 'https://github.com/example/real-estate-portal',
+        },
+        date: '2024-04',
+        duration: '5 months',
+    },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
