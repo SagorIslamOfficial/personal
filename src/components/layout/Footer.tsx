@@ -23,7 +23,7 @@ const Footer = () => {
                                 href={item.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="border-2 border-gray-700 text-white w-11 h-11 rounded-full flex items-center justify-center hover:border-yellow-500 hover:text-yellow-500 transition-colors duration-300"
+                                className="border-1 border-gray-700 text-white w-9 h-9 rounded-full flex items-center justify-center hover:border-yellow-500 hover:text-yellow-500 transition-colors duration-300"
                                 title={item.label}
                             >
                                 <item.icon className="text-lg" />
