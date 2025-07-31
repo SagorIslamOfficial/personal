@@ -17,7 +17,7 @@ const ProjectsSection = () => {
                 {/* Section Header */}
                 <div className="flex items-center mb-8">
                     <h2 className="text-2xl md:text-xl tracking-[1.5px] font-bold text-white whitespace-nowrap">
-                        Featured{' '}
+                        {showAllProjects ? 'All' : 'Featured'}{' '}
                         <span className="text-yellow-400">Projects</span>
                     </h2>
                     <div className="flex-1 h-px bg-gray-400/30 ml-18" />
