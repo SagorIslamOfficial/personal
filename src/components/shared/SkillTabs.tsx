@@ -77,7 +77,7 @@ const SkillTabs = ({
                     <button
                         key={category.id}
                         className={`
-                            font-semibold text-sm transition-all tracking-[.5px] duration-300 pb-2 border-b-2
+                            font-semibold text-sm cursor-pointer transition-all tracking-[.5px] duration-300 pb-2 border-b-2
                             ${
                                 activeTab === category.id
                                     ? 'text-yellow-400 border-gray-400 font-semibold'
