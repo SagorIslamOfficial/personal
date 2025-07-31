@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+
+/* Global styles for the portfolio */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito', 'Nunito Sans', sans-serif;
+    background-color: #1e1e28;
+    color: #ffffff;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 100px;
+    transition: 0.5s;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e2d30d85;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ab840f;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Wave animation for hero section */
+.wave {
+    animation: wave 2s ease-in-out infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
+
+/* Walk animation for about section left image */
+.animate-walk-vertical {
+    animation: walk-vertical 3.5s ease-in-out infinite;
+}
+
+.animate-walk-horizontal {
+    animation: walk-horizontal 3.5s ease-in-out infinite;
+}
+
+/* Particle background */
+.background {
+    height: auto !important;
+}
+
+@keyframes wave {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: rotate(-10deg);
+    }
+    20%,
+    40%,
+    60% {
+        transform: rotate(10deg);
+    }
+    80% {
+        transform: rotate(-5deg);
+    }
+    90% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes walk-vertical {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-24px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes walk-horizontal {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(24px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

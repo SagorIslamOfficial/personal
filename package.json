@@ -1,0 +1,55 @@
+{
+    "name": "personal-portfolio",
+    "author": "Muhammad Alamin Islam Sagor",
+    "homepage": "https://sagorislam.dev",
+    "description": "Personal portfolio website for Muhammad Alamin Islam Sagor",
+    "profiles": {
+        "linkedin": "https://www.linkedin.com/in/sagorislamofficial",
+        "github": "https://github.com/SagorIslamOfficial",
+        "facebook": "https://www.facebook.com/SagorIslamOfficial"
+    },
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "dev:host": "vite --host",
+        "build": "tsc -b && vite build",
+        "build:analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "preview": "vite preview",
+        "type-check": "tsc --noEmit",
+        "verify": "npm run type-check && npm run lint && npm run format:check"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.11",
+        "@tsparticles/engine": "^3.8.1",
+        "@tsparticles/react": "^3.0.0",
+        "@tsparticles/slim": "^3.8.1",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "react-icons": "^5.5.0",
+        "tailwindcss": "^4.1.11",
+        "typeit": "^8.8.7"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.30.1",
+        "@types/node": "^24.0.14",
+        "@types/react": "^19.1.8",
+        "@types/react-dom": "^19.1.6",
+        "@vitejs/plugin-react": "^4.6.0",
+        "autoprefixer": "^10.4.21",
+        "eslint": "^9.30.1",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.20",
+        "globals": "^16.3.0",
+        "postcss": "^8.5.6",
+        "prettier": "^3.6.2",
+        "typescript": "~5.8.3",
+        "typescript-eslint": "^8.35.1",
+        "vite": "^7.0.4"
+    }
+}
