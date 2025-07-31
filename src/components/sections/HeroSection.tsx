@@ -58,15 +58,23 @@ const HeroSection = () => {
                     <div className="flex gap-8">
                         <Button
                             variant="outline"
-                            className="bg-yellow-400 text-[#23232b] hover:bg-yellow-500 px-6 py-1.5 rounded-sm font-bold text-sm !tracking-[2px]"
-                            href={heroContent.buttons.contact.href}
+                            className="bg-yellow-400 text-[#23232b] hover:bg-yellow-500 px-6 py-1.5 rounded-sm font-bold text-sm !tracking-[2px] cursor-pointer"
+                            onClick={e => {
+                                e.preventDefault();
+                                e.currentTarget.blur();
+                                document.getElementById('getInTouch')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
                         >
                             {heroContent.buttons.contact.text}
                         </Button>
                         <Button
                             variant="outline"
-                            className="border-yellow-600 hover:border-yellow-400 px-6 py-1.5 text-yellow-400 rounded-sm font-bold text-sm !tracking-[2px]"
-                            href={heroContent.buttons.about.href}
+                            className="border-yellow-600 hover:border-yellow-400 px-6 py-1.5 text-yellow-400 rounded-sm font-bold text-sm !tracking-[2px] cursor-pointer"
+                            onClick={e => {
+                                e.preventDefault();
+                                e.currentTarget.blur();
+                                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
                         >
                             {heroContent.buttons.about.text}
                         </Button>
