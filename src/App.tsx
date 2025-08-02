@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { sectionIds } from './config/navigation';
+import { SectionsProvider } from './contexts/SectionsContext';
+import { useSections } from './hooks/useSections';
 
 // Layout Components
 import Header from './components/layout/Header';
@@ -21,7 +22,9 @@ interface AppState {
     isScrolled: boolean;
 }
 
-function App() {
+// Main App Content Component
+const AppContent = () => {
+    const { isSectionVisible, getVisibleSectionIds } = useSections();
     const [appState, setAppState] = useState<AppState>({
         activeSection: 'hero',
         isMobileMenuOpen: false,
@@ -34,12 +37,12 @@ function App() {
             const scrolled = window.scrollY > 50;
             setAppState((prev) => ({ ...prev, isScrolled: scrolled }));
 
-            // Simple section detection based on scroll position
-            const sections = sectionIds;
+            // Simple section detection based on scroll position - only for visible sections
+            const visibleSections = getVisibleSectionIds();
             const navbarHeight = 80;
             const scrollPosition = window.scrollY + navbarHeight + 100;
 
-            for (const sectionId of sections) {
+            for (const sectionId of visibleSections) {
                 const element = document.getElementById(sectionId);
                 if (element) {
                     const { offsetTop, offsetHeight } = element;
@@ -86,7 +89,7 @@ function App() {
             window.removeEventListener('scroll', throttledScroll);
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [getVisibleSectionIds]);
 
     // Toggle mobile menu
     const toggleMobileMenu = () => {
@@ -110,17 +113,25 @@ function App() {
                 onSetActiveSection={setActiveSection}
             />
 
-            {/* Main Content Sections */}
-            <HeroSection />
-            <AboutSection />
-            <ProjectsSection />
-            <BlogSection />
-            <HistorySection />
-            <ContactSection />
+            {/* Main Content Sections - Conditionally Rendered */}
+            {isSectionVisible('heroSection') && <HeroSection />}
+            {isSectionVisible('about') && <AboutSection />}
+            {isSectionVisible('projects') && <ProjectsSection />}
+            {isSectionVisible('articles') && <BlogSection />}
+            {isSectionVisible('education&Experience') && <HistorySection />}
+            {isSectionVisible('getInTouch') && <ContactSection />}
 
             {/* Footer */}
             <Footer />
         </main>
+    );
+};
+
+function App() {
+    return (
+        <SectionsProvider>
+            <AppContent />
+        </SectionsProvider>
     );
 }
 

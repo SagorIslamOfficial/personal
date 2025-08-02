@@ -1,6 +1,8 @@
 import { useEffect, useCallback } from 'react';
 import { useNavigation } from '../../hooks/useNavigation';
 import { navigationItems, externalLinks } from '../../config/navigation';
+import type { SectionId } from '../../config/navigation';
+import { useSections } from '../../hooks/useSections';
 
 interface HeaderProps {
     isMobileMenuOpen: boolean;
@@ -14,6 +16,12 @@ const Header = ({
     onSetActiveSection,
 }: HeaderProps) => {
     const { scrollToSection } = useNavigation();
+    const { isSectionVisible } = useSections();
+
+    // Filter navigation items to only show visible sections
+    const visibleNavigationItems = navigationItems.filter((item) =>
+        isSectionVisible(item.id as SectionId)
+    );
 
     // Enhanced navigation click handler
     const handleNavClick = useCallback(
@@ -90,7 +98,7 @@ const Header = ({
                     {/* Centered Navigation */}
                     <nav className="flex-1 flex justify-end">
                         <ul className="flex gap-10">
-                            {navigationItems.map((item) => (
+                            {visibleNavigationItems.map((item) => (
                                 <li key={item.id}>
                                     <a
                                         href={item.href}
