@@ -31,12 +31,12 @@ const CareerExperienceCard = ({
             : (item as EducationItem).institution;
 
     return (
-        <div className="relative mb-8">
+        <div className="relative mb-8 group">
             {/* Timeline Dot */}
             {showDot && (
-                <div className="absolute -right-[3.4rem] top-6 w-4 h-4 bg-black rounded-full border-3 border-yellow-400 z-10"></div>
+                <div className="absolute -right-[3.4rem] top-6 w-4 h-4 bg-black rounded-full border-3 border-yellow-400 z-10 transition-transform duration-300 group-hover:animate-ping"></div>
             )}
-
+            
             {/* Card Content */}
             <div className="bg-[#2d2d3a] rounded-md p-6 transition-all duration-300 relative">
                 {/* Arrow from card to timeline dot */}
