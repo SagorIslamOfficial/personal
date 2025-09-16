@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import { type ReactNode } from 'react';
 
 interface ImagePopupProps {
@@ -106,29 +107,22 @@ const ImagePopup = ({
             aria-labelledby={title ? 'modal-title' : undefined}
             aria-describedby="modal-image"
         >
-            <div className="relative max-w-4xl max-h-[90vh] bg-gray-800 rounded-xl shadow-2xl overflow-hidden animate-fade-in-up">
-                {/* Close Button */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
-                    aria-label="Close modal"
-                    type="button"
-                >
-                    <i
-                        className="fa-solid fa-times text-lg"
-                        aria-hidden="true"
-                    ></i>
-                </button>
+            <div className="relative max-w-4xl max-h-[90vh] bg-gray-800 rounded-lg shadow-2xl overflow-hidden animate-fade-in-up">
 
-                {/* Title */}
+                {/* Header */}
                 {title && (
-                    <div className="px-6 py-4 border-b border-gray-700">
-                        <h3
-                            id="modal-title"
-                            className="text-xl font-bold text-white"
-                        >
+                    <div className="flex items-center justify-between px-4 py-2 bg-gray-900 rounded-t-xs">
+                        <h3 id="modal-title" className="text-xl font-bold text-white">
                             {title}
                         </h3>
+                        <button
+                            onClick={onClose}
+                            aria-label="Close modal"
+                            type="button"
+                            className="w-8 h-8 flex items-center justify-center text-white hover:text-gray-300 transition-colors duration-200 bg-gray-700 rounded-full p-2"
+                        >
+                            <AiOutlineClose className="text-2xl cursor-pointer" />
+                        </button>
                     </div>
                 )}
 
