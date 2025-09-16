@@ -84,7 +84,7 @@ const Header = ({
                 <div className="w-full mx-auto flex items-center justify-between px-5">
                     {/* Logo */}
                         <a
-                            href="#"
+                            href="/"
                             onClick={(e) => handleNavClick(e, 'heroSection')}
                             className="flex items-center gap-3 select-none text-white font-bold text-xl"
                         >
