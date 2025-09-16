@@ -86,7 +86,7 @@ const ContactSection = () => {
                 {/* Main Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        Get In Touch!
+                        Get In Touch <span className="text-yellow-500 animate-pulse">!</span>
                     </h2>
                     <p className="text-white opacity-60 text-md max-w-md mx-auto">
                         I'm always open to discussing new projects, creative
