@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BlogCard from '../shared/BlogCard';
 import { blogPosts, featuredPosts } from '../../data/blog';
+import { GiClick } from "react-icons/gi";
 
 const SKELETON_COUNT = 6;
 
@@ -92,9 +93,10 @@ const BlogSection = () => {
                     <div className="flex-1 h-px bg-gray-400/30 ml-45" />
                     <button
                         onClick={toggleShowAll}
-                        className="border-[1px] border-yellow-400/50 hover:border-yellow-400 text-yellow-400 rounded-md px-4 py-[5px] font-semibold text-[13px] tracking-[1.5px] transition-colors duration-200 cursor-pointer focus:outline-none"
+                        className="flex items-center border-[1px] border-yellow-400/50 hover:border-yellow-400 text-yellow-400 rounded-md px-4 py-[5px] font-semibold text-[13px] tracking-[1.5px] transition-colors duration-200 cursor-pointer focus:outline-none"
                     >
                         {showAllArticles ? 'Featured Articles' : 'All Articles'}
+                        <GiClick className="ml-2 h-4.5 w-4.5 text-white/70 animate-pulse" />
                     </button>
                 </div>
 
