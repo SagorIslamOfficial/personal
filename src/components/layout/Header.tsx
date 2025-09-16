@@ -80,24 +80,20 @@ const Header = ({
             )}
 
             {/* Header */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-[#20212A] h-18 flex items-center w-full shadow-md">
-                <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
+            <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-[#262629] h-16 flex items-center w-[90%] max-w-7xl rounded-[15px] shadow-md">
+                <div className="w-full mx-auto flex items-center justify-between px-5">
                     {/* Logo */}
-                    <a
-                        href="#"
-                        onClick={(e) => handleNavClick(e, 'heroSection')}
-                        className="flex items-center gap-2 select-none"
-                    >
-                        <img
-                            src="/logo.png"
-                            alt="AIS Logo"
-                            className="h-10 w-10 object-contain"
-                        />
-                    </a>
+                        <a
+                            href="#"
+                            onClick={(e) => handleNavClick(e, 'heroSection')}
+                            className="flex items-center gap-3 select-none text-white font-bold text-xl"
+                        >
+                            <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+                        </a>
 
                     {/* Centered Navigation */}
-                    <nav className="flex-1 flex justify-end">
-                        <ul className="flex gap-10">
+                    <nav className="flex-1">
+                        <ul className="flex justify-center items-center gap-8">
                             {visibleNavigationItems.map((item) => (
                                 <li key={item.id}>
                                     <a
@@ -105,28 +101,28 @@ const Header = ({
                                         onClick={(e) =>
                                             handleNavClick(e, item.id)
                                         }
-                                        className="text-white font-semibold text-lg hover:text-yellow-500 transition-colors duration-200 px-1"
-                                        style={{ letterSpacing: '0.02em' }}
+                                        className="text-gray-200 font-medium hover:text-white transition-colors duration-150 px-2"
+                                        style={{ letterSpacing: '0.05em' }}
                                     >
                                         {item.label}
                                     </a>
                                 </li>
                             ))}
-
-                            {/* Resume Button */}
-                            <li className="pl-10">
-                                <a
-                                    href={externalLinks.resume}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-6 py-2 border border-yellow-400 text-white font-semibold rounded transition-all duration-200 hover:border-white hover:text-yellow-400 focus:outline-none"
-                                    style={{ letterSpacing: '0.05em' }}
-                                >
-                                    Resume
-                                </a>
-                            </li>
                         </ul>
                     </nav>
+
+                    {/* Call to Action - Resume Button */}
+                    <div>
+                        <a
+                            href={externalLinks.resume}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-[7px] border border-yellow-400 text-white font-semibold rounded transition-all duration-200 hover:border-white hover:text-yellow-400 focus:outline-none"
+                            style={{ letterSpacing: '0.05em' }}
+                        >
+                            Resume
+                        </a>
+                    </div>
                 </div>
             </header>
         </>
