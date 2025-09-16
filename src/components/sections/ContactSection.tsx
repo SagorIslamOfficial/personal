@@ -81,7 +81,7 @@ const ContactSection = () => {
     };
 
     return (
-        <section id="getInTouch" className="py-20">
+        <section id="getInTouch" className="scroll-mt-16 py-20">
             <div className="max-w-7xl mx-auto">
                 {/* Main Header */}
                 <div className="text-center mb-16">
