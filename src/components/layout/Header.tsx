@@ -8,12 +8,16 @@ interface HeaderProps {
     isMobileMenuOpen: boolean;
     onToggleMobileMenu: () => void;
     onSetActiveSection: (section: string) => void;
+    isScrolled: boolean;
+    activeSection: string;
 }
 
 const Header = ({
     isMobileMenuOpen,
     onToggleMobileMenu,
     onSetActiveSection,
+    isScrolled,
+    activeSection,
 }: HeaderProps) => {
     const { scrollToSection } = useNavigation();
     const { isSectionVisible } = useSections();
@@ -80,7 +84,7 @@ const Header = ({
             )}
 
             {/* Header */}
-            <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-[#262629] h-16 flex items-center w-full max-w-7xl rounded-[15px] shadow-md">
+            <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 h-16 flex items-center w-full max-w-7xl rounded-[15px] shadow-md transition-all duration-100 ${isScrolled ? 'bg-[#262629]/80 backdrop-blur-sm' : 'bg-transparent'}`}>
                 <div className="w-full mx-auto flex items-center justify-between px-5">
                     {/* Logo */}
                         <a
@@ -98,10 +102,8 @@ const Header = ({
                                 <li key={item.id}>
                                     <a
                                         href={item.href}
-                                        onClick={(e) =>
-                                            handleNavClick(e, item.id)
-                                        }
-                                        className="text-gray-200 font-medium hover:text-white transition-colors duration-150 px-2"
+                                        onClick={(e) => handleNavClick(e, item.id)}
+                                        className={`px-2 font-medium transition-colors duration-100 ${activeSection === item.id ? 'text-yellow-400 font-semibold' : 'text-gray-200 hover:text-white'}`}
                                         style={{ letterSpacing: '0.05em' }}
                                     >
                                         {item.label}
