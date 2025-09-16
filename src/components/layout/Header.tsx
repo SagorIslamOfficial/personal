@@ -84,7 +84,7 @@ const Header = ({
             )}
 
             {/* Header */}
-            <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 h-16 flex items-center w-full max-w-7xl rounded-[15px] shadow-md transition-all duration-100 ${isScrolled ? 'bg-[#262629]/80 backdrop-blur-sm' : 'bg-transparent'}`}>
+            <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 h-16 flex items-center w-full max-w-7xl rounded-[15px] shadow-md transition-all duration-300 ${isScrolled ? 'bg-[#262629]/80 backdrop-blur-sm' : 'bg-transparent'}`}>
                 <div className="w-full mx-auto flex items-center justify-between px-5">
                     {/* Logo */}
                         <a
