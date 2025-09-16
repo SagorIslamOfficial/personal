@@ -231,7 +231,10 @@ const ContactSection = () => {
                             {/* Address */}
                             <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
                                 <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <div className="absolute top-8 left-0 flex items-center justify-center">
+                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
+                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
+                                    </div>
                                     <SlLocationPin className="text-xl font-black" />
                                 </div>
                                 <div>
@@ -247,7 +250,10 @@ const ContactSection = () => {
                             {/* Email */}
                             <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
                                 <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <div className="absolute top-8 left-0 flex items-center justify-center">
+                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
+                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
+                                    </div>
                                     <BiMailSend className="text-xl" />
                                 </div>
                                 <div>
@@ -268,7 +274,10 @@ const ContactSection = () => {
                             {/* Phone */}
                             <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
                                 <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <div className="absolute top-8 left-0 flex items-center justify-center">
+                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
+                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
+                                    </div>
                                     <VscCallIncoming className="text-xl font-black" />
                                 </div>
                                 <div>
@@ -289,7 +298,10 @@ const ContactSection = () => {
                             {/* Website */}
                             <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
                                 <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-0 left-0 h-3 w-3 bg-yellow-500 rounded-full"></div>
+                                    <div className="absolute top-8 left-0 flex items-center justify-center">
+                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
+                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
+                                    </div>
                                     <TbWorldShare className="text-xl font-black" />
                                 </div>
                                 <div>
