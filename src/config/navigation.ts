@@ -18,7 +18,7 @@ export const navigationItems: NavigationItem[] = [
 ];
 
 export const externalLinks = {
-    resume: '#', // Will be updated with actual resume link
+    resume: 'https://drive.google.com/file/d/1brREhxQxVv_n_xpVLEasWeRWy6Vr-Ksp/view?usp=drive_link',
     logo: '#heroSection',
 };
 

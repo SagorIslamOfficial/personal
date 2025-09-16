@@ -43,7 +43,7 @@ const Typewriter = ({ text, delay }: { text: string; delay: number }) => {
 
 const AboutSection = () => {
     return (
-        <section id="about" className="py-20">
+        <section id="about" className="scroll-mt-16 py-20">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-12">
                     {/* Left: SVG Illustration */}

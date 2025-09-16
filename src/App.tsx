@@ -111,6 +111,8 @@ const AppContent = () => {
                 isMobileMenuOpen={appState.isMobileMenuOpen}
                 onToggleMobileMenu={toggleMobileMenu}
                 onSetActiveSection={setActiveSection}
+                isScrolled={appState.isScrolled}
+                activeSection={appState.activeSection}
             />
 
             {/* Main Content Sections - Conditionally Rendered */}

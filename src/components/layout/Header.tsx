@@ -8,12 +8,16 @@ interface HeaderProps {
     isMobileMenuOpen: boolean;
     onToggleMobileMenu: () => void;
     onSetActiveSection: (section: string) => void;
+    isScrolled: boolean;
+    activeSection: string;
 }
 
 const Header = ({
     isMobileMenuOpen,
     onToggleMobileMenu,
     onSetActiveSection,
+    isScrolled,
+    activeSection,
 }: HeaderProps) => {
     const { scrollToSection } = useNavigation();
     const { isSectionVisible } = useSections();
@@ -80,53 +84,47 @@ const Header = ({
             )}
 
             {/* Header */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-[#20212A] h-18 flex items-center w-full shadow-md">
-                <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
+            <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 h-16 flex items-center w-full max-w-7xl rounded-[15px] shadow-md transition-all duration-300 ${isScrolled ? 'bg-[#262629]/80 backdrop-blur-sm' : 'bg-transparent'}`}>
+                <div className="w-full mx-auto flex items-center justify-between px-5">
                     {/* Logo */}
-                    <a
-                        href="#"
-                        onClick={(e) => handleNavClick(e, 'heroSection')}
-                        className="flex items-center gap-2 select-none"
-                    >
-                        <img
-                            src="/logo.png"
-                            alt="AIS Logo"
-                            className="h-10 w-10 object-contain"
-                        />
-                    </a>
+                        <a
+                            href="/"
+                            onClick={(e) => handleNavClick(e, 'heroSection')}
+                            className="flex items-center gap-3 select-none text-white font-bold text-xl"
+                        >
+                            <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+                        </a>
 
                     {/* Centered Navigation */}
-                    <nav className="flex-1 flex justify-end">
-                        <ul className="flex gap-10">
+                    <nav className="flex-1">
+                        <ul className="flex justify-center items-center gap-8">
                             {visibleNavigationItems.map((item) => (
                                 <li key={item.id}>
                                     <a
                                         href={item.href}
-                                        onClick={(e) =>
-                                            handleNavClick(e, item.id)
-                                        }
-                                        className="text-white font-semibold text-lg hover:text-yellow-500 transition-colors duration-200 px-1"
-                                        style={{ letterSpacing: '0.02em' }}
+                                        onClick={(e) => handleNavClick(e, item.id)}
+                                        className={`px-2 font-medium transition-colors duration-100 ${activeSection === item.id ? 'text-yellow-400 font-semibold' : 'text-gray-200 hover:text-white'}`}
+                                        style={{ letterSpacing: '0.05em' }}
                                     >
                                         {item.label}
                                     </a>
                                 </li>
                             ))}
-
-                            {/* Resume Button */}
-                            <li className="pl-10">
-                                <a
-                                    href={externalLinks.resume}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-6 py-2 border border-yellow-400 text-white font-semibold rounded transition-all duration-200 hover:border-white hover:text-yellow-400 focus:outline-none"
-                                    style={{ letterSpacing: '0.05em' }}
-                                >
-                                    Resume
-                                </a>
-                            </li>
                         </ul>
                     </nav>
+
+                    {/* Call to Action - Resume Button */}
+                    <div>
+                        <a
+                            href={externalLinks.resume}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-[7px] border border-yellow-400 text-white font-semibold rounded transition-all duration-200 hover:border-white hover:text-yellow-400 focus:outline-none"
+                            style={{ letterSpacing: '0.05em' }}
+                        >
+                            Resume
+                        </a>
+                    </div>
                 </div>
             </header>
         </>

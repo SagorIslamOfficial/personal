@@ -45,7 +45,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                     <button
                                         key={idx}
                                         onClick={() => goToIndex(idx)}
-                                        className={`w-6 h-1 rounded-sm transition-all duration-200 focus:outline-none ${
+                                        className={`w-6 h-1 cursor-pointer rounded-sm transition-all duration-200 focus:outline-none ${
                                             idx === currentImageIndex
                                                 ? 'bg-yellow-400'
                                                 : 'bg-yellow-400/30'
