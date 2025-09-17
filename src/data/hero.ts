@@ -59,7 +59,7 @@ export interface HeroContent {
 export const heroContent: HeroContent = {
     greeting: "Hello, I'm",
     name: "Muhammad Alamin Islam",
-    headline: ["A Laravel Full-Stack & WordPress Plugin Developer"],
+    headline: ["A Full-Stack Laravel & WordPress Plugin Developer"],
     skills: heroSkills,
     buttons: {
         contact: {
