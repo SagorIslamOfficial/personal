@@ -3,46 +3,46 @@
 export interface HeroSkill {
     name: string;
     tooltip?: string;
-    category?: 'frontend' | 'backend' | 'database' | 'framework' | 'cms';
+    category?: "frontend" | "backend" | "database" | "framework" | "plugin";
 }
 
 export const heroSkills: HeroSkill[] = [
     {
-        name: 'Full Stack Developer',
-        tooltip: 'Full Stack Web Development',
-        category: 'frontend',
+        name: "Full-Stack",
+        tooltip: "Full Stack Web Development",
+        category: "frontend",
     },
     {
-        name: 'Laravel',
-        tooltip: 'Laravel PHP Framework',
-        category: 'framework',
+        name: "Laravel",
+        tooltip: "Laravel PHP Framework",
+        category: "framework",
     },
     {
-        name: 'WordPress',
-        tooltip: 'WordPress CMS Development',
-        category: 'cms',
+        name: "WordPress Plugin",
+        tooltip: "WordPress Plugin Development",
+        category: "plugin",
     },
     {
-        name: 'PHP',
-        tooltip: 'PHP Programming Language',
-        category: 'backend',
+        name: "PHP",
+        tooltip: "PHP Programming Language",
+        category: "backend",
     },
     {
-        name: 'VueJs',
-        tooltip: 'Vue.js Frontend Framework',
-        category: 'frontend',
+        name: "React JS",
+        tooltip: "React JS Frontend Framework",
+        category: "frontend",
     },
     {
-        name: 'MySql',
-        tooltip: 'MySQL Database Management',
-        category: 'database',
+        name: "MySql",
+        tooltip: "MySQL Database Management",
+        category: "database",
     },
 ];
 
 export interface HeroContent {
     greeting: string;
     name: string;
-    typingStrings: string[];
+    headline: string[];
     skills: HeroSkill[];
     buttons: {
         contact: {
@@ -58,23 +58,17 @@ export interface HeroContent {
 
 export const heroContent: HeroContent = {
     greeting: "Hello, I'm",
-    name: 'Muhammad Alamin Islam',
-    typingStrings: [
-        'A Full Stack Developer',
-        'A Laravel Expert',
-        'A Vue.js Enthusiast',
-        'A Problem Solver',
-        'A Creative Thinker',
-    ],
+    name: "Muhammad Alamin Islam",
+    headline: ["A Laravel Full-Stack & WordPress Plugin Developer"],
     skills: heroSkills,
     buttons: {
         contact: {
-            text: 'CONTACT',
-            href: '#getInTouch',
+            text: "CONTACT",
+            href: "#getInTouch",
         },
         about: {
-            text: 'ABOUT ME',
-            href: '#about',
+            text: "ABOUT ME",
+            href: "#about",
         },
     },
 };

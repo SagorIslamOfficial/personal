@@ -1,7 +1,7 @@
-import heroImage from '@assets/images/hero-image.png';
-import { heroContent } from '../../data/hero';
-import { contactInfo } from '../../data/contact';
-import TSParticlesBackground from '../ui/TSParticlesBackground';
+import heroImage from "@assets/images/hero-image.png";
+import { heroContent } from "../../data/hero";
+import { contactInfo } from "../../data/contact";
+import TSParticlesBackground from "../ui/TSParticlesBackground";
 
 const HeroSection = () => {
     return (
@@ -22,15 +22,20 @@ const HeroSection = () => {
                         {heroContent.name}
                     </h1>
                     <h5 className="text-yellow-400 text-lg md:text-xl font-semibold mb-1">
-                        {heroContent.typingStrings[0]}
+                        {heroContent.headline[0]}
                     </h5>
                     <div className="flex flex-wrap items-center gap-y-2 mb-6">
                         {heroContent.skills.map((skill, idx) => (
                             <span
                                 key={skill.name}
-                                className="text-base font-semibold flex items-center"
+                                className="relative group text-base font-semibold flex items-center cursor-help"
                             >
                                 {skill.name}
+                                {skill.tooltip && (
+                                    <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-800 text-white text-sm rounded-lg py-3 px-4 whitespace-nowrap z-10">
+                                        {skill.tooltip}
+                                    </span>
+                                )}
                                 {idx < heroContent.skills.length - 1 && (
                                     <span className="mx-3 text-yellow-400 text-xl">
                                         •
@@ -62,8 +67,8 @@ const HeroSection = () => {
                                 e.preventDefault();
                                 e.currentTarget.blur();
                                 document
-                                    .getElementById('getInTouch')
-                                    ?.scrollIntoView({ behavior: 'smooth' });
+                                    .getElementById("getInTouch")
+                                    ?.scrollIntoView({ behavior: "smooth" });
                             }}
                         >
                             {heroContent.buttons.contact.text}
@@ -76,8 +81,8 @@ const HeroSection = () => {
                                 e.preventDefault();
                                 e.currentTarget.blur();
                                 document
-                                    .getElementById('about')
-                                    ?.scrollIntoView({ behavior: 'smooth' });
+                                    .getElementById("about")
+                                    ?.scrollIntoView({ behavior: "smooth" });
                             }}
                         >
                             {heroContent.buttons.about.text}
@@ -90,7 +95,7 @@ const HeroSection = () => {
                         src={heroImage}
                         alt="Muhammad Alamin Islam Sagor"
                         className="w-80 h-80 rounded-full object-cover shadow-none border-none"
-                        style={{ background: '#23232b' }}
+                        style={{ background: "#23232b" }}
                     />
                 </div>
             </div>
