@@ -1,14 +1,14 @@
-import aboutImage from '@assets/images/about_me.svg';
-import SkillTabs from '../shared/SkillTabs';
-import { skillCategories } from '../../data/skills';
-import { aboutContent } from '../../data/about';
-import { useState, useEffect } from 'react';
-import { MdCodeOff } from 'react-icons/md';
-import { RiCodeSSlashLine } from 'react-icons/ri';
+import aboutImage from "@assets/images/about_me.svg";
+import SkillTabs from "../shared/SkillTabs";
+import { skillCategories } from "../../data/skills";
+import { aboutContent } from "../../data/about";
+import { useState, useEffect } from "react";
+import { MdCodeOff } from "react-icons/md";
+import { RiCodeSSlashLine } from "react-icons/ri";
 
 // Typewriter effect for subtitle
 const Typewriter = ({ text, delay }: { text: string; delay: number }) => {
-    const [currentText, setCurrentText] = useState('');
+    const [currentText, setCurrentText] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -54,7 +54,7 @@ const AboutSection = () => {
                             className="w-full max-w-xs h-auto object-contain animate-walk-vertical"
                             style={{
                                 animation:
-                                    'walk-vertical 3.5s ease-in-out infinite',
+                                    "walk-vertical 3.5s ease-in-out infinite",
                             }}
                         />
                         {/* <img
