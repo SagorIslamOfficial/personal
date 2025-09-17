@@ -79,15 +79,22 @@ const AboutSection = () => {
                         <div className="flex items-center gap-2 my-4">
                             <RiCodeSSlashLine className="text-yellow-400 text-xl" />
                             <Typewriter
-                                text="I'm a full-stack developer (Laravel), WordPress Customizer,"
+                                text="I'm a full-stack laravel & WordPress Plugin developer. Also working with React JS, mySQL, and more."
                                 delay={80}
                             />
                             <MdCodeOff className="text-yellow-400 text-xl" />
                         </div>
 
                         {/* Description */}
-                        <p className="text-[#8c8c8e] text-base mb-8">
-                            {aboutContent.description}
+                        <p className="text-[#8c8c8e] text-base mb-8 text-justify">
+                            {aboutContent.description
+                                .split("\n")
+                                .map((line, idx) => (
+                                    <span key={idx}>
+                                        {line.trim()}
+                                        <br />
+                                    </span>
+                                ))}
                         </p>
 
                         {/* Skills Tabs */}
@@ -105,17 +112,17 @@ const AboutSection = () => {
 
             <style>
                 {`
-            @keyframes walk-vertical {
-              0% { transform: translateY(0); }
-              50% { transform: translateY(-24px); }
-              100% { transform: translateY(0); }
-            }
-            @keyframes walk-horizontal {
-              0% { transform: translateX(0); }
-              50% { transform: translateX(24px); }
-              100% { transform: translateX(0); }
-            }
-            `}
+                    @keyframes walk-vertical {
+                        0% { transform: translateY(0); }
+                        50% { transform: translateY(-24px); }
+                        100% { transform: translateY(0); }
+                    }
+                    @keyframes walk-horizontal {
+                        0% { transform: translateX(0); }
+                        50% { transform: translateX(24px); }
+                        100% { transform: translateX(0); }
+                    }
+                `}
             </style>
         </section>
     );
