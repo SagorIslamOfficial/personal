@@ -53,7 +53,22 @@ const Typewriter = ({
     );
 };
 
-const AboutSection = () => {
+interface AboutSectionProps {
+    // enable blinking divider
+    blink?: boolean;
+    // CSS duration for blink animation, e.g. '2s'
+    blinkDuration?: string;
+    // bright color for blink high phase
+    blinkColorHigh?: string;
+    // dim color for blink low phase
+    blinkColorLow?: string;
+}
+const AboutSection = ({
+    blink = true,
+    blinkDuration = "3s",
+    blinkColorHigh = "#fbbe2486",
+    blinkColorLow = "#FEF08A",
+}: AboutSectionProps) => {
     return (
         <section id="about" className="scroll-mt-16 py-20">
             <div className="max-w-7xl mx-auto">
@@ -78,7 +93,16 @@ const AboutSection = () => {
                     </div>
 
                     {/* Divider */}
-                    <div className="hidden lg:block h-[400px] w-px bg-yellow-400 mx-4" />
+                    <div
+                        className={`hidden lg:block w-px mx-4 self-stretch my-[4%] ${blink ? "blink-light" : ""}`}
+                        style={
+                            {
+                                "--blink-duration": blinkDuration,
+                                "--blink-color-high": blinkColorHigh,
+                                "--blink-color-low": blinkColorLow,
+                            } as React.CSSProperties
+                        }
+                    />
 
                     {/* Right: Content */}
                     <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -135,7 +159,20 @@ const AboutSection = () => {
                         50% { transform: translateX(24px); }
                         100% { transform: translateX(0); }
                     }
-                `}
+                    @keyframes blink-light {
+                        0%, 100% {
+                            background-color: var(--blink-color-high);
+                            opacity: 1;
+                        }
+                        50% {
+                            background-color: var(--blink-color-low);
+                            opacity: 0.3;
+                        }
+                    }
+                    .blink-light {
+                        animation: blink-light var(--blink-duration, 2s) ease-in-out infinite;
+                    }
+                 `}
             </style>
         </section>
     );
