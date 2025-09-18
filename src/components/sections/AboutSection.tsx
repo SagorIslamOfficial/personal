@@ -7,7 +7,15 @@ import { MdCodeOff } from "react-icons/md";
 import { RiCodeSSlashLine } from "react-icons/ri";
 
 // Typewriter effect for subtitle
-const Typewriter = ({ text, delay }: { text: string; delay: number }) => {
+const Typewriter = ({
+    text,
+    delay,
+    className,
+}: {
+    text: string;
+    delay: number;
+    className?: string;
+}) => {
     const [currentText, setCurrentText] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -38,7 +46,11 @@ const Typewriter = ({ text, delay }: { text: string; delay: number }) => {
         return () => clearTimeout(timeout);
     }, [currentIndex, isDeleting, delay, text]);
 
-    return <span className="text-base font-semibold">{currentText}</span>;
+    return (
+        <span className={`text-base font-semibold ${className ?? ""}`}>
+            {currentText}
+        </span>
+    );
 };
 
 const AboutSection = () => {
@@ -81,12 +93,13 @@ const AboutSection = () => {
                             <Typewriter
                                 text="I'm a full-stack laravel & WordPress Plugin developer. Also working with React JS, mySQL, and more."
                                 delay={80}
+                                className="text-yellow-400"
                             />
                             <MdCodeOff className="text-yellow-400 text-xl" />
                         </div>
 
                         {/* Description */}
-                        <p className="text-[#8c8c8e] text-base mb-8 text-justify">
+                        <p className="text-[#c1c0c0] text-base mb-8 text-justify">
                             {aboutContent.description
                                 .split("\n")
                                 .map((line, idx) => (
