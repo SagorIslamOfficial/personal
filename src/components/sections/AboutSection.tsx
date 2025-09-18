@@ -66,13 +66,13 @@ interface AboutSectionProps {
 const AboutSection = ({
     blink = true,
     blinkDuration = "3s",
-    blinkColorHigh = "#fbbe2486",
-    blinkColorLow = "#FEF08A",
+    blinkColorHigh = "#fbbe245f",
+    blinkColorLow = "#fef08a69",
 }: AboutSectionProps) => {
     return (
         <section id="about" className="scroll-mt-16 py-20">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col lg:flex-row items-start gap-12">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12">
                     {/* Left: SVG Illustration */}
                     <div className="flex-1 flex justify-center items-center">
                         <img
