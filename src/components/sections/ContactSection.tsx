@@ -8,12 +8,14 @@ import { BiMailSend } from "react-icons/bi";
 import { SlLocationPin } from "react-icons/sl";
 import { VscCallIncoming } from "react-icons/vsc";
 import { TbWorldShare } from "react-icons/tb";
+import { TbMailCheck } from "react-icons/tb";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState<ContactFormData>(
         contactFormInitialData,
     );
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [errors, setErrors] = useState<Partial<ContactFormData>>({});
 
     const handleInputChange = (
@@ -71,7 +73,9 @@ const ContactSection = () => {
 
             // Reset form on success
             setFormData(contactFormInitialData);
-            alert("Message sent successfully!");
+            setSuccess(true);
+            // auto-clear success message after 20s
+            setTimeout(() => setSuccess(false), 20000);
         } catch (error) {
             console.error("Error submitting form:", error);
             alert("Failed to send message. Please try again.");
@@ -204,17 +208,32 @@ const ContactSection = () => {
 
                                 {/* Submit Button */}
                                 <div className="mt-6">
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
-                                    >
-                                        {isSubmitting
-                                            ? "Sending..."
-                                            : "Send Message"}
-
-                                        <BiMailSend className="text-xl" />
-                                    </button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
+                                        >
+                                            {isSubmitting
+                                                ? "Sending..."
+                                                : success
+                                                  ? "Sent!"
+                                                  : "Send Message"}
+                                            {isSubmitting ? (
+                                                <BiMailSend className="text-xl" />
+                                            ) : success ? (
+                                                <TbMailCheck className="text-xl" />
+                                            ) : (
+                                                <BiMailSend className="text-xl" />
+                                            )}
+                                        </button>
+                                        {success && (
+                                            <p className="mt-2 text-green-500 font-bold">
+                                                Thank you for your message! I'll
+                                                get back to you soon.
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
                             </form>
                         </div>
