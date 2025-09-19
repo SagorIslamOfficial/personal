@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { tsParticles } from '@tsparticles/engine';
-import { loadSlim } from '@tsparticles/slim';
+import { useEffect } from "react";
+import { tsParticles } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
 
 const TSParticlesBackground = () => {
     useEffect(() => {
@@ -10,11 +10,11 @@ const TSParticlesBackground = () => {
 
             // Initialize particles with NASA configuration
             await tsParticles.load({
-                id: 'tsparticles-hero',
+                id: "tsparticles-hero",
                 options: {
                     background: {
                         color: {
-                            value: 'transparent',
+                            value: "transparent",
                         },
                     },
                     fullScreen: {
@@ -24,15 +24,15 @@ const TSParticlesBackground = () => {
                     detectRetina: true,
                     fpsLimit: 120,
                     interactivity: {
-                        detectsOn: 'window',
+                        detectsOn: "window",
                         events: {
                             onClick: {
                                 enable: true,
-                                mode: 'repulse',
+                                mode: "repulse",
                             },
                             onHover: {
                                 enable: false,
-                                mode: 'bubble',
+                                mode: "bubble",
                                 parallax: {
                                     enable: false,
                                     force: 2,
@@ -48,7 +48,7 @@ const TSParticlesBackground = () => {
                             attract: {
                                 distance: 200,
                                 duration: 0.4,
-                                easing: 'ease-out-quad',
+                                easing: "ease-out-quad",
                                 factor: 1,
                                 maxSpeed: 50,
                                 speed: 1,
@@ -92,7 +92,7 @@ const TSParticlesBackground = () => {
                                 factor: 100,
                                 speed: 1,
                                 maxSpeed: 50,
-                                easing: 'ease-out-quad',
+                                easing: "ease-out-quad",
                             },
                             slow: {
                                 factor: 3,
@@ -128,14 +128,14 @@ const TSParticlesBackground = () => {
                             },
                             enable: false,
                             maxSpeed: 50,
-                            mode: 'bounce',
+                            mode: "bounce",
                             overlap: {
                                 enable: true,
                                 retries: 0,
                             },
                         },
                         color: {
-                            value: '#FFD700',
+                            value: "#a9a9a7ff",
                             animation: {
                                 h: {
                                     count: 0,
@@ -182,12 +182,12 @@ const TSParticlesBackground = () => {
                             center: {
                                 x: 50,
                                 y: 50,
-                                mode: 'percent',
+                                mode: "percent",
                                 radius: 0,
                             },
                             decay: 0,
                             distance: {},
-                            direction: 'none',
+                            direction: "none",
                             drift: 0,
                             enable: true,
                             gravity: {
@@ -205,11 +205,11 @@ const TSParticlesBackground = () => {
                                 options: {},
                             },
                             outModes: {
-                                default: 'out',
-                                bottom: 'out',
-                                left: 'out',
-                                right: 'out',
-                                top: 'out',
+                                default: "out",
+                                bottom: "out",
+                                left: "out",
+                                right: "out",
+                                top: "out",
                             },
                             random: false,
                             size: false,
@@ -237,7 +237,7 @@ const TSParticlesBackground = () => {
                                 height: 1080,
                             },
                             limit: {
-                                mode: 'delete',
+                                mode: "delete",
                                 value: 0,
                             },
                             value: 40,
@@ -251,16 +251,16 @@ const TSParticlesBackground = () => {
                                 decay: 0,
                                 delay: 0,
                                 sync: false,
-                                mode: 'auto',
-                                startValue: 'random',
-                                destroy: 'none',
+                                mode: "auto",
+                                startValue: "random",
+                                destroy: "none",
                             },
                         },
                         reduceDuplicates: false,
                         shadow: {
                             blur: 0,
                             color: {
-                                value: '#000',
+                                value: "#000",
                             },
                             enable: false,
                             offset: {
@@ -272,7 +272,7 @@ const TSParticlesBackground = () => {
                             close: true,
                             fill: true,
                             options: {},
-                            type: 'circle',
+                            type: "circle",
                         },
                         size: {
                             value: 1.5,
@@ -283,9 +283,9 @@ const TSParticlesBackground = () => {
                                 decay: 0,
                                 delay: 0,
                                 sync: false,
-                                mode: 'auto',
-                                startValue: 'random',
-                                destroy: 'none',
+                                mode: "auto",
+                                startValue: "random",
+                                destroy: "none",
                             },
                         },
                         stroke: {
@@ -299,7 +299,7 @@ const TSParticlesBackground = () => {
                         },
                         destroy: {
                             bounds: {},
-                            mode: 'none',
+                            mode: "none",
                             split: {
                                 count: 1,
                                 factor: {
@@ -325,7 +325,7 @@ const TSParticlesBackground = () => {
                                 enable: false,
                                 value: 0,
                             },
-                            mode: 'vertical',
+                            mode: "vertical",
                             speed: 25,
                         },
                         tilt: {
@@ -336,7 +336,7 @@ const TSParticlesBackground = () => {
                                 decay: 0,
                                 sync: false,
                             },
-                            direction: 'clockwise',
+                            direction: "clockwise",
                             enable: false,
                         },
                         twinkle: {
@@ -378,7 +378,7 @@ const TSParticlesBackground = () => {
                                 decay: 0,
                                 sync: false,
                             },
-                            direction: 'clockwise',
+                            direction: "clockwise",
                             path: false,
                         },
                         orbit: {
@@ -400,7 +400,7 @@ const TSParticlesBackground = () => {
                         links: {
                             blink: false,
                             color: {
-                                value: '#fff',
+                                value: "#fff",
                             },
                             consent: false,
                             distance: 100,
@@ -410,7 +410,7 @@ const TSParticlesBackground = () => {
                             shadow: {
                                 blur: 5,
                                 color: {
-                                    value: '#000',
+                                    value: "#000",
                                 },
                                 enable: false,
                             },
@@ -437,7 +437,7 @@ const TSParticlesBackground = () => {
                     style: {},
                     themes: [],
                     zLayers: 100,
-                    name: 'NASA',
+                    name: "NASA",
                     motion: {
                         disable: false,
                         reduce: {
@@ -455,7 +455,7 @@ const TSParticlesBackground = () => {
             // Cleanup
             const containers = tsParticles.dom();
             const container = containers.find(
-                (c) => c.sourceOptions?.fullScreen === undefined
+                (c) => c.sourceOptions?.fullScreen === undefined,
             );
             if (container) {
                 container.destroy();
@@ -467,13 +467,13 @@ const TSParticlesBackground = () => {
         <div
             id="tsparticles-hero"
             style={{
-                position: 'absolute',
+                position: "absolute",
                 top: 0,
                 left: 0,
-                width: '100%',
-                height: '100%',
+                width: "100%",
+                height: "100%",
                 zIndex: 1,
-                pointerEvents: 'none',
+                pointerEvents: "none",
             }}
         />
     );
