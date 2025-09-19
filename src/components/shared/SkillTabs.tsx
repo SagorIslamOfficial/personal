@@ -118,7 +118,7 @@ const SkillTabs = ({
                                 category.skills.map((skill, index) => (
                                     <span
                                         key={index}
-                                        className="px-3 py-[3px] mb-1 bg-[#2c2c38] tracking-[1.5px] rounded-full text-[12.5px] font-[100] hover:bg-[#3c3c48] transition-all duration-300 text-white"
+                                        className="px-3 py-[3px] mb-1 bg-[#2c2c38] tracking-[1.2px] rounded-full text-[12.5px] font-[500] hover:bg-[#3c3c48] transition-all duration-300 text-white"
                                     >
                                         {skill}
                                     </span>
