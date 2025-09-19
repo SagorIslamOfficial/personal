@@ -1,10 +1,9 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from "react";
 
 interface SkillCategory {
     id: string;
     label: string;
     skills: string[];
-    icon?: string;
 }
 
 interface SkillTabsProps {
@@ -18,7 +17,7 @@ interface SkillTabsProps {
 
 const SkillTabs = ({
     categories,
-    className = '',
+    className = "",
     defaultActiveTab,
     onTabChange,
     showCounter = true,
@@ -28,7 +27,7 @@ const SkillTabs = ({
     void showCounter;
     void animated;
     const [activeTab, setActiveTab] = useState<string>(
-        defaultActiveTab || categories[0]?.id || ''
+        defaultActiveTab || categories[0]?.id || "",
     );
 
     const handleTabClick = useCallback(
@@ -38,18 +37,18 @@ const SkillTabs = ({
                 onTabChange?.(tabId);
             }
         },
-        [activeTab, onTabChange]
+        [activeTab, onTabChange],
     );
 
     // Keyboard navigation
     const handleKeyDown = useCallback(
         (e: React.KeyboardEvent, tabId: string) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 handleTabClick(tabId);
             }
         },
-        [handleTabClick]
+        [handleTabClick],
     );
 
     // Update active tab if defaultActiveTab changes
@@ -80,8 +79,8 @@ const SkillTabs = ({
                             font-semibold text-sm cursor-pointer transition-all tracking-[.5px] duration-300 pb-2 border-b-2
                             ${
                                 activeTab === category.id
-                                    ? 'text-yellow-400 border-gray-400 font-semibold'
-                                    : 'text-gray-light hover:text-white border-transparent hover:border-gray-400 font-semibold'
+                                    ? "text-yellow-400 border-gray-400 font-semibold"
+                                    : "text-gray-light hover:text-white border-transparent hover:border-gray-400 font-semibold"
                             }
                             `}
                         onClick={() => handleTabClick(category.id)}
@@ -105,8 +104,8 @@ const SkillTabs = ({
                                     transition-all duration-300 ease-in-out
                                     ${
                                         activeTab === category.id
-                                            ? 'opacity-100 block'
-                                            : 'opacity-0 hidden'
+                                            ? "opacity-100 block"
+                                            : "opacity-0 hidden"
                                     }
                                 `}
                         id={`panel-${category.id}`}
@@ -119,7 +118,7 @@ const SkillTabs = ({
                                 category.skills.map((skill, index) => (
                                     <span
                                         key={index}
-                                        className="px-3 py-[3px] mb-1 bg-[#2c2c38] tracking-[1.5px] rounded-full text-[13px] font-[100] hover:bg-[#3c3c48] transition-all duration-300 text-white"
+                                        className="px-3 py-[3px] mb-1 bg-[#2c2c38] tracking-[1.5px] rounded-full text-[12.5px] font-[100] hover:bg-[#3c3c48] transition-all duration-300 text-white"
                                     >
                                         {skill}
                                     </span>
