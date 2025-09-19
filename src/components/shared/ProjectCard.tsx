@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { type Project } from '../../data/projects';
-import { VscGithubInverted } from 'react-icons/vsc';
-import { TbExternalLink } from 'react-icons/tb';
+import { useState } from "react";
+import { type Project } from "../../data/projects";
+import { VscGithubInverted } from "react-icons/vsc";
+import { TbExternalLink } from "react-icons/tb";
 
 interface ProjectCardProps {
     project: Project;
@@ -47,8 +47,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                         onClick={() => goToIndex(idx)}
                                         className={`w-6 h-1 cursor-pointer rounded-sm transition-all duration-200 focus:outline-none ${
                                             idx === currentImageIndex
-                                                ? 'bg-yellow-400'
-                                                : 'bg-yellow-400/30'
+                                                ? "bg-yellow-400"
+                                                : "bg-yellow-400/30"
                                         }`}
                                         aria-label={`Go to image ${idx + 1}`}
                                     />

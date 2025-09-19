@@ -1,5 +1,5 @@
-import { type BlogPost } from '../../data/blog';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import { type BlogPost } from "../../data/blog";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 interface BlogCardProps {
     post: BlogPost;

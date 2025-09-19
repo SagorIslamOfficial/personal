@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import ImagePopup from './ImagePopup';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import { useState } from "react";
+import ImagePopup from "./ImagePopup";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 interface CertificateButtonProps {
     certificateImage: string;
@@ -11,9 +11,9 @@ interface CertificateButtonProps {
 
 const CertificateButton = ({
     certificateImage,
-    certificateAlt = 'Certificate',
-    buttonText = 'Certificate',
-    className = '',
+    certificateAlt = "Certificate",
+    buttonText = "Certificate",
+    className = "",
 }: CertificateButtonProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 

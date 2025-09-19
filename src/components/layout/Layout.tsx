@@ -1,11 +1,11 @@
-import { type ReactNode } from 'react';
+import { type ReactNode } from "react";
 
 interface LayoutProps {
     children: ReactNode;
     className?: string;
 }
 
-const Layout = ({ children, className = '' }: LayoutProps) => {
+const Layout = ({ children, className = "" }: LayoutProps) => {
     return <div className={`layout-wrapper ${className}`}>{children}</div>;
 };
 

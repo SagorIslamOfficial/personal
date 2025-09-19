@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
-import CareerExperienceCard from '../shared/CareerExperienceCard';
-import { educationData } from '../../data/education';
-import { experienceData } from '../../data/experience';
+import { useRef, useEffect, useState } from "react";
+import CareerExperienceCard from "../shared/CareerExperienceCard";
+import { educationData } from "../../data/education";
+import { experienceData } from "../../data/experience";
 
 const HistorySection = () => {
     const educationRef = useRef<HTMLDivElement>(null);
@@ -22,10 +22,10 @@ const HistorySection = () => {
         // Small delay to ensure DOM is updated
         const timer = setTimeout(updateHeights, 100);
 
-        window.addEventListener('resize', updateHeights);
+        window.addEventListener("resize", updateHeights);
         return () => {
             clearTimeout(timer);
-            window.removeEventListener('resize', updateHeights);
+            window.removeEventListener("resize", updateHeights);
         };
     }, []); // Run once on mount
 
@@ -65,7 +65,7 @@ const HistorySection = () => {
                         {/* Column Header */}
                         <div className="mb-10">
                             <h2 className="text-xl font-bold text-white">
-                                Education{' '}
+                                Education{" "}
                                 <span className="text-yellow-400">History</span>
                             </h2>
                         </div>
@@ -74,11 +74,11 @@ const HistorySection = () => {
                         <div
                             className="absolute right-0 w-1 bg-[#191923]"
                             style={{
-                                top: '6.5rem',
+                                top: "6.5rem",
                                 height:
                                     educationHeight > 0
                                         ? `${educationHeight - 35}px`
-                                        : '100%',
+                                        : "100%",
                             }}
                         ></div>
 
@@ -100,7 +100,7 @@ const HistorySection = () => {
                         {/* Column Header */}
                         <div className="mb-10">
                             <h2 className="text-xl font-bold text-white">
-                                Work{' '}
+                                Work{" "}
                                 <span className="text-yellow-400">History</span>
                             </h2>
                         </div>
@@ -109,11 +109,11 @@ const HistorySection = () => {
                         <div
                             className="absolute right-0 w-1 bg-[#191923]"
                             style={{
-                                top: '6.5rem',
+                                top: "6.5rem",
                                 height:
                                     experienceHeight > 0
                                         ? `${experienceHeight - 35}px`
-                                        : '100%',
+                                        : "100%",
                             }}
                         ></div>
 

@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -8,33 +8,33 @@ export default defineConfig({
         tailwindcss(),
         react({
             // Enable React DevTools in development
-            include: '**/*.{jsx,tsx}',
+            include: "**/*.{jsx,tsx}",
         }),
     ],
     resolve: {
         alias: {
-            '@': '/src',
-            '@assets': '/src/assets',
-            '@styles': '/src/styles',
+            "@": "/src",
+            "@assets": "/src/assets",
+            "@styles": "/src/styles",
         },
     },
     build: {
-        outDir: 'dist',
-        assetsDir: 'assets',
+        outDir: "dist",
+        assetsDir: "assets",
         sourcemap: true,
-        minify: 'esbuild',
-        target: 'es2015',
+        minify: "esbuild",
+        target: "es2015",
         rollupOptions: {
             output: {
                 assetFileNames: ({ name }) => {
-                    if (name && name.endsWith('.css'))
-                        return 'css/[name][extname]';
-                    return 'assets/[name][extname]';
+                    if (name && name.endsWith(".css"))
+                        return "css/[name][extname]";
+                    return "assets/[name][extname]";
                 },
-                chunkFileNames: 'js/[name].js',
-                entryFileNames: 'js/[name].js',
+                chunkFileNames: "js/[name].js",
+                entryFileNames: "js/[name].js",
                 manualChunks: {
-                    vendor: ['react', 'react-dom'],
+                    vendor: ["react", "react-dom"],
                 },
             },
         },
@@ -56,6 +56,6 @@ export default defineConfig({
         open: true,
     },
     optimizeDeps: {
-        include: ['react', 'react-dom'],
+        include: ["react", "react-dom"],
     },
 });

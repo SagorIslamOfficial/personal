@@ -1,5 +1,5 @@
 // Contact information and form data
-import { FaGithub, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 export interface ContactInfo {
     address: {
@@ -29,40 +29,40 @@ export interface ContactFormData {
 
 export const contactInfo: ContactInfo = {
     address: {
-        street: 'Mirpur 12',
-        city: 'Dhaka-1216',
-        country: 'Bangladesh',
-        full: 'Mirpur 12, Dhaka-1216, Bangladesh',
+        street: "Mirpur 12",
+        city: "Dhaka-1216",
+        country: "Bangladesh",
+        full: "Mirpur 12, Dhaka-1216, Bangladesh",
     },
-    email: 'sagor_islam@icloud.com',
-    phone: '+880 1933-126-160',
+    email: "sagor_islam@icloud.com",
+    phone: "+880 1933-126-160",
     social: [
         {
-            platform: 'facebook',
-            url: 'https://facebook.com/sagorislam',
+            platform: "facebook",
+            url: "https://facebook.com/sagorislam",
             icon: FaFacebookF,
-            label: 'Facebook',
+            label: "Facebook",
         },
         {
-            platform: 'linkedin',
-            url: 'https://linkedin.com/in/sagorislam',
+            platform: "linkedin",
+            url: "https://linkedin.com/in/sagorislam",
             icon: FaLinkedinIn,
-            label: 'LinkedIn',
+            label: "LinkedIn",
         },
         {
-            platform: 'github',
-            url: 'https://github.com/sagorislam',
+            platform: "github",
+            url: "https://github.com/sagorislam",
             icon: FaGithub,
-            label: 'GitHub',
+            label: "GitHub",
         },
     ],
 };
 
 export const contactFormInitialData: ContactFormData = {
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
 };
 
 export default { contactInfo, contactFormInitialData };

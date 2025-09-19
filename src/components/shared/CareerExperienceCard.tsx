@@ -1,11 +1,11 @@
-import { type EducationItem } from '../../data/education';
-import { type ExperienceItem } from '../../data/experience';
-import CertificateButton from './CertificateButton';
+import { type EducationItem } from "../../data/education";
+import { type ExperienceItem } from "../../data/experience";
+import CertificateButton from "./CertificateButton";
 
 interface CareerExperienceCardProps {
     item: EducationItem | ExperienceItem;
     showDot?: boolean;
-    type: 'education' | 'experience';
+    type: "education" | "experience";
 }
 
 const CareerExperienceCard = ({
@@ -16,7 +16,7 @@ const CareerExperienceCard = ({
     const formatDateRange = (
         startDate: string,
         endDate?: string,
-        current?: boolean
+        current?: boolean,
     ) => {
         if (current) {
             return `Started - ${startDate}`;
@@ -26,7 +26,7 @@ const CareerExperienceCard = ({
 
     // Get the correct field name based on type
     const institutionName =
-        type === 'experience'
+        type === "experience"
             ? (item as ExperienceItem).company
             : (item as EducationItem).institution;
 
@@ -36,7 +36,7 @@ const CareerExperienceCard = ({
             {showDot && (
                 <div className="absolute -right-[3.4rem] top-6 w-4 h-4 bg-black rounded-full border-3 border-yellow-400 z-10 transition-transform duration-300 group-hover:animate-ping"></div>
             )}
-            
+
             {/* Card Content */}
             <div className="bg-[#2d2d3a] rounded-md p-6 transition-all duration-300 relative">
                 {/* Arrow from card to timeline dot */}
@@ -51,7 +51,7 @@ const CareerExperienceCard = ({
                             {item.title}
                         </h3>
                         <p className="text-[#8c8c8e] text-sm mb-1 italic">
-                            {institutionName}{' '}
+                            {institutionName}{" "}
                             <span className="text-gray-500">
                                 ({item.location})
                             </span>
@@ -62,7 +62,7 @@ const CareerExperienceCard = ({
                             {formatDateRange(
                                 item.startDate,
                                 item.endDate,
-                                item.current
+                                item.current,
                             )}
                         </span>
                     </div>

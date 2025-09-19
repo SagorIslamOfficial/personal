@@ -1,8 +1,8 @@
-import { useEffect, useCallback } from 'react';
-import { useNavigation } from '../../hooks/useNavigation';
-import { navigationItems, externalLinks } from '../../config/navigation';
-import type { SectionId } from '../../config/navigation';
-import { useSections } from '../../hooks/useSections';
+import { useEffect, useCallback } from "react";
+import { useNavigation } from "../../hooks/useNavigation";
+import { navigationItems, externalLinks } from "../../config/navigation";
+import type { SectionId } from "../../config/navigation";
+import { useSections } from "../../hooks/useSections";
 
 interface HeaderProps {
     isMobileMenuOpen: boolean;
@@ -24,7 +24,7 @@ const Header = ({
 
     // Filter navigation items to only show visible sections
     const visibleNavigationItems = navigationItems.filter((item) =>
-        isSectionVisible(item.id as SectionId)
+        isSectionVisible(item.id as SectionId),
     );
 
     // Enhanced navigation click handler
@@ -45,32 +45,32 @@ const Header = ({
             onToggleMobileMenu,
             onSetActiveSection,
             scrollToSection,
-        ]
+        ],
     );
 
     // Handle body scroll lock when mobile menu is open
     useEffect(() => {
         if (isMobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = '';
+            document.body.style.overflow = "";
         }
 
         return () => {
-            document.body.style.overflow = '';
+            document.body.style.overflow = "";
         };
     }, [isMobileMenuOpen]);
 
     // Handle keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape' && isMobileMenuOpen) {
+            if (e.key === "Escape" && isMobileMenuOpen) {
                 onToggleMobileMenu();
             }
         };
 
-        document.addEventListener('keydown', handleKeyDown);
-        return () => document.removeEventListener('keydown', handleKeyDown);
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
     }, [isMobileMenuOpen, onToggleMobileMenu]);
 
     return (
@@ -84,16 +84,22 @@ const Header = ({
             )}
 
             {/* Header */}
-            <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 h-16 flex items-center w-full max-w-7xl rounded-[15px] shadow-md transition-all duration-300 ${isScrolled ? 'bg-[#262629]/80 backdrop-blur-sm' : 'bg-transparent'}`}>
+            <header
+                className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 h-16 flex items-center w-full max-w-7xl rounded-[15px] shadow-md transition-all duration-300 ${isScrolled ? "bg-[#262629]/80 backdrop-blur-sm" : "bg-transparent"}`}
+            >
                 <div className="w-full mx-auto flex items-center justify-between px-5">
                     {/* Logo */}
-                        <a
-                            href="/"
-                            onClick={(e) => handleNavClick(e, 'heroSection')}
-                            className="flex items-center gap-3 select-none text-white font-bold text-xl"
-                        >
-                            <img src="/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
-                        </a>
+                    <a
+                        href="/"
+                        onClick={(e) => handleNavClick(e, "heroSection")}
+                        className="flex items-center gap-3 select-none text-white font-bold text-xl"
+                    >
+                        <img
+                            src="/logo.png"
+                            alt="Logo"
+                            className="h-8 w-8 object-contain"
+                        />
+                    </a>
 
                     {/* Centered Navigation */}
                     <nav className="flex-1">
@@ -102,9 +108,11 @@ const Header = ({
                                 <li key={item.id}>
                                     <a
                                         href={item.href}
-                                        onClick={(e) => handleNavClick(e, item.id)}
-                                        className={`px-2 font-medium transition-colors duration-100 ${activeSection === item.id ? 'text-yellow-400 font-semibold' : 'text-gray-200 hover:text-white'}`}
-                                        style={{ letterSpacing: '0.05em' }}
+                                        onClick={(e) =>
+                                            handleNavClick(e, item.id)
+                                        }
+                                        className={`px-2 font-medium transition-colors duration-100 ${activeSection === item.id ? "text-yellow-400 font-semibold" : "text-gray-200 hover:text-white"}`}
+                                        style={{ letterSpacing: "0.05em" }}
                                     >
                                         {item.label}
                                     </a>
@@ -120,7 +128,7 @@ const Header = ({
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-6 py-[7px] border border-yellow-400 text-white font-semibold rounded transition-all duration-200 hover:border-white hover:text-yellow-400 focus:outline-none"
-                            style={{ letterSpacing: '0.05em' }}
+                            style={{ letterSpacing: "0.05em" }}
                         >
                             Resume
                         </a>

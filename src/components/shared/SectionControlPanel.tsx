@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import { useSections } from '../../hooks/useSections';
-import type { SectionId } from '../../config/navigation';
-import { MdVisibility, MdVisibilityOff, MdSettings, MdClose, MdRefresh } from 'react-icons/md';
+import React, { useState } from "react";
+import { useSections } from "../../hooks/useSections";
+import type { SectionId } from "../../config/navigation";
+import {
+    MdVisibility,
+    MdVisibilityOff,
+    MdSettings,
+    MdClose,
+    MdRefresh,
+} from "react-icons/md";
 
 interface SectionControlPanelProps {
     className?: string;
 }
 
-const SectionControlPanel: React.FC<SectionControlPanelProps> = ({ className = '' }) => {
-    const { config, isSectionVisible, toggleSection, resetToDefault } = useSections();
+const SectionControlPanel: React.FC<SectionControlPanelProps> = ({
+    className = "",
+}) => {
+    const { config, isSectionVisible, toggleSection, resetToDefault } =
+        useSections();
     const [isOpen, setIsOpen] = useState(false);
 
     const togglePanel = () => setIsOpen(!isOpen);
@@ -38,7 +47,7 @@ const SectionControlPanel: React.FC<SectionControlPanelProps> = ({ className = '
             {/* Control Panel - Slide-in from right */}
             <div
                 className={`fixed top-0 right-0 h-full w-80 bg-[#1e1e28] border-l border-gray-700 shadow-2xl transform transition-transform duration-300 z-40 ${
-                    isOpen ? 'translate-x-0' : 'translate-x-full'
+                    isOpen ? "translate-x-0" : "translate-x-full"
                 }`}
             >
                 {/* Panel Header */}
@@ -82,7 +91,7 @@ const SectionControlPanel: React.FC<SectionControlPanelProps> = ({ className = '
                         <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wider">
                             Sections Visibility
                         </h4>
-                        
+
                         {Object.values(config.sections).map((section) => {
                             const isVisible = isSectionVisible(section.id);
                             const isRequired = section.required;
@@ -92,9 +101,9 @@ const SectionControlPanel: React.FC<SectionControlPanelProps> = ({ className = '
                                     key={section.id}
                                     className={`flex items-center justify-between p-3 rounded-lg border transition-all ${
                                         isVisible
-                                            ? 'bg-green-900/20 border-green-700/50'
-                                            : 'bg-red-900/20 border-red-700/50'
-                                    } ${isRequired ? 'opacity-75' : ''}`}
+                                            ? "bg-green-900/20 border-green-700/50"
+                                            : "bg-red-900/20 border-red-700/50"
+                                    } ${isRequired ? "opacity-75" : ""}`}
                                 >
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
@@ -115,21 +124,24 @@ const SectionControlPanel: React.FC<SectionControlPanelProps> = ({ className = '
                                     </div>
 
                                     <button
-                                        onClick={() => !isRequired && handleToggleSection(section.id)}
+                                        onClick={() =>
+                                            !isRequired &&
+                                            handleToggleSection(section.id)
+                                        }
                                         disabled={isRequired}
                                         className={`ml-3 p-2 rounded-md transition-all ${
                                             isRequired
-                                                ? 'cursor-not-allowed text-gray-500'
+                                                ? "cursor-not-allowed text-gray-500"
                                                 : isVisible
-                                                ? 'bg-green-600 hover:bg-green-500 text-white'
-                                                : 'bg-red-600 hover:bg-red-500 text-white'
+                                                  ? "bg-green-600 hover:bg-green-500 text-white"
+                                                  : "bg-red-600 hover:bg-red-500 text-white"
                                         }`}
                                         title={
                                             isRequired
-                                                ? 'This section is required and cannot be hidden'
+                                                ? "This section is required and cannot be hidden"
                                                 : isVisible
-                                                ? 'Click to hide this section'
-                                                : 'Click to show this section'
+                                                  ? "Click to hide this section"
+                                                  : "Click to show this section"
                                         }
                                     >
                                         {isVisible ? (
@@ -151,11 +163,16 @@ const SectionControlPanel: React.FC<SectionControlPanelProps> = ({ className = '
                         <div className="grid grid-cols-2 gap-2">
                             <button
                                 onClick={() => {
-                                    Object.values(config.sections).forEach((section) => {
-                                        if (!section.required && !isSectionVisible(section.id)) {
-                                            toggleSection(section.id);
-                                        }
-                                    });
+                                    Object.values(config.sections).forEach(
+                                        (section) => {
+                                            if (
+                                                !section.required &&
+                                                !isSectionVisible(section.id)
+                                            ) {
+                                                toggleSection(section.id);
+                                            }
+                                        },
+                                    );
                                 }}
                                 className="bg-green-600 hover:bg-green-500 text-white px-3 py-2 rounded-md text-sm transition-colors"
                             >
@@ -163,11 +180,16 @@ const SectionControlPanel: React.FC<SectionControlPanelProps> = ({ className = '
                             </button>
                             <button
                                 onClick={() => {
-                                    Object.values(config.sections).forEach((section) => {
-                                        if (!section.required && isSectionVisible(section.id)) {
-                                            toggleSection(section.id);
-                                        }
-                                    });
+                                    Object.values(config.sections).forEach(
+                                        (section) => {
+                                            if (
+                                                !section.required &&
+                                                isSectionVisible(section.id)
+                                            ) {
+                                                toggleSection(section.id);
+                                            }
+                                        },
+                                    );
                                 }}
                                 className="bg-red-600 hover:bg-red-500 text-white px-3 py-2 rounded-md text-sm transition-colors"
                             >

@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
-import './App.css';
-import { SectionsProvider } from './contexts/SectionsContext';
-import { useSections } from './hooks/useSections';
+import { useState, useEffect } from "react";
+import "./App.css";
+import { SectionsProvider } from "./contexts/SectionsContext";
+import { useSections } from "./hooks/useSections";
 
 // Layout Components
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 // Section Components
-import HeroSection from './components/sections/HeroSection';
-import AboutSection from './components/sections/AboutSection';
-import ProjectsSection from './components/sections/ProjectsSection';
-import BlogSection from './components/sections/BlogSection';
-import HistorySection from './components/sections/HistorySection';
-import ContactSection from './components/sections/ContactSection';
+import HeroSection from "./components/sections/HeroSection";
+import AboutSection from "./components/sections/AboutSection";
+import ProjectsSection from "./components/sections/ProjectsSection";
+import BlogSection from "./components/sections/BlogSection";
+import HistorySection from "./components/sections/HistorySection";
+import ContactSection from "./components/sections/ContactSection";
 
 // Global state interface
 interface AppState {
@@ -26,7 +26,7 @@ interface AppState {
 const AppContent = () => {
     const { isSectionVisible, getVisibleSectionIds } = useSections();
     const [appState, setAppState] = useState<AppState>({
-        activeSection: 'hero',
+        activeSection: "hero",
         isMobileMenuOpen: false,
         isScrolled: false,
     });
@@ -79,15 +79,15 @@ const AppContent = () => {
             }
         };
 
-        window.addEventListener('scroll', throttledScroll, { passive: true });
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("scroll", throttledScroll, { passive: true });
+        window.addEventListener("resize", handleResize);
 
         // Initial call to set correct active section
         handleScroll();
 
         return () => {
-            window.removeEventListener('scroll', throttledScroll);
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener("scroll", throttledScroll);
+            window.removeEventListener("resize", handleResize);
         };
     }, [getVisibleSectionIds]);
 
@@ -116,12 +116,12 @@ const AppContent = () => {
             />
 
             {/* Main Content Sections - Conditionally Rendered */}
-            {isSectionVisible('heroSection') && <HeroSection />}
-            {isSectionVisible('about') && <AboutSection />}
-            {isSectionVisible('projects') && <ProjectsSection />}
-            {isSectionVisible('articles') && <BlogSection />}
-            {isSectionVisible('education&Experience') && <HistorySection />}
-            {isSectionVisible('getInTouch') && <ContactSection />}
+            {isSectionVisible("heroSection") && <HeroSection />}
+            {isSectionVisible("about") && <AboutSection />}
+            {isSectionVisible("projects") && <ProjectsSection />}
+            {isSectionVisible("articles") && <BlogSection />}
+            {isSectionVisible("education&Experience") && <HistorySection />}
+            {isSectionVisible("getInTouch") && <ContactSection />}
 
             {/* Footer */}
             <Footer />

@@ -1,29 +1,29 @@
 interface SkillTagProps {
     skill: string;
-    variant?: 'default' | 'primary' | 'secondary';
-    size?: 'sm' | 'md' | 'lg';
+    variant?: "default" | "primary" | "secondary";
+    size?: "sm" | "md" | "lg";
     className?: string;
     onClick?: () => void;
 }
 
 const SkillTag = ({
     skill,
-    variant = 'default',
-    size = 'md',
-    className = '',
+    variant = "default",
+    size = "md",
+    className = "",
     onClick,
 }: SkillTagProps) => {
-    const baseClasses = 'skill-tag';
+    const baseClasses = "skill-tag";
     const variantClasses = {
-        default: 'skill-tag-default',
-        primary: 'skill-tag-primary',
-        secondary: 'skill-tag-secondary',
+        default: "skill-tag-default",
+        primary: "skill-tag-primary",
+        secondary: "skill-tag-secondary",
     };
 
     const sizeClasses = {
-        sm: 'skill-tag-sm',
-        md: 'skill-tag-md',
-        lg: 'skill-tag-lg',
+        sm: "skill-tag-sm",
+        md: "skill-tag-md",
+        lg: "skill-tag-lg",
     };
 
     const classes =
@@ -33,12 +33,12 @@ const SkillTag = ({
         <span
             className={classes}
             onClick={onClick}
-            role={onClick ? 'button' : undefined}
+            role={onClick ? "button" : undefined}
             tabIndex={onClick ? 0 : undefined}
             onKeyDown={
                 onClick
                     ? (e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
+                          if (e.key === "Enter" || e.key === " ") {
                               e.preventDefault();
                               onClick();
                           }
