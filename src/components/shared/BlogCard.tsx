@@ -41,7 +41,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
                 </div>
 
                 {/* Read More Button */}
-                <div className="py-2">
+                <div className="pt-3 pb-2">
                     <div className="text-center">
                         <a
                             href="#"

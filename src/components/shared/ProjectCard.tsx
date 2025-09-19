@@ -78,7 +78,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-5 py-2 px-7 justify-end mt-auto">
+                <div className="flex gap-5 pt-3 pb-2 px-7 justify-end mt-auto">
                     {project.links.code && (
                         <a
                             href={project.links.code}
