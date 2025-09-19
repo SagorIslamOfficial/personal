@@ -1,4 +1,4 @@
-import heroImage from "@assets/images/hero-image.png";
+import heroImage from "/assets/images/hero-image.png";
 import { heroContent } from "../../data/hero";
 import { contactInfo } from "../../data/contact";
 import TSParticlesBackground from "../ui/TSParticlesBackground";

@@ -1,4 +1,4 @@
-import aboutImage from "@assets/images/about_me.svg";
+import aboutImage from "/assets/images/about_me.svg";
 import SkillTabs from "../shared/SkillTabs";
 import { skillCategories } from "../../data/skills";
 import { aboutContent } from "../../data/about";
