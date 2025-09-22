@@ -1,6 +1,4 @@
 /// <reference types="@cloudflare/workers-types" />
-import FormData from "form-data";
-import Mailgun from "mailgun.js";
 
 export interface ContactForm {
     name: string;
@@ -16,27 +14,31 @@ export async function onRequestPost({
     request: Request;
     env: { MAILGUN_API_KEY: string; MAILGUN_DOMAIN: string };
 }) {
-    const data: ContactForm = await request.json();
-
-    // Simple validation
-    if (!data.email || !data.message) {
-        return new Response("Bad Request", { status: 400 });
-    }
-
     try {
-        // Initialize Mailgun client
-        const mailgun = new Mailgun(FormData);
-        const mg = mailgun.client({
-            username: "api",
-            key: env.MAILGUN_API_KEY,
-        });
+        const data: ContactForm = await request.json();
 
-        // Send email using Mailgun SDK
-        const result = await mg.messages.create(env.MAILGUN_DOMAIN, {
-            from: `${data.name} <postmaster@${env.MAILGUN_DOMAIN}>`,
-            to: ["alaminislam1274@gmail.com"],
-            subject: data.subject || "New contact query - sagorislam.dev",
-            text: `
+        // Simple validation
+        if (!data.email || !data.message) {
+            return new Response("Bad Request", { status: 400 });
+        }
+
+        // Build form data using Web API FormData (Works in Workers)
+        const formData = new FormData();
+        formData.append(
+            "from",
+            `${data.name} <postmaster@${env.MAILGUN_DOMAIN}>`,
+        );
+        formData.append(
+            "to",
+            "sagor_islam@icloud.com,alaminislam1274@gmail.com",
+        );
+        formData.append(
+            "subject",
+            data.subject || "New contact query - sagorislam.dev",
+        );
+        formData.append(
+            "text",
+            `
     From: ${data.name} (${data.email})
     Subject: ${data.subject}
 
@@ -46,14 +48,33 @@ export async function onRequestPost({
     --
     This message was sent from your portfolio contact form.
     Reply-To: ${data.email}
-            `,
-            "h:Reply-To": data.email,
-        });
+        `,
+        );
+        formData.append("h:Reply-To", data.email);
 
+        // Send via Mailgun API
+        const response = await fetch(
+            `https://api.mailgun.net/v3/${env.MAILGUN_DOMAIN}/messages`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Basic ${btoa(`api:${env.MAILGUN_API_KEY}`)}`,
+                },
+                body: formData,
+            },
+        );
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Mailgun API error:", errorText);
+            return new Response(`Email failed: ${errorText}`, { status: 502 });
+        }
+
+        const result = await response.json();
         console.log("Email sent successfully:", result);
         return new Response("OK", { status: 200 });
     } catch (error) {
-        console.error("Mailgun error:", error);
-        return new Response("Email failed", { status: 502 });
+        console.error("Function error:", error);
+        return new Response(`Server error: ${error}`, { status: 500 });
     }
 }
