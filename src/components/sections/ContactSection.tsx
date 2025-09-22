@@ -65,11 +65,15 @@ const ContactSection = () => {
         setIsSubmitting(true);
 
         try {
-            // TODO: Implement actual form submission when backend is ready
-            console.log("Form submitted:", formData);
-
-            // Simulate API call
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            // Send form data to Cloudflare Pages Function
+            const res = await fetch("/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+            if (!res.ok) {
+                throw new Error(await res.text());
+            }
 
             // Reset form on success
             setFormData(contactFormInitialData);
