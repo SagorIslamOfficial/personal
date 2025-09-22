@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import ProjectCard from '../shared/ProjectCard';
-import { projects, featuredProjects } from '../../data/projects';
+import { useState } from "react";
+import ProjectCard from "../shared/ProjectCard";
+import { projects, featuredProjects } from "../../data/projects";
 import { GiClick } from "react-icons/gi";
 
 const SKELETON_COUNT = 6;
@@ -59,7 +59,7 @@ const ProjectsSection = () => {
     const paginatedProjects = showAllProjects
         ? allProjects.slice(
               (currentPage - 1) * projectsPerPage,
-              currentPage * projectsPerPage
+              currentPage * projectsPerPage,
           )
         : featuredProjects;
 
@@ -77,7 +77,7 @@ const ProjectsSection = () => {
                 {/* Section Header */}
                 <div className="flex items-center mb-8">
                     <h2 className="text-2xl md:text-xl tracking-[1.5px] font-bold text-white whitespace-nowrap">
-                        {showAllProjects ? 'All' : 'Featured'}{' '}
+                        {showAllProjects ? "All" : "Featured"}{" "}
                         <span className="text-yellow-400">Projects</span>
                     </h2>
                     <div className="flex-1 h-px bg-gray-400/30 ml-40" />
@@ -85,7 +85,7 @@ const ProjectsSection = () => {
                         onClick={toggleShowAll}
                         className="flex items-center border-[1px] border-yellow-400/50 hover:border-yellow-400 text-yellow-400 rounded-md px-4 py-[5px] font-semibold text-[13px] tracking-[1.5px] transition-colors duration-200 cursor-pointer focus:outline-none"
                     >
-                        {showAllProjects ? 'Featured Projects' : 'All Projects'}
+                        {showAllProjects ? "Featured Projects" : "All Projects"}
                         <GiClick className="ml-2 h-4.5 w-4.5 text-white/70 animate-pulse" />
                     </button>
                 </div>
@@ -123,7 +123,7 @@ const ProjectsSection = () => {
                                 onClick={() =>
                                     !loading && handlePageChange(i + 1)
                                 }
-                                className={`px-4 py-1 rounded-sm cursor-pointer border border-yellow-600/20 text-white font-semibold text-sm transition-colors duration-200 ${currentPage === i + 1 ? 'bg-yellow-400 !text-black' : 'bg-transparent'}`}
+                                className={`px-4 py-1 rounded-sm cursor-pointer border border-yellow-600/20 text-white font-semibold text-sm transition-colors duration-200 ${currentPage === i + 1 ? "bg-yellow-400 !text-black" : "bg-transparent"}`}
                                 disabled={loading}
                             >
                                 {i + 1}

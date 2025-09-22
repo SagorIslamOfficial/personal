@@ -1,30 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
     contactInfo,
     contactFormInitialData,
     type ContactFormData,
-} from '../../data/contact';
-import { BiMailSend } from 'react-icons/bi';
-import { SlLocationPin } from 'react-icons/sl';
-import { VscCallIncoming } from 'react-icons/vsc';
-import { TbWorldShare } from 'react-icons/tb';
+} from "../../data/contact";
+import { BiMailSend } from "react-icons/bi";
+import { SlLocationPin } from "react-icons/sl";
+import { VscCallIncoming } from "react-icons/vsc";
+import { TbWorldShare } from "react-icons/tb";
+import { TbMailCheck } from "react-icons/tb";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState<ContactFormData>(
-        contactFormInitialData
+        contactFormInitialData,
     );
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [errors, setErrors] = useState<Partial<ContactFormData>>({});
 
     const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
 
         // Clear error when user starts typing
         if (errors[name as keyof ContactFormData]) {
-            setErrors((prev) => ({ ...prev, [name]: '' }));
+            setErrors((prev) => ({ ...prev, [name]: "" }));
         }
     };
 
@@ -32,21 +34,21 @@ const ContactSection = () => {
         const newErrors: Partial<ContactFormData> = {};
 
         if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
+            newErrors.name = "Name is required";
         }
 
         if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
+            newErrors.email = "Email is required";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Please enter a valid email address';
+            newErrors.email = "Please enter a valid email address";
         }
 
         if (!formData.subject.trim()) {
-            newErrors.subject = 'Subject is required';
+            newErrors.subject = "Subject is required";
         }
 
         if (!formData.message.trim()) {
-            newErrors.message = 'Message is required';
+            newErrors.message = "Message is required";
         }
 
         setErrors(newErrors);
@@ -63,18 +65,24 @@ const ContactSection = () => {
         setIsSubmitting(true);
 
         try {
-            // TODO: Implement actual form submission when backend is ready
-            console.log('Form submitted:', formData);
-
-            // Simulate API call
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            // Send form data to Cloudflare Pages Function
+            const res = await fetch("/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+            if (!res.ok) {
+                throw new Error(await res.text());
+            }
 
             // Reset form on success
             setFormData(contactFormInitialData);
-            alert('Message sent successfully!');
+            setSuccess(true);
+            // auto-clear success message after 20s
+            setTimeout(() => setSuccess(false), 20000);
         } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('Failed to send message. Please try again.');
+            console.error("Error submitting form:", error);
+            alert("Failed to send message. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
@@ -86,7 +94,8 @@ const ContactSection = () => {
                 {/* Main Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        Get In Touch <span className="text-yellow-500 animate-pulse">!</span>
+                        Get In Touch{" "}
+                        <span className="text-yellow-500 animate-pulse">!</span>
                     </h2>
                     <p className="text-white opacity-60 text-md max-w-md mx-auto">
                         I'm always open to discussing new projects, creative
@@ -109,14 +118,14 @@ const ContactSection = () => {
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-gray-300 text-sm mb-1">
-                                            Name{' '}
+                                            Name{" "}
                                             <span className="text-yellow-500">
                                                 *
                                             </span>
                                         </label>
                                         <input
                                             type="text"
-                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.name ? 'border-red-500' : ''}`}
+                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.name ? "border-red-500" : ""}`}
                                             name="name"
                                             id="name"
                                             placeholder="e.g. Amin Muhammad"
@@ -131,14 +140,14 @@ const ContactSection = () => {
                                     </div>
                                     <div>
                                         <label className="block text-gray-300 text-sm mb-1">
-                                            Email{' '}
+                                            Email{" "}
                                             <span className="text-yellow-500">
                                                 *
                                             </span>
                                         </label>
                                         <input
                                             type="email"
-                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.email ? 'border-red-500' : ''}`}
+                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.email ? "border-red-500" : ""}`}
                                             name="email"
                                             id="email"
                                             placeholder="e.g. amin@example.com"
@@ -156,14 +165,14 @@ const ContactSection = () => {
                                 {/* Subject */}
                                 <div>
                                     <label className="block text-gray-300 text-sm mb-1">
-                                        Subject{' '}
+                                        Subject{" "}
                                         <span className="text-yellow-500">
                                             *
                                         </span>
                                     </label>
                                     <input
                                         type="text"
-                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.subject ? 'border-red-500' : ''}`}
+                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.subject ? "border-red-500" : ""}`}
                                         name="subject"
                                         id="subject"
                                         placeholder="Regarding your project..."
@@ -180,13 +189,13 @@ const ContactSection = () => {
                                 {/* Message */}
                                 <div>
                                     <label className="block text-gray-300 text-sm mb-1">
-                                        Message{' '}
+                                        Message{" "}
                                         <span className="text-yellow-500">
                                             *
                                         </span>
                                     </label>
                                     <textarea
-                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 resize-none ${errors.message ? 'border-red-500' : ''}`}
+                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 resize-none ${errors.message ? "border-red-500" : ""}`}
                                         name="message"
                                         id="message"
                                         rows={5}
@@ -203,17 +212,32 @@ const ContactSection = () => {
 
                                 {/* Submit Button */}
                                 <div className="mt-6">
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
-                                    >
-                                        {isSubmitting
-                                            ? 'Sending...'
-                                            : 'Send Message'}
-
-                                        <BiMailSend className="text-xl" />
-                                    </button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
+                                        >
+                                            {isSubmitting
+                                                ? "Sending..."
+                                                : success
+                                                  ? "Sent!"
+                                                  : "Send Message"}
+                                            {isSubmitting ? (
+                                                <BiMailSend className="text-xl" />
+                                            ) : success ? (
+                                                <TbMailCheck className="text-xl" />
+                                            ) : (
+                                                <BiMailSend className="text-xl" />
+                                            )}
+                                        </button>
+                                        {success && (
+                                            <p className="mt-2 text-green-500 font-bold">
+                                                Thank you for your message! I'll
+                                                get back to you soon.
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
                             </form>
                         </div>

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import TypeIt from 'typeit';
+import { useEffect, useRef } from "react";
+import TypeIt from "typeit";
 
 interface UseTypeItOptions {
     strings: string[];
@@ -32,7 +32,7 @@ export const useTypeIt = (options: UseTypeItOptions) => {
                         deleteSpeed: options.deleteSpeed ?? 50,
                         lifeLike: options.lifeLike ?? true,
                         cursor: options.cursor ?? true,
-                        cursorChar: options.cursorChar ?? '|',
+                        cursorChar: options.cursorChar ?? "|",
                         cursorSpeed: options.cursorSpeed ?? 1000,
                         breakLines: false,
                         startDelay: options.startDelay ?? 1500,
@@ -46,7 +46,7 @@ export const useTypeIt = (options: UseTypeItOptions) => {
                         },
                     }).go();
                 } catch (error) {
-                    console.error('Failed to initialize TypeIt:', error);
+                    console.error("Failed to initialize TypeIt:", error);
                     options.onError?.(error as Error);
 
                     // Fallback: show first string as static text
@@ -66,7 +66,7 @@ export const useTypeIt = (options: UseTypeItOptions) => {
                 try {
                     instanceRef.current.destroy();
                 } catch (error) {
-                    console.warn('Error destroying TypeIt instance:', error);
+                    console.warn("Error destroying TypeIt instance:", error);
                 }
                 instanceRef.current = null;
             }

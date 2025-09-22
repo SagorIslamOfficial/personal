@@ -1,9 +1,9 @@
-import { useCallback } from 'react';
+import { useCallback } from "react";
 
 export const useNavigation = () => {
     // Calculate navbar height for scroll offset
     const getNavbarHeight = useCallback(() => {
-        const navbar = document.querySelector('.navbar');
+        const navbar = document.querySelector(".navbar");
         return navbar ? navbar.getBoundingClientRect().height : 80;
     }, []);
 
@@ -19,11 +19,11 @@ export const useNavigation = () => {
 
                 window.scrollTo({
                     top: offsetPosition,
-                    behavior: 'smooth',
+                    behavior: "smooth",
                 });
             }
         },
-        [getNavbarHeight]
+        [getNavbarHeight],
     );
 
     // Check if section is in viewport
@@ -44,7 +44,7 @@ export const useNavigation = () => {
 
             return visibleHeight >= sectionHeight * threshold;
         },
-        [getNavbarHeight]
+        [getNavbarHeight],
     );
 
     return {

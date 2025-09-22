@@ -10,8 +10,8 @@ const SectionHeading = ({
     title,
     subtitle,
     showViewAll = false,
-    viewAllLink = '#',
-    className = '',
+    viewAllLink = "#",
+    className = "",
 }: SectionHeadingProps) => {
     return (
         <div className={`text-center mb-12 ${className}`}>

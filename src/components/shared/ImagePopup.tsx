@@ -1,6 +1,6 @@
-import { useEffect, useCallback, useState } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
-import { type ReactNode } from 'react';
+import { useEffect, useCallback, useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { type ReactNode } from "react";
 
 interface ImagePopupProps {
     isOpen: boolean;
@@ -14,7 +14,7 @@ interface ImagePopupProps {
 const ImagePopup = ({
     isOpen,
     imageUrl,
-    imageAlt = 'Certificate',
+    imageAlt = "Certificate",
     title,
     onClose,
     children,
@@ -37,11 +37,11 @@ const ImagePopup = ({
     // Handle escape key press
     const handleKeyDown = useCallback(
         (e: KeyboardEvent) => {
-            if (e.key === 'Escape' && isOpen) {
+            if (e.key === "Escape" && isOpen) {
                 onClose();
             }
         },
-        [isOpen, onClose]
+        [isOpen, onClose],
     );
 
     // Handle click outside modal
@@ -51,7 +51,7 @@ const ImagePopup = ({
                 onClose();
             }
         },
-        [onClose]
+        [onClose],
     );
 
     // Handle image load
@@ -65,7 +65,7 @@ const ImagePopup = ({
         if (!isUsingFallback) {
             // Try fallback image
             setIsUsingFallback(true);
-            setCurrentImageUrl('/logo.png');
+            setCurrentImageUrl("/logo.png");
             setIsLoading(true); // Show loading while fallback loads
         } else {
             // Fallback also failed
@@ -77,22 +77,22 @@ const ImagePopup = ({
     // Body scroll lock when modal is open
     useEffect(() => {
         if (isOpen) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.paddingRight = '15px'; // Prevent layout shift
-            document.addEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = "hidden";
+            document.body.style.paddingRight = "15px"; // Prevent layout shift
+            document.addEventListener("keydown", handleKeyDown);
             // Reset image states when modal opens
             setIsLoading(true);
             setHasError(false);
         } else {
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
-            document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = "";
+            document.body.style.paddingRight = "";
+            document.removeEventListener("keydown", handleKeyDown);
         }
 
         return () => {
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
-            document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = "";
+            document.body.style.paddingRight = "";
+            document.removeEventListener("keydown", handleKeyDown);
         };
     }, [isOpen, handleKeyDown]);
 
@@ -104,15 +104,17 @@ const ImagePopup = ({
             onClick={handleBackdropClick}
             role="dialog"
             aria-modal="true"
-            aria-labelledby={title ? 'modal-title' : undefined}
+            aria-labelledby={title ? "modal-title" : undefined}
             aria-describedby="modal-image"
         >
             <div className="relative max-w-4xl max-h-[90vh] bg-gray-800 rounded-lg shadow-2xl overflow-hidden animate-fade-in-up">
-
                 {/* Header */}
                 {title && (
                     <div className="flex items-center justify-between px-4 py-2 bg-gray-900 rounded-t-xs">
-                        <h3 id="modal-title" className="text-xl font-bold text-white">
+                        <h3
+                            id="modal-title"
+                            className="text-xl font-bold text-white"
+                        >
                             {title}
                         </h3>
                         <button
@@ -155,10 +157,10 @@ const ImagePopup = ({
                         src={currentImageUrl}
                         alt={
                             isUsingFallback
-                                ? 'Logo (Certificate not available)'
+                                ? "Logo (Certificate not available)"
                                 : imageAlt
                         }
-                        className={`max-w-full max-h-[70vh] object-contain ${isLoading || hasError ? 'hidden' : 'block'}`}
+                        className={`max-w-full max-h-[70vh] object-contain ${isLoading || hasError ? "hidden" : "block"}`}
                         onLoad={handleImageLoad}
                         onError={handleImageError}
                     />
