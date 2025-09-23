@@ -7,8 +7,7 @@ import {
 import { BiMailSend } from "react-icons/bi";
 import { SlLocationPin } from "react-icons/sl";
 import { VscCallIncoming } from "react-icons/vsc";
-import { TbWorldShare } from "react-icons/tb";
-import { TbMailCheck } from "react-icons/tb";
+import { TbWorldShare, TbMailCheck } from "react-icons/tb";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState<ContactFormData>(
@@ -16,8 +15,10 @@ const ContactSection = () => {
     );
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [statusMessage, setStatusMessage] = useState<string | null>(null);
     const [errors, setErrors] = useState<Partial<ContactFormData>>({});
 
+    // Handle input changes
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
@@ -30,39 +31,30 @@ const ContactSection = () => {
         }
     };
 
+    // Validate form before submit
     const validateForm = (): boolean => {
         const newErrors: Partial<ContactFormData> = {};
 
-        if (!formData.name.trim()) {
-            newErrors.name = "Name is required";
-        }
-
+        if (!formData.name.trim()) newErrors.name = "Name is required";
         if (!formData.email.trim()) {
             newErrors.email = "Email is required";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             newErrors.email = "Please enter a valid email address";
         }
-
-        if (!formData.subject.trim()) {
-            newErrors.subject = "Subject is required";
-        }
-
-        if (!formData.message.trim()) {
-            newErrors.message = "Message is required";
-        }
+        if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+        if (!formData.message.trim()) newErrors.message = "Message is required";
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
+    // Handle form submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        if (!validateForm()) {
-            return;
-        }
+        if (!validateForm()) return;
 
         setIsSubmitting(true);
+        setStatusMessage(null);
 
         try {
             // Send form data to Cloudflare Pages Function
@@ -71,18 +63,23 @@ const ContactSection = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
-            if (!res.ok) {
-                throw new Error(await res.text());
-            }
 
-            // Reset form on success
-            setFormData(contactFormInitialData);
-            setSuccess(true);
-            // auto-clear success message after 20s
-            setTimeout(() => setSuccess(false), 20000);
+            if (!res.ok) throw new Error(await res.text());
+            const data = await res.json();
+
+            if (data.success) {
+                setFormData(contactFormInitialData);
+                setSuccess(true);
+                setStatusMessage("Thank you! Your message has been sent.");
+                setTimeout(() => {
+                    setSuccess(false);
+                    setStatusMessage(null);
+                }, 10000);
+            }
         } catch (error) {
-            console.error("Error submitting form:", error);
-            alert("Failed to send message. Please try again.");
+            console.error("Form submission error:", error);
+            setStatusMessage("Failed to send message. Please try again.");
+            setSuccess(false);
         } finally {
             setIsSubmitting(false);
         }
@@ -91,7 +88,7 @@ const ContactSection = () => {
     return (
         <section id="getInTouch" className="scroll-mt-16 py-20">
             <div className="max-w-7xl mx-auto">
-                {/* Main Header */}
+                {/* Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
                         Get In Touch{" "}
@@ -104,87 +101,48 @@ const ContactSection = () => {
                 </div>
 
                 <div className="grid grid-cols-5 gap-8">
-                    {/* Send a Message Form */}
+                    {/* Contact Form */}
                     <div className="col-span-3">
                         <div className="bg-[#2d2d39] rounded-lg p-8">
-                            <h3 className="text-2xl font-semibold text-white mb-2 leading-[20px]">
+                            <h3 className="text-2xl font-semibold text-white mb-2">
                                 Send a Message
                             </h3>
 
                             <div className="w-20 h-[2px] bg-yellow-500 mb-8"></div>
 
                             <form onSubmit={handleSubmit} className="space-y-4">
-                                {/* Name and Email Row */}
+                                {/* Name + Email */}
                                 <div className="grid md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-gray-300 text-sm mb-1">
-                                            Name{" "}
-                                            <span className="text-yellow-500">
-                                                *
-                                            </span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.name ? "border-red-500" : ""}`}
-                                            name="name"
-                                            id="name"
-                                            placeholder="e.g. Amin Muhammad"
-                                            value={formData.name}
-                                            onChange={handleInputChange}
-                                        />
-                                        {errors.name && (
-                                            <div className="text-red-500 text-sm mt-1">
-                                                {errors.name}
-                                            </div>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <label className="block text-gray-300 text-sm mb-1">
-                                            Email{" "}
-                                            <span className="text-yellow-500">
-                                                *
-                                            </span>
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.email ? "border-red-500" : ""}`}
-                                            name="email"
-                                            id="email"
-                                            placeholder="e.g. amin@example.com"
-                                            value={formData.email}
-                                            onChange={handleInputChange}
-                                        />
-                                        {errors.email && (
-                                            <div className="text-red-500 text-sm mt-1">
-                                                {errors.email}
-                                            </div>
-                                        )}
-                                    </div>
+                                    <InputField
+                                        label="Name"
+                                        name="name"
+                                        type="text"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        error={errors.name}
+                                        placeholder="e.g. Amin Muhammad"
+                                    />
+                                    <InputField
+                                        label="Email"
+                                        name="email"
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        error={errors.email}
+                                        placeholder="e.g. amin@example.com"
+                                    />
                                 </div>
 
                                 {/* Subject */}
-                                <div>
-                                    <label className="block text-gray-300 text-sm mb-1">
-                                        Subject{" "}
-                                        <span className="text-yellow-500">
-                                            *
-                                        </span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 ${errors.subject ? "border-red-500" : ""}`}
-                                        name="subject"
-                                        id="subject"
-                                        placeholder="Regarding your project..."
-                                        value={formData.subject}
-                                        onChange={handleInputChange}
-                                    />
-                                    {errors.subject && (
-                                        <div className="text-red-500 text-sm mt-1">
-                                            {errors.subject}
-                                        </div>
-                                    )}
-                                </div>
+                                <InputField
+                                    label="Subject"
+                                    name="subject"
+                                    type="text"
+                                    value={formData.subject}
+                                    onChange={handleInputChange}
+                                    error={errors.subject}
+                                    placeholder="Regarding your project..."
+                                />
 
                                 {/* Message */}
                                 <div>
@@ -195,153 +153,117 @@ const ContactSection = () => {
                                         </span>
                                     </label>
                                     <textarea
-                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder:text-md placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 transition-colors duration-300 resize-none ${errors.message ? "border-red-500" : ""}`}
+                                        className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-yellow-600/50 resize-none ${
+                                            errors.message
+                                                ? "border-red-500"
+                                                : ""
+                                        }`}
                                         name="message"
-                                        id="message"
                                         rows={5}
                                         placeholder="Write your message here..."
                                         value={formData.message}
                                         onChange={handleInputChange}
                                     />
                                     {errors.message && (
-                                        <div className="text-red-500 text-sm mt-1">
+                                        <p className="text-red-500 text-sm mt-1">
                                             {errors.message}
-                                        </div>
+                                        </p>
                                     )}
                                 </div>
 
-                                {/* Submit Button */}
+                                {/* Submit */}
                                 <div className="mt-6">
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                            className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
-                                        >
-                                            {isSubmitting
-                                                ? "Sending..."
-                                                : success
-                                                  ? "Sent!"
-                                                  : "Send Message"}
-                                            {isSubmitting ? (
-                                                <BiMailSend className="text-xl" />
-                                            ) : success ? (
-                                                <TbMailCheck className="text-xl" />
-                                            ) : (
-                                                <BiMailSend className="text-xl" />
-                                            )}
-                                        </button>
-                                        {success && (
-                                            <p className="mt-2 text-green-500 font-bold">
-                                                Thank you for your message! I'll
-                                                get back to you soon.
-                                            </p>
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="bg-yellow-500 hover:bg-transparent text-black hover:text-yellow-500 border border-yellow-500 font-bold px-5 py-2 rounded transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-4 cursor-pointer"
+                                    >
+                                        {isSubmitting
+                                            ? "Sending..."
+                                            : success
+                                              ? "Sent!"
+                                              : "Send Message"}
+                                        {isSubmitting ? (
+                                            <BiMailSend className="text-xl" />
+                                        ) : success ? (
+                                            <TbMailCheck className="text-xl" />
+                                        ) : (
+                                            <BiMailSend className="text-xl" />
                                         )}
-                                    </div>
+                                    </button>
+
+                                    {statusMessage && (
+                                        <p
+                                            className={`mt-2 font-bold ${
+                                                success
+                                                    ? "text-green-500"
+                                                    : "text-red-500"
+                                            }`}
+                                        >
+                                            {statusMessage}
+                                        </p>
+                                    )}
                                 </div>
                             </form>
                         </div>
                     </div>
 
-                    {/* Contact Information */}
+                    {/* Contact Info */}
                     <div className="col-span-2 bg-[#2d2d39] rounded-lg p-8">
-                        <h3 className="text-2xl font-semibold text-white mb-2 leading-[20px]">
+                        <h3 className="text-2xl font-semibold text-white mb-2">
                             Contact Information
                         </h3>
 
                         <div className="w-20 h-[2px] bg-yellow-500 mb-8"></div>
 
                         <div className="space-y-4">
-                            {/* Address */}
-                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
-                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-8 left-0 flex items-center justify-center">
-                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
-                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
-                                    </div>
+                            <InfoBox
+                                icon={
                                     <SlLocationPin className="text-xl font-black" />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold text-lg">
-                                        Mirpur, Dhaka, Bangladesh
-                                    </h4>
-                                    <p className="text-gray-400 text-sm">
-                                        Current Address
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Email */}
-                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
-                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-8 left-0 flex items-center justify-center">
-                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
-                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
-                                    </div>
-                                    <BiMailSend className="text-xl" />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold text-lg">
-                                        <a
-                                            href={`mailto:${contactInfo.email}`}
-                                            className="hover:text-yellow-500 transition-colors duration-300"
-                                        >
-                                            sagor_islam@icloud.com
-                                        </a>
-                                    </h4>
-                                    <p className="text-gray-400 text-sm">
-                                        Mail Address
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Phone */}
-                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
-                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-8 left-0 flex items-center justify-center">
-                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
-                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
-                                    </div>
+                                }
+                                title="Mirpur, Dhaka, Bangladesh"
+                                subtitle="Current Address"
+                            />
+                            <InfoBox
+                                icon={<BiMailSend className="text-xl" />}
+                                title={
+                                    <a
+                                        href={`mailto:${contactInfo.email}`}
+                                        className="hover:text-yellow-500 transition-colors duration-300"
+                                    >
+                                        {contactInfo.email}
+                                    </a>
+                                }
+                                subtitle="Mail Address"
+                            />
+                            <InfoBox
+                                icon={
                                     <VscCallIncoming className="text-xl font-black" />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold text-lg">
-                                        <a
-                                            href={`tel:${contactInfo.phone}`}
-                                            className="hover:text-yellow-500 transition-colors duration-300"
-                                        >
-                                            +880 1933-126-160
-                                        </a>
-                                    </h4>
-                                    <p className="text-gray-400 text-sm">
-                                        Text/Call or WhatsApp
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Website */}
-                            <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
-                                <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute top-8 left-0 flex items-center justify-center">
-                                        <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
-                                        <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
-                                    </div>
+                                }
+                                title={
+                                    <a
+                                        href={`tel:${contactInfo.phone}`}
+                                        className="hover:text-yellow-500 transition-colors duration-300"
+                                    >
+                                        {contactInfo.phone}
+                                    </a>
+                                }
+                                subtitle="Text/Call or WhatsApp"
+                            />
+                            <InfoBox
+                                icon={
                                     <TbWorldShare className="text-xl font-black" />
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold text-lg">
-                                        <a
-                                            href="https://www.sagorislam.dev"
-                                            className="hover:text-yellow-500 transition-colors duration-300"
-                                        >
-                                            www.sagorislam.dev
-                                        </a>
-                                    </h4>
-                                    <p className="text-gray-400 text-sm">
-                                        Portfolio Website
-                                    </p>
-                                </div>
-                            </div>
+                                }
+                                title={
+                                    <a
+                                        href="https://www.sagorislam.dev"
+                                        className="hover:text-yellow-500 transition-colors duration-300"
+                                    >
+                                        www.sagorislam.dev
+                                    </a>
+                                }
+                                subtitle="Portfolio Website"
+                            />
                         </div>
                     </div>
                 </div>
@@ -349,5 +271,68 @@ const ContactSection = () => {
         </section>
     );
 };
+
+// Reusable Input Component
+const InputField = ({
+    label,
+    name,
+    type,
+    value,
+    onChange,
+    error,
+    placeholder,
+}: {
+    label: string;
+    name: string;
+    type: string;
+    value: string;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
+    error?: string;
+    placeholder?: string;
+}) => (
+    <div>
+        <label className="block text-gray-300 text-sm mb-1">
+            {label} <span className="text-yellow-500">*</span>
+        </label>
+        <input
+            type={type}
+            className={`w-full px-4 py-2 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-yellow-600/50 ${
+                error ? "border-red-500" : ""
+            }`}
+            name={name}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+        />
+        {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+    </div>
+);
+
+// Reusable InfoBox
+const InfoBox = ({
+    icon,
+    title,
+    subtitle,
+}: {
+    icon: React.ReactNode;
+    title: React.ReactNode;
+    subtitle: string;
+}) => (
+    <div className="bg-[#2d2d35] border border-gray-700 rounded-xl p-5 flex items-start gap-6">
+        <div className="border-2 relative border-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="absolute top-8 left-0 flex items-center justify-center">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75 animate-ping"></span>
+                <span className="relative inline-flex h-3 w-3 bg-yellow-500 rounded-full"></span>
+            </div>
+            {icon}
+        </div>
+        <div>
+            <h4 className="text-white font-semibold text-lg">{title}</h4>
+            <p className="text-gray-400 text-sm">{subtitle}</p>
+        </div>
+    </div>
+);
 
 export default ContactSection;
