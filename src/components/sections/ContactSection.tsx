@@ -57,28 +57,32 @@ const ContactSection = () => {
         setStatusMessage(null);
 
         try {
-            // Send form data to Cloudflare Pages Function
-            const res = await fetch("/contact", {
+            const res = await fetch("/api/Contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
 
-            if (!res.ok) throw new Error(await res.text());
             const data = await res.json();
 
-            if (data.success) {
-                setFormData(contactFormInitialData);
-                setSuccess(true);
-                setStatusMessage("Thank you! Your message has been sent.");
-                setTimeout(() => {
-                    setSuccess(false);
-                    setStatusMessage(null);
-                }, 10000);
+            if (!res.ok) {
+                throw new Error(data.error || "Failed to send message");
             }
-        } catch (error) {
+
+            setFormData(contactFormInitialData);
+            setSuccess(true);
+            setStatusMessage("Thank you! Your message has been sent.");
+            setTimeout(() => {
+                setSuccess(false);
+                setStatusMessage(null);
+            }, 10000);
+        } catch (error: unknown) {
             console.error("Form submission error:", error);
-            setStatusMessage("Failed to send message. Please try again.");
+            const errorMessage =
+                error instanceof Error
+                    ? error.message
+                    : "Failed to send message. Please try again.";
+            setStatusMessage(errorMessage);
             setSuccess(false);
         } finally {
             setIsSubmitting(false);
