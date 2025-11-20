@@ -44,7 +44,7 @@ export const onRequestPost = async (context: {
 
         // Generate email templates
         const { generateEmailHtml, generateEmailText } = await import(
-            "../utils/emailTemplate"
+            "./emailTemplate"
         );
 
         const emailData = { name, email, subject, message };
