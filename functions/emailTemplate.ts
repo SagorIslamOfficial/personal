@@ -60,17 +60,7 @@ export function generateEmailHtml(data: EmailTemplateData): string {
 
     // Get current UTC time
     const now = new Date();
-    const timestamp = now.toLocaleString("en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-        timeZone: "UTC",
-        timeZoneName: "short",
-    });
+    const timestamp = now.toUTCString();
 
     const replyBody = `\n\n\nOn ${timestamp}, ${name} wrote:\n\n${message}`;
 
@@ -183,12 +173,7 @@ export function generateEmailHtml(data: EmailTemplateData): string {
  */
 export function generateEmailText(data: EmailTemplateData): string {
     const { name, email, subject, message } = data;
-    const timestamp = new Date().toLocaleString("en-US", {
-        dateStyle: "medium",
-        timeStyle: "short",
-        timeZone: "UTC",
-        timeZoneName: "short",
-    });
+    const timestamp = new Date().toUTCString();
 
     return `
 ${subject}
