@@ -38,22 +38,22 @@ export const contactInfo: ContactInfo = {
     phone: "+880 1933-126-160",
     social: [
         {
-            platform: "facebook",
-            url: "https://facebook.com/sagorislam",
-            icon: FaFacebookF,
-            label: "Facebook",
+            platform: "github",
+            url: "https://github.com/SagorIslamOfficial",
+            icon: FaGithub,
+            label: "GitHub",
         },
         {
             platform: "linkedin",
-            url: "https://linkedin.com/in/sagorislam",
+            url: "https://linkedin.com/in/sagorislamofficial",
             icon: FaLinkedinIn,
             label: "LinkedIn",
         },
         {
-            platform: "github",
-            url: "https://github.com/sagorislam",
-            icon: FaGithub,
-            label: "GitHub",
+            platform: "facebook",
+            url: "https://facebook.com/SagorIslamOfficial",
+            icon: FaFacebookF,
+            label: "Facebook",
         },
     ],
 };
