@@ -26,7 +26,6 @@ package-lock.json
 build/
 dist/
 
-# Virtual Environment #
-venv/
-ENV/
-env/
+# Cloudflare Wrangler #
+.wrangler/
+.dev.vars
