@@ -35,14 +35,29 @@ const ContactSection = () => {
     const validateForm = (): boolean => {
         const newErrors: Partial<ContactFormData> = {};
 
-        if (!formData.name.trim()) newErrors.name = "Name is required";
-        if (!formData.email.trim()) {
-            newErrors.email = "Email is required";
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = "Please enter a valid email address";
+        if (!formData.name.trim()) {
+            newErrors.name = "Please tell us your name";
+        } else if (formData.name.trim().length < 2) {
+            newErrors.name = "Name must be at least 2 characters";
         }
-        if (!formData.subject.trim()) newErrors.subject = "Subject is required";
-        if (!formData.message.trim()) newErrors.message = "Message is required";
+
+        if (!formData.email.trim()) {
+            newErrors.email = "We need your email to reply";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = "Invalid email format (e.g., name@example.com)";
+        }
+
+        if (!formData.subject.trim()) {
+            newErrors.subject = "What is this message about?";
+        } else if (formData.subject.trim().length < 3) {
+            newErrors.subject = "Subject must be at least 3 characters";
+        }
+
+        if (!formData.message.trim()) {
+            newErrors.message = "Please write your message";
+        } else if (formData.message.trim().length < 10) {
+            newErrors.message = "Message must be at least 10 characters";
+        }
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -51,10 +66,13 @@ const ContactSection = () => {
     // Handle form submit
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!validateForm()) return;
+        if (!validateForm()) {
+            return;
+        }
 
         setIsSubmitting(true);
         setStatusMessage(null);
+        setSuccess(false);
 
         try {
             const res = await fetch("/contact", {
@@ -66,12 +84,36 @@ const ContactSection = () => {
             const data = await res.json();
 
             if (!res.ok) {
-                throw new Error(data.error || "Failed to send message");
+                // Provide specific error messages based on status code
+                if (res.status === 400) {
+                    throw new Error(
+                        "Please fill in all required fields correctly",
+                    );
+                } else if (res.status === 502) {
+                    throw new Error(
+                        "Email service temporarily unavailable. Please try again later.",
+                    );
+                } else if (res.status === 500) {
+                    throw new Error(
+                        data.error ||
+                            "Server error. Please try again in a moment.",
+                    );
+                } else {
+                    throw new Error(
+                        data.error ||
+                            "Failed to send message. Please try again.",
+                    );
+                }
             }
 
             setFormData(contactFormInitialData);
             setSuccess(true);
-            setStatusMessage("Thank you! Your message has been sent.");
+            setStatusMessage(
+                "Message sent successfully! We'll get back to you soon.",
+            );
+            setErrors({});
+
+            // Clear success message after 10 seconds
             setTimeout(() => {
                 setSuccess(false);
                 setStatusMessage(null);
@@ -81,7 +123,7 @@ const ContactSection = () => {
             const errorMessage =
                 error instanceof Error
                     ? error.message
-                    : "Failed to send message. Please try again.";
+                    : "Network error. Please check your connection and try again.";
             setStatusMessage(errorMessage);
             setSuccess(false);
         } finally {
@@ -190,7 +232,7 @@ const ContactSection = () => {
                                         {isSubmitting ? (
                                             <BiMailSend className="text-xl" />
                                         ) : success ? (
-                                            <TbMailCheck className="text-xl" />
+                                            <TbMailCheck className="text-xl animate-bounce" />
                                         ) : (
                                             <BiMailSend className="text-xl" />
                                         )}
