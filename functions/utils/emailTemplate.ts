@@ -57,7 +57,10 @@ function markdownToHtml(text: string): string {
 export function generateEmailHtml(data: EmailTemplateData): string {
     const { name, email, subject, message } = data;
     const formattedMessage = markdownToHtml(message);
-    const timestamp = new Date().toLocaleString("en-US", {
+
+    // Get current UTC time
+    const now = new Date();
+    const timestamp = now.toLocaleString("en-US", {
         weekday: "long",
         year: "numeric",
         month: "long",
@@ -65,7 +68,10 @@ export function generateEmailHtml(data: EmailTemplateData): string {
         hour: "numeric",
         minute: "2-digit",
         hour12: true,
+        timeZone: "UTC",
+        timeZoneName: "short",
     });
+
     const replyBody = `\n\n\nOn ${timestamp}, ${name} wrote:\n\n${message}`;
 
     return `
@@ -180,6 +186,8 @@ export function generateEmailText(data: EmailTemplateData): string {
     const timestamp = new Date().toLocaleString("en-US", {
         dateStyle: "medium",
         timeStyle: "short",
+        timeZone: "UTC",
+        timeZoneName: "short",
     });
 
     return `
